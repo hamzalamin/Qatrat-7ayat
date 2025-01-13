@@ -55,4 +55,7 @@ public class User {
     @Column(name = "updated_at")
     private String updatedAt;
 
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 }

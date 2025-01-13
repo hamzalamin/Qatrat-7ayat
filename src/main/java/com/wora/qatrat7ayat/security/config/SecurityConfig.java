@@ -1,5 +1,7 @@
 package com.wora.qatrat7ayat.security.config;
 
+import com.wora.qatrat7ayat.security.config.jwt.JwtAuthenticationEntryPoint;
+import com.wora.qatrat7ayat.security.config.jwt.JwtAuthenticationFilter;
 import com.wora.qatrat7ayat.security.services.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +25,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtAuthenticationFilter jwtAuthenticationFilter, JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint) throws Exception {
         http
                 .csrf(customizer -> customizer.disable())
                 .sessionManagement(session -> session
