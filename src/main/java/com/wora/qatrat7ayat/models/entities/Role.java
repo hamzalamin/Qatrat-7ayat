@@ -1,4 +1,4 @@
-package com.wora.qatrat7ayat.security.models.entities;
+package com.wora.qatrat7ayat.models.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
