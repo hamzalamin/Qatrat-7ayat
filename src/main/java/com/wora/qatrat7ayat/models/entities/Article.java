@@ -3,6 +3,7 @@ package com.wora.qatrat7ayat.models.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,18 +20,25 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "title")
     @NotBlank
+    @Column(name = "title")
     private String title;
 
-    @Column(name = "content")
     @NotBlank
+    @Column(name = "content")
     private String content;
 
+    @NotBlank
     @Column(name = "published_at")
     private String publishedAt;
 
     @ManyToOne()
+    @NotNull
     @JoinColumn(name = "user_id")
     private AuthenticatedUser user;
+
+    @ManyToOne()
+    @NotNull
+    @JoinColumn(name = "city_id")
+    private City city;
 }

@@ -1,6 +1,9 @@
 package com.wora.qatrat7ayat.models.entities;
 
+import com.wora.qatrat7ayat.models.enumes.BloodType;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,7 +23,6 @@ public class User{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
     @Column(name = "first_name")
     private String firstName;
 
@@ -32,29 +34,27 @@ public class User{
     @Column(name = "psudo_name")
     private String psudoName;
 
-
+    @NotBlank
     @Column(name = "phone")
     private String phone;
 
-
+    @NotNull
     @Column(name = "blood_type")
-    private String bloodType;
+    private BloodType bloodType;
 
-
-    @Column(name = "city")
-    private String city;
-
-
+    @NotBlank
     @Column(name = "availability_message")
     private String availabilityMessage;
 
-
+    @NotBlank
     @Column(name = "created_at")
     private String createdAt;
 
-
+    @NotBlank
     @Column(name = "updated_at")
     private String updatedAt;
 
-
+    @ManyToOne()
+    @JoinColumn(name = "city_id")
+    private City city;
 }
