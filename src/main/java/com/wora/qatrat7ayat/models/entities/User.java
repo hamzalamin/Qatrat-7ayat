@@ -32,12 +32,10 @@ public class User{
     @Column(name = "psudo_name")
     private String psudoName;
 
-//    @NotBlank
     @Column(name = "phone")
     private String phone;
 
     @Column(name = "blood_type")
-//    @NotNull
     private BloodType bloodType;
 
     @Column(name = "availability_message")
