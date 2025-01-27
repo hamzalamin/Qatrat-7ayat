@@ -2,12 +2,7 @@ package com.wora.qatrat7ayat.models.entities;
 
 import com.wora.qatrat7ayat.models.enumes.BloodType;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "users")
@@ -16,6 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder(toBuilder = true)
 public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
