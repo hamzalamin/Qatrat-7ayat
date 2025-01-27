@@ -9,8 +9,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -34,23 +32,20 @@ public class User{
     @Column(name = "psudo_name")
     private String psudoName;
 
-    @NotBlank
+//    @NotBlank
     @Column(name = "phone")
     private String phone;
 
-    @NotNull
     @Column(name = "blood_type")
+//    @NotNull
     private BloodType bloodType;
 
-    @NotBlank
     @Column(name = "availability_message")
     private String availabilityMessage;
 
-    @NotBlank
     @Column(name = "created_at")
     private String createdAt;
 
-    @NotBlank
     @Column(name = "updated_at")
     private String updatedAt;
 
