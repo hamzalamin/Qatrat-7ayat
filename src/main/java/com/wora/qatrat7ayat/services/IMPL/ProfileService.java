@@ -5,13 +5,16 @@ import com.wora.qatrat7ayat.mappers.ProfileMapper;
 import com.wora.qatrat7ayat.models.DTOs.User.CreateProfileDto;
 import com.wora.qatrat7ayat.models.DTOs.User.ProfileDto;
 import com.wora.qatrat7ayat.models.DTOs.User.UpdateProfileDto;
+import com.wora.qatrat7ayat.models.entities.City;
 import com.wora.qatrat7ayat.models.entities.User;
 import com.wora.qatrat7ayat.repositories.ProfileRepository;
+import com.wora.qatrat7ayat.services.INTER.ICityService;
 import com.wora.qatrat7ayat.services.INTER.IProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -19,10 +22,12 @@ import java.util.List;
 public class ProfileService implements IProfileService {
     private final ProfileRepository profileRepository;
     private final ProfileMapper profileMapper;
+    private final ICityService cityService;
 
     @Override
     public ProfileDto create(CreateProfileDto createProfileDto) {
         User userProfile = profileMapper.toEntity(createProfileDto);
+        userProfile.setCreatedAt(LocalDateTime.now());
         User savedProfile = profileRepository.save(userProfile);
         return profileMapper.toDto(savedProfile);
     }
@@ -38,6 +43,7 @@ public class ProfileService implements IProfileService {
     public ProfileDto update(UpdateProfileDto updateProfileDto, Long id) {
         User profile = profileRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User", id));
+        City city = cityService.findCityEntity(updateProfileDto.city_id());
 
 
         User updateProfile = profile.toBuilder()
@@ -47,7 +53,8 @@ public class ProfileService implements IProfileService {
                 .bloodType(updateProfileDto.bloodType())
                 .psudoName(updateProfileDto.psudoName())
                 .availabilityMessage(updateProfileDto.availabilityMessage())
-                //tatkmel hadchi laaakher 3ndaaak tensssssah
+                .city(city)
+                .updatedAt(LocalDateTime.now())
                 .build();
         User savedProfile = profileRepository.save(updateProfile);
         return profileMapper.toDto(savedProfile);

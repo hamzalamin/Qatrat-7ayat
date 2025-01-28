@@ -4,6 +4,8 @@ import com.wora.qatrat7ayat.models.enumes.BloodType;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -38,10 +40,10 @@ public class User{
     private String availabilityMessage;
 
     @Column(name = "created_at")
-    private String createdAt;
+    private LocalDateTime createdAt;
 
     @Column(name = "updated_at")
-    private String updatedAt;
+    private LocalDateTime updatedAt;
 
     @ManyToOne()
     @JoinColumn(name = "city_id")
