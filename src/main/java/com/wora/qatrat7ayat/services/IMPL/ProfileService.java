@@ -67,4 +67,10 @@ public class ProfileService implements IProfileService {
                 .orElseThrow(() -> new EntityNotFoundException("User", id));
         profileRepository.delete(profile);
     }
+
+    @Override
+    public User findUserEntity(Long id){
+        return profileRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("User", id));
+    }
 }
