@@ -27,7 +27,10 @@ public class ProfileService implements IProfileService {
     @Override
     public ProfileDto create(CreateProfileDto createProfileDto) {
         User userProfile = profileMapper.toEntity(createProfileDto);
-        userProfile.setCreatedAt(LocalDateTime.now());
+        if (profileRepository.existsByUserPhone(createProfileDto.phone())){
+
+        }
+        userProfile.setCreatedAt(LocalDateTime.now().toString());
         User savedProfile = profileRepository.save(userProfile);
         return profileMapper.toDto(savedProfile);
     }
@@ -54,7 +57,7 @@ public class ProfileService implements IProfileService {
                 .psudoName(updateProfileDto.psudoName())
                 .availabilityMessage(updateProfileDto.availabilityMessage())
                 .city(city)
-                .updatedAt(LocalDateTime.now())
+                .updatedAt(LocalDateTime.now().toString())
                 .build();
         User savedProfile = profileRepository.save(updateProfile);
         return profileMapper.toDto(savedProfile);

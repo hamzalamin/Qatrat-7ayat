@@ -3,6 +3,7 @@ package com.wora.qatrat7ayat.models.entities;
 import com.wora.qatrat7ayat.models.enumes.BloodType;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import java.time.LocalDateTime;
 
@@ -30,7 +31,7 @@ public class User{
     @Column(name = "psudo_name")
     private String psudoName;
 
-    @Column(name = "phone")
+    @Column(name = "phone", unique = true)
     private String phone;
 
     @Column(name = "blood_type")
@@ -40,10 +41,10 @@ public class User{
     private String availabilityMessage;
 
     @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    private String createdAt;
 
     @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    private String updatedAt;
 
     @ManyToOne()
     @JoinColumn(name = "city_id")
