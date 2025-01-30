@@ -1,11 +1,10 @@
 package com.wora.qatrat7ayat.models.entities;
 
 import com.wora.qatrat7ayat.models.enumes.BloodType;
+import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.hibernate.validator.constraints.UniqueElements;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
@@ -46,6 +45,11 @@ public class User{
     @ManyToOne()
     @JoinColumn(name = "city_id")
     private City city;
+
+    @ManyToOne()
+    @NotNull
+    @JoinColumn(name = "action_id")
+    private Action action;
 
     @Column(nullable = false)
     private boolean isProfileCompleted = false;
