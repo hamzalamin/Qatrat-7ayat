@@ -1,8 +1,8 @@
 package com.wora.qatrat7ayat.controllers;
 
-import com.wora.qatrat7ayat.models.DTOs.User.CreateProfileDto;
-import com.wora.qatrat7ayat.models.DTOs.User.ProfileDto;
-import com.wora.qatrat7ayat.models.DTOs.User.UpdateProfileDto;
+import com.wora.qatrat7ayat.models.DTOs.user.CreateProfileDto;
+import com.wora.qatrat7ayat.models.DTOs.user.ProfileDto;
+import com.wora.qatrat7ayat.models.DTOs.user.UpdateProfileDto;
 import com.wora.qatrat7ayat.services.INTER.IProfileService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

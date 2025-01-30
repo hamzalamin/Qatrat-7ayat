@@ -1,4 +1,4 @@
-package com.wora.qatrat7ayat.models.DTOs.User;
+package com.wora.qatrat7ayat.models.DTOs.user;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
