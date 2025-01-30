@@ -2,7 +2,7 @@ package com.wora.qatrat7ayat.security.controller;
 
 import com.wora.qatrat7ayat.security.DTO.LoginRequest;
 import com.wora.qatrat7ayat.security.DTO.SignupRequest;
-import com.wora.qatrat7ayat.security.services.AuthService;
+import com.wora.qatrat7ayat.security.services.impl.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

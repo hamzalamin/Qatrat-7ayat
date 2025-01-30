@@ -37,9 +37,6 @@ public class User{
     @Column(name = "blood_type")
     private BloodType bloodType;
 
-    @Column(name = "availability_message")
-    private String availabilityMessage;
-
     @Column(name = "created_at")
     private String createdAt;
 
@@ -49,4 +46,7 @@ public class User{
     @ManyToOne()
     @JoinColumn(name = "city_id")
     private City city;
+
+    @Column(nullable = false)
+    private boolean isProfileCompleted = false;
 }

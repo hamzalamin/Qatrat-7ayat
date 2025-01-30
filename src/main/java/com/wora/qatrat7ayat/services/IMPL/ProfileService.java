@@ -1,12 +1,14 @@
 package com.wora.qatrat7ayat.services.IMPL;
 
 import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
+import com.wora.qatrat7ayat.exceptions.ProfileAlreadyCompletedException;
 import com.wora.qatrat7ayat.mappers.ProfileMapper;
 import com.wora.qatrat7ayat.models.DTOs.User.CreateProfileDto;
 import com.wora.qatrat7ayat.models.DTOs.User.ProfileDto;
 import com.wora.qatrat7ayat.models.DTOs.User.UpdateProfileDto;
 import com.wora.qatrat7ayat.models.entities.City;
 import com.wora.qatrat7ayat.models.entities.User;
+import com.wora.qatrat7ayat.models.enumes.BloodType;
 import com.wora.qatrat7ayat.repositories.ProfileRepository;
 import com.wora.qatrat7ayat.services.INTER.ICityService;
 import com.wora.qatrat7ayat.services.INTER.IProfileService;
@@ -27,10 +29,11 @@ public class ProfileService implements IProfileService {
     @Override
     public ProfileDto create(CreateProfileDto createProfileDto) {
         User userProfile = profileMapper.toEntity(createProfileDto);
-        if (profileRepository.existsByUserPhone(createProfileDto.phone())){
-
+        if (userProfile.isProfileCompleted()) {
+            throw new ProfileAlreadyCompletedException("Profile is already completed");
         }
         userProfile.setCreatedAt(LocalDateTime.now().toString());
+        userProfile.setProfileCompleted(true);
         User savedProfile = profileRepository.save(userProfile);
         return profileMapper.toDto(savedProfile);
     }
@@ -53,9 +56,8 @@ public class ProfileService implements IProfileService {
                 .firstName(updateProfileDto.firstName())
                 .lastName(updateProfileDto.lastName())
                 .phone(updateProfileDto.phone())
-                .bloodType(updateProfileDto.bloodType())
+                .bloodType(BloodType.valueOf(updateProfileDto.bloodType()))
                 .psudoName(updateProfileDto.psudoName())
-                .availabilityMessage(updateProfileDto.availabilityMessage())
                 .city(city)
                 .updatedAt(LocalDateTime.now().toString())
                 .build();

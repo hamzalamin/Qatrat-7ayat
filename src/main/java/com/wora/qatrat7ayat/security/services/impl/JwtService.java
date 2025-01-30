@@ -1,4 +1,4 @@
-package com.wora.qatrat7ayat.security.services;
+package com.wora.qatrat7ayat.security.services.impl;
 
 import com.wora.qatrat7ayat.security.utils.JwtUtils;
 import lombok.RequiredArgsConstructor;

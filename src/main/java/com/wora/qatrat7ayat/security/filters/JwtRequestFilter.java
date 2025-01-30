@@ -1,6 +1,6 @@
 package com.wora.qatrat7ayat.security.filters;
 
-import com.wora.qatrat7ayat.security.services.UserDetailsServiceImpl;
+import com.wora.qatrat7ayat.security.services.impl.UserDetailsServiceImpl;
 import com.wora.qatrat7ayat.security.utils.JwtUtils;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

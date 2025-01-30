@@ -15,17 +15,17 @@ public class SignupRequest {
     @NotBlank
     private String password;
 
-    private BloodType bloodType;
-
-    private String firstName;
-
-    private String lastName;
-
-    private String phone;
-
-    private String availabilityMessage;
-
-    private Long cityId;
-
+//    private BloodType bloodType;
+//
+//    private String firstName;
+//
+//    private String lastName;
+//
+//    private String phone;
+//
+//    private String availabilityMessage;
+//
+//    private Long cityId;
+//
     private Long roleId;
 }
