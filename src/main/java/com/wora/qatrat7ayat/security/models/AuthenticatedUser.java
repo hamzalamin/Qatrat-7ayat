@@ -5,10 +5,8 @@ import com.wora.qatrat7ayat.models.entities.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.Accessors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -19,6 +17,7 @@ import java.util.*;
 @AllArgsConstructor
 @Getter
 @Setter
+@Accessors(chain = true)
 public class AuthenticatedUser extends User implements UserDetails {
 
     @NotBlank

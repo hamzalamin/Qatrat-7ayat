@@ -10,11 +10,16 @@ import com.wora.qatrat7ayat.models.entities.City;
 import com.wora.qatrat7ayat.models.entities.User;
 import com.wora.qatrat7ayat.models.enumes.BloodType;
 import com.wora.qatrat7ayat.repositories.ProfileRepository;
+import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
+import com.wora.qatrat7ayat.security.repositories.UserRepository;
 import com.wora.qatrat7ayat.services.INTER.ICityService;
 import com.wora.qatrat7ayat.services.INTER.IProfileService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.web.servlet.DelegatingFilterProxyRegistrationBean;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.web.server.authentication.AnonymousAuthenticationWebFilter;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -22,20 +27,13 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ProfileService implements IProfileService {
-    private final ProfileRepository profileRepository;
+    private final UserRepository profileRepository;
     private final ProfileMapper profileMapper;
     private final ICityService cityService;
 
     @Override
     public ProfileDto create(CreateProfileDto createProfileDto) {
-        User userProfile = profileMapper.toEntity(createProfileDto);
-        if (userProfile.isProfileCompleted()) {
-            throw new ProfileAlreadyCompletedException("Profile is already completed");
-        }
-        userProfile.setCreatedAt(LocalDateTime.now().toString());
-        userProfile.setProfileCompleted(true);
-        User savedProfile = profileRepository.save(userProfile);
-        return profileMapper.toDto(savedProfile);
+        return null;
     }
 
     @Override
@@ -46,23 +44,22 @@ public class ProfileService implements IProfileService {
     }
 
     @Override
+    @Transactional
     public ProfileDto update(UpdateProfileDto updateProfileDto, Long id) {
-        User profile = profileRepository.findById(id)
+        AuthenticatedUser profile = profileRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User", id));
         City city = cityService.findCityEntity(updateProfileDto.city_id());
 
 
-        User updateProfile = profile.toBuilder()
-                .firstName(updateProfileDto.firstName())
-                .lastName(updateProfileDto.lastName())
-                .phone(updateProfileDto.phone())
-                .bloodType(BloodType.valueOf(updateProfileDto.bloodType()))
-                .psudoName(updateProfileDto.psudoName())
-                .city(city)
-                .updatedAt(LocalDateTime.now().toString())
-                .build();
-        User savedProfile = profileRepository.save(updateProfile);
-        return profileMapper.toDto(savedProfile);
+        profile.setFirstName(updateProfileDto.firstName())
+                .setLastName(updateProfileDto.lastName())
+                .setPhone(updateProfileDto.phone())
+                .setBloodType(BloodType.valueOf(updateProfileDto.bloodType()))
+                .setPsudoName(updateProfileDto.psudoName())
+                .setCity(city)
+                .setUpdatedAt(LocalDateTime.now().toString());
+
+        return profileMapper.toDto(profile);
     }
 
     @Override
@@ -75,7 +72,7 @@ public class ProfileService implements IProfileService {
 
     @Override
     public void delete(Long id) {
-        User profile = profileRepository.findById(id)
+        AuthenticatedUser profile = profileRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User", id));
         profileRepository.delete(profile);
     }

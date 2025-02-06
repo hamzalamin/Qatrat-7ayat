@@ -1,10 +1,9 @@
 package com.wora.qatrat7ayat.models.entities;
 
 import com.wora.qatrat7ayat.models.enumes.BloodType;
-import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import lombok.experimental.Accessors;
 
 @Entity
 @Table(name = "users")
@@ -13,6 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
+@Accessors(chain = true)
 @Builder(toBuilder = true)
 public class User{
     @Id
@@ -47,7 +47,6 @@ public class User{
     private City city;
 
     @ManyToOne()
-    @NotNull
     @JoinColumn(name = "action_id")
     private Action action;
 
