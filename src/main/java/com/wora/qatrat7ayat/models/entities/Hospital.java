@@ -2,7 +2,6 @@ package com.wora.qatrat7ayat.models.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Entity
@@ -21,7 +20,6 @@ public class Hospital {
     private String name;
 
     @ManyToOne()
-    @NotNull
     @JoinColumn(name = "action_id")
     private Action action;
 
