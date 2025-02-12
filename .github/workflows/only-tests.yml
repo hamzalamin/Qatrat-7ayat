@@ -1,0 +1,28 @@
+name: Only Tests
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - master
+
+jobs:
+  run-all-tests:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.0.0
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: 'adopt'
+
+      - name: Setup Maven
+        uses: stCarolas/setup-maven@4.4
+        with:
+          maven-version: 3.9
+
+      - name: All the Tests and Coverage checks
+        run: mvn clean install
