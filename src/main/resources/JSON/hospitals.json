@@ -1,802 +1,482 @@
 [
   {
-    "id": null,
-    "name": "Imzouren (Imzouren)",
-    "action_id": null
+    "name": "Imzouren (Imzouren)"
   },
   {
-    "id": null,
-    "name": "Targuist (Targuist)",
-    "action_id": null
+    "name": "Targuist (Targuist)"
   },
   {
-    "id": null,
-    "name": "Mohamed V (Ksar El Kebir)",
-    "action_id": null
+    "name": "Mohamed V (Ksar El Kebir)"
   },
   {
-    "id": null,
-    "name": "Lalla Meriem (Ksar El Kebir)",
-    "action_id": null
+    "name": "Lalla Meriem (Ksar El Kebir)"
   },
   {
-    "id": null,
-    "name": "Abou Kacem Zahraoui (Assilah)",
-    "action_id": null
+    "name": "Abou Kacem Zahraoui (Assilah)"
   },
   {
-    "id": null,
-    "name": "Mohammed VI (Assilah)",
-    "action_id": null
+    "name": "Mohammed VI (Assilah)"
   },
   {
-    "id": null,
-    "name": "Arrazi (Assilah)",
-    "action_id": null
+    "name": "Arrazi (Assilah)"
   },
   {
-    "id": null,
-    "name": "Mohamed V (Assilah)",
-    "action_id": null
+    "name": "Mohamed V (Assilah)"
   },
   {
-    "id": null,
-    "name": "Al Kortobi (Assilah)",
-    "action_id": null
+    "name": "Al Kortobi (Assilah)"
   },
   {
-    "id": null,
-    "name": "Duc De Tovar (Assilah)",
-    "action_id": null
+    "name": "Duc De Tovar (Assilah)"
   },
   {
-    "id": null,
-    "name": "Centre d'oncologie (Assilah)",
-    "action_id": null
+    "name": "Centre d'oncologie (Assilah)"
   },
   {
-    "id": null,
-    "name": "Hôpital mère enfant Mohamed VI (Assilah)",
-    "action_id": null
+    "name": "Hôpital mère enfant Mohamed VI (Assilah)"
   },
   {
-    "id": null,
-    "name": "Hôpital psychiatrique Mohamed VI (Assilah)",
-    "action_id": null
+    "name": "Hôpital psychiatrique Mohamed VI (Assilah)"
   },
   {
-    "id": null,
-    "name": "Hôpital des spécialités Mohamed VI (Assilah)",
-    "action_id": null
+    "name": "Hôpital des spécialités Mohamed VI (Assilah)"
   },
   {
-    "id": null,
-    "name": "Hôpital Civil (Assilah)",
-    "action_id": null
+    "name": "Hôpital Civil (Assilah)"
   },
   {
-    "id": null,
-    "name": "Errazi (Assilah)",
-    "action_id": null
+    "name": "Errazi (Assilah)"
   },
   {
-    "id": null,
-    "name": "Ben Karrich (Assilah)",
-    "action_id": null
+    "name": "Ben Karrich (Assilah)"
   },
   {
-    "id": null,
-    "name": "Hassan II (Assilah)",
-    "action_id": null
+    "name": "Hassan II (Assilah)"
   },
   {
-    "id": null,
-    "name": "Mohammed VI (Assilah)",
-    "action_id": null
+    "name": "Mohammed VI (Assilah)"
   },
   {
-    "id": null,
-    "name": "Edderak (Assilah)",
-    "action_id": null
+    "name": "Edderak (Assilah)"
   },
   {
-    "id": null,
-    "name": "Saidia (Saidia)",
-    "action_id": null
+    "name": "Saidia (Saidia)"
   },
   {
-    "id": null,
-    "name": "Driouch (Driouch)",
-    "action_id": null
+    "name": "Driouch (Driouch)"
   },
   {
-    "id": null,
-    "name": "Hassan II (Guercif)",
-    "action_id": null
+    "name": "Hassan II (Guercif)"
   },
   {
-    "id": null,
-    "name": "Jrada (Jrada)",
-    "action_id": null
+    "name": "Jrada (Jrada)"
   },
   {
-    "id": null,
-    "name": "Mohammed VI (Jrada)",
-    "action_id": null
+    "name": "Mohammed VI (Jrada)"
   },
   {
-    "id": null,
-    "name": "Hassani (Jrada)",
-    "action_id": null
+    "name": "Hassani (Jrada)"
   },
   {
-    "id": null,
-    "name": "Zaio (Zaio)",
-    "action_id": null
+    "name": "Zaio (Zaio)"
   },
   {
-    "id": null,
-    "name": "Al Farabi (Zaio)",
-    "action_id": null
+    "name": "Al Farabi (Zaio)"
   },
   {
-    "id": null,
-    "name": "Hôpital Psychiatrique (Zaio)",
-    "action_id": null
+    "name": "Hôpital Psychiatrique (Zaio)"
   },
   {
-    "id": null,
-    "name": "Hôpital des Spécialités (Zaio)",
-    "action_id": null
+    "name": "Hôpital des Spécialités (Zaio)"
   },
   {
-    "id": null,
-    "name": "Hôpital Mère-Enfant (Zaio)",
-    "action_id": null
+    "name": "Hôpital Mère-Enfant (Zaio)"
   },
   {
-    "id": null,
-    "name": "Centre d'oncologie Hassan II (Zaio)",
-    "action_id": null
+    "name": "Centre d'oncologie Hassan II (Zaio)"
   },
   {
-    "id": null,
-    "name": "HPr Laayoune Sidi Mellouk (Taourirt)",
-    "action_id": null
+    "name": "HPr Laayoune Sidi Mellouk (Taourirt)"
   },
   {
-    "id": null,
-    "name": "Sidi Said (Taourirt)",
-    "action_id": null
+    "name": "Sidi Said (Taourirt)"
   },
   {
-    "id": null,
-    "name": "Mohamed V (Taourirt)",
-    "action_id": null
+    "name": "Mohamed V (Taourirt)"
   },
   {
-    "id": null,
-    "name": "Pagnon (Taourirt)",
-    "action_id": null
+    "name": "Pagnon (Taourirt)"
   },
   {
-    "id": null,
-    "name": "Moulay Ismail (Taourirt)",
-    "action_id": null
+    "name": "Moulay Ismail (Taourirt)"
   },
   {
-    "id": null,
-    "name": "Centre d'oncologie (Taourirt)",
-    "action_id": null
+    "name": "Centre d'oncologie (Taourirt)"
   },
   {
-    "id": null,
-    "name": "Marche Verte (Taourirt)",
-    "action_id": null
+    "name": "Marche Verte (Taourirt)"
   },
   {
-    "id": null,
-    "name": "S. Ahmed B. Driss Missouri (Taourirt)",
-    "action_id": null
+    "name": "S. Ahmed B. Driss Missouri (Taourirt)"
   },
   {
-    "id": null,
-    "name": "Prince My Hassan (Taourirt)",
-    "action_id": null
+    "name": "Prince My Hassan (Taourirt)"
   },
   {
-    "id": null,
-    "name": "Al Ghassani (Taourirt)",
-    "action_id": null
+    "name": "Al Ghassani (Taourirt)"
   },
   {
-    "id": null,
-    "name": "Ibn Al Baitar (Taourirt)",
-    "action_id": null
+    "name": "Ibn Al Baitar (Taourirt)"
   },
   {
-    "id": null,
-    "name": "Hôpital d'Oncologie (Taourirt)",
-    "action_id": null
+    "name": "Hôpital d'Oncologie (Taourirt)"
   },
   {
-    "id": null,
-    "name": "Hôpital des spécialités (Taourirt)",
-    "action_id": null
+    "name": "Hôpital des spécialités (Taourirt)"
   },
   {
-    "id": null,
-    "name": "Hôpital Mère-Enfant (Taourirt)",
-    "action_id": null
+    "name": "Hôpital Mère-Enfant (Taourirt)"
   },
   {
-    "id": null,
-    "name": "Omar Drissi (Taourirt)",
-    "action_id": null
+    "name": "Omar Drissi (Taourirt)"
   },
   {
-    "id": null,
-    "name": "Ibn Al Khatib (Taourirt)",
-    "action_id": null
+    "name": "Ibn Al Khatib (Taourirt)"
   },
   {
-    "id": null,
-    "name": "Ibn Al Hassan (Taourirt)",
-    "action_id": null
+    "name": "Ibn Al Hassan (Taourirt)"
   },
   {
-    "id": null,
-    "name": "20 Aout (Azrou)",
-    "action_id": null
+    "name": "20 Aout (Azrou)"
   },
   {
-    "id": null,
-    "name": "Mohamed V (Azrou)",
-    "action_id": null
+    "name": "Mohamed V (Azrou)"
   },
   {
-    "id": null,
-    "name": "Hassan II (Taounate)",
-    "action_id": null
+    "name": "Hassan II (Taounate)"
   },
   {
-    "id": null,
-    "name": "Ibn Baja (Taounate)",
-    "action_id": null
+    "name": "Ibn Baja (Taounate)"
   },
   {
-    "id": null,
-    "name": "Al Idrissi (Taounate)",
-    "action_id": null
+    "name": "Al Idrissi (Taounate)"
   },
   {
-    "id": null,
-    "name": "Zoubir Skirej (Taounate)",
-    "action_id": null
+    "name": "Zoubir Skirej (Taounate)"
   },
   {
-    "id": null,
-    "name": "Khémisset (Khémisset)",
-    "action_id": null
+    "name": "Khémisset (Khémisset)"
   },
   {
-    "id": null,
-    "name": "Roummani (Khémisset)",
-    "action_id": null
+    "name": "Roummani (Khémisset)"
   },
   {
-    "id": null,
-    "name": "Tiflet (Tiflet)",
-    "action_id": null
+    "name": "Tiflet (Tiflet)"
   },
   {
-    "id": null,
-    "name": "Ibn Sina (Tiflet)",
-    "action_id": null
+    "name": "Ibn Sina (Tiflet)"
   },
   {
-    "id": null,
-    "name": "Hôpital Des Spécialités (Tiflet)",
-    "action_id": null
+    "name": "Hôpital Des Spécialités (Tiflet)"
   },
   {
-    "id": null,
-    "name": "Maternité Souissi (Tiflet)",
-    "action_id": null
+    "name": "Maternité Souissi (Tiflet)"
   },
   {
-    "id": null,
-    "name": "Hôpital D'enfants (Tiflet)",
-    "action_id": null
+    "name": "Hôpital D'enfants (Tiflet)"
   },
   {
-    "id": null,
-    "name": "Maternité Orangers (Tiflet)",
-    "action_id": null
+    "name": "Maternité Orangers (Tiflet)"
   },
   {
-    "id": null,
-    "name": "Med Ben Abdellah (Tiflet)",
-    "action_id": null
+    "name": "Med Ben Abdellah (Tiflet)"
   },
   {
-    "id": null,
-    "name": "My Youssef (Tiflet)",
-    "action_id": null
+    "name": "My Youssef (Tiflet)"
   },
   {
-    "id": null,
-    "name": "Moulay Youssef (Ancien hôpital de Rabat)",
-    "action_id": null
+    "name": "Moulay Youssef (Ancien hôpital de Rabat)"
   },
   {
-    "id": null,
-    "name": "El Ayachi (Rabat)",
-    "action_id": null
+    "name": "El Ayachi (Rabat)"
   },
   {
-    "id": null,
-    "name": "Moulay Abdellah (Hôp. préféctoral)",
-    "action_id": null
+    "name": "Moulay Abdellah (Hôp. préféctoral)"
   },
   {
-    "id": null,
-    "name": "Arrazi (Rabat)",
-    "action_id": null
+    "name": "Arrazi (Rabat)"
   },
   {
-    "id": null,
-    "name": "Jorf Elmelha (Rabat)",
-    "action_id": null
+    "name": "Jorf Elmelha (Rabat)"
   },
   {
-    "id": null,
-    "name": "Sidi Kacem (Sidi Kacem)",
-    "action_id": null
+    "name": "Sidi Kacem (Sidi Kacem)"
   },
   {
-    "id": null,
-    "name": "Sidi Slimane (Sidi Slimane)",
-    "action_id": null
+    "name": "Sidi Slimane (Sidi Slimane)"
   },
   {
-    "id": null,
-    "name": "Princesse Lalla Aicha (Ancien Sidi Lahcen)",
-    "action_id": null
+    "name": "Princesse Lalla Aicha (Ancien Sidi Lahcen)"
   },
   {
-    "id": null,
-    "name": "Haut Atlas Central (Demnate)",
-    "action_id": null
+    "name": "Haut Atlas Central (Demnate)"
   },
   {
-    "id": null,
-    "name": "Beni Mellal (Beni Mellal)",
-    "action_id": null
+    "name": "Beni Mellal (Beni Mellal)"
   },
   {
-    "id": null,
-    "name": "Moulay Ismail (Beni Mellal)",
-    "action_id": null
+    "name": "Moulay Ismail (Beni Mellal)"
   },
   {
-    "id": null,
-    "name": "Beni Mellal (Beni Mellal)",
-    "action_id": null
+    "name": "Beni Mellal (Beni Mellal)"
   },
   {
-    "id": null,
-    "name": "Fquih Ben Salah (Fquih Ben Salah)",
-    "action_id": null
+    "name": "Fquih Ben Salah (Fquih Ben Salah)"
   },
   {
-    "id": null,
-    "name": "Souk Sebt (Souk Sebt)",
-    "action_id": null
+    "name": "Souk Sebt (Souk Sebt)"
   },
   {
-    "id": null,
-    "name": "Khenifra (Khenifra)",
-    "action_id": null
+    "name": "Khenifra (Khenifra)"
   },
   {
-    "id": null,
-    "name": "M'Rirt (M'Rirt)",
-    "action_id": null
+    "name": "M'Rirt (M'Rirt)"
   },
   {
-    "id": null,
-    "name": "Mohamed VI (Khenifra)",
-    "action_id": null
+    "name": "Mohamed VI (Khenifra)"
   },
   {
-    "id": null,
-    "name": "Hassan II (Oued Zem)",
-    "action_id": null
+    "name": "Hassan II (Oued Zem)"
   },
   {
-    "id": null,
-    "name": "Benslimane (Hassan II)",
-    "action_id": null
+    "name": "Benslimane (Hassan II)"
   },
   {
-    "id": null,
-    "name": "Berrchid (Berrchid)",
-    "action_id": null
+    "name": "Berrchid (Berrchid)"
   },
   {
-    "id": null,
-    "name": "Errazi (Berrchid)",
-    "action_id": null
+    "name": "Errazi (Berrchid)"
   },
   {
-    "id": null,
-    "name": "Azemmour (Azemmour)",
-    "action_id": null
+    "name": "Azemmour (Azemmour)"
   },
   {
-    "id": null,
-    "name": "Mohamed V (Azemmour)",
-    "action_id": null
+    "name": "Mohamed V (Azemmour)"
   },
   {
-    "id": null,
-    "name": "Mediouna (Mediouna)",
-    "action_id": null
+    "name": "Mediouna (Mediouna)"
   },
   {
-    "id": null,
-    "name": "Tit Mellil (Tit Mellil)",
-    "action_id": null
+    "name": "Tit Mellil (Tit Mellil)"
   },
   {
-    "id": null,
-    "name": "My Abdellah (Tit Mellil)",
-    "action_id": null
+    "name": "My Abdellah (Tit Mellil)"
   },
   {
-    "id": null,
-    "name": "Bouskoura (Bouskoura)",
-    "action_id": null
+    "name": "Bouskoura (Bouskoura)"
   },
   {
-    "id": null,
-    "name": "Prince My Hassan (Bouskoura)",
-    "action_id": null
+    "name": "Prince My Hassan (Bouskoura)"
   },
   {
-    "id": null,
-    "name": "Ben Ahmed (Ben Ahmed)",
-    "action_id": null
+    "name": "Ben Ahmed (Ben Ahmed)"
   },
   {
-    "id": null,
-    "name": "Hassan II (Ben Ahmed)",
-    "action_id": null
+    "name": "Hassan II (Ben Ahmed)"
   },
   {
-    "id": null,
-    "name": "Sidi Bennour (Sidi Bennour)",
-    "action_id": null
+    "name": "Sidi Bennour (Sidi Bennour)"
   },
   {
-    "id": null,
-    "name": "Zmamra (Zmamra)",
-    "action_id": null
+    "name": "Zmamra (Zmamra)"
   },
   {
-    "id": null,
-    "name": "20 Aout 1953 (Zmamra)",
-    "action_id": null
+    "name": "20 Aout 1953 (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Ibn Rochd (Zmamra)",
-    "action_id": null
+    "name": "Ibn Rochd (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Hôpital D'enfants (Zmamra)",
-    "action_id": null
+    "name": "Hôpital D'enfants (Zmamra)"
   },
   {
-    "id": null,
-    "name": "My Youssef (Zmamra)",
-    "action_id": null
+    "name": "My Youssef (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Mohamed Baouafi (Zmamra)",
-    "action_id": null
+    "name": "Mohamed Baouafi (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Mohamed V (Zmamra)",
-    "action_id": null
+    "name": "Mohamed V (Zmamra)"
   },
   {
-    "id": null,
-    "name": "El Hassani (Zmamra)",
-    "action_id": null
+    "name": "El Hassani (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Centre de Léprologie (Zmamra)",
-    "action_id": null
+    "name": "Centre de Léprologie (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Mohamed Sekkat (Zmamra)",
-    "action_id": null
+    "name": "Mohamed Sekkat (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Al Mansour (Zmamra)",
-    "action_id": null
+    "name": "Al Mansour (Zmamra)"
   },
   {
-    "id": null,
-    "name": "HPr Sidi Moumen (Zmamra)",
-    "action_id": null
+    "name": "HPr Sidi Moumen (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Ben Msick (Zmamra)",
-    "action_id": null
+    "name": "Ben Msick (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Sidi Othmane (Zmamra)",
-    "action_id": null
+    "name": "Sidi Othmane (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Mohammed VI (Zmamra)",
-    "action_id": null
+    "name": "Mohammed VI (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Mohamed VI (Zmamra)",
-    "action_id": null
+    "name": "Mohamed VI (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Assalama (Zmamra)",
-    "action_id": null
+    "name": "Assalama (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Hôpital psychiatrique (Zmamra)",
-    "action_id": null
+    "name": "Hôpital psychiatrique (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Princesse Lalla Khadija (Zmamra)",
-    "action_id": null
+    "name": "Princesse Lalla Khadija (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Sidi Med Ben Abdellah (Zmamra)",
-    "action_id": null
+    "name": "Sidi Med Ben Abdellah (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Ibn Tofeil (Zmamra)",
-    "action_id": null
+    "name": "Ibn Tofeil (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Ibn Nafis (Zmamra)",
-    "action_id": null
+    "name": "Ibn Nafis (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Hopital Mère-Enfant (Zmamra)",
-    "action_id": null
+    "name": "Hopital Mère-Enfant (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Centre d'Hématologie Oncologie (Zmamra)",
-    "action_id": null
+    "name": "Centre d'Hématologie Oncologie (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Arrazi (Zmamra)",
-    "action_id": null
+    "name": "Arrazi (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Ibn Zohr (Zmamra)",
-    "action_id": null
+    "name": "Ibn Zohr (Zmamra)"
   },
   {
-    "id": null,
-    "name": "El Antaki (Zmamra)",
-    "action_id": null
+    "name": "El Antaki (Zmamra)"
   },
   {
-    "id": null,
-    "name": "Mhamid (Mhamid)",
-    "action_id": null
+    "name": "Mhamid (Mhamid)"
   },
   {
-    "id": null,
-    "name": "Charifa (Charifa)",
-    "action_id": null
+    "name": "Charifa (Charifa)"
   },
   {
-    "id": null,
-    "name": "Saada (Saada)",
-    "action_id": null
+    "name": "Saada (Saada)"
   },
   {
-    "id": null,
-    "name": "Benguerir (Benguerir)",
-    "action_id": null
+    "name": "Benguerir (Benguerir)"
   },
   {
-    "id": null,
-    "name": "Mohamed V (Benguerir)",
-    "action_id": null
+    "name": "Mohamed V (Benguerir)"
   },
   {
-    "id": null,
-    "name": "Aisha (Benguerir)",
-    "action_id": null
+    "name": "Aisha (Benguerir)"
   },
   {
-    "id": null,
-    "name": "Lalla Hasna (Benguerir)",
-    "action_id": null
+    "name": "Lalla Hasna (Benguerir)"
   },
   {
-    "id": null,
-    "name": "Sghiri Houmman I Ben Maati (Benguerir)",
-    "action_id": null
+    "name": "Sghiri Houmman I Ben Maati (Benguerir)"
   },
   {
-    "id": null,
-    "name": "My Ali Cherif (Benguerir)",
-    "action_id": null
+    "name": "My Ali Cherif (Benguerir)"
   },
   {
-    "id": null,
-    "name": "Hôpital Amir Soultan Ibn Abdelaziz (Benguerir)",
-    "action_id": null
+    "name": "Hôpital Amir Soultan Ibn Abdelaziz (Benguerir)"
   },
   {
-    "id": null,
-    "name": "20 Aout (Goulmima)",
-    "action_id": null
+    "name": "20 Aout (Goulmima)"
   },
   {
-    "id": null,
-    "name": "Midelt (Midelt)",
-    "action_id": null
+    "name": "Midelt (Midelt)"
   },
   {
-    "id": null,
-    "name": "HPr Rich (Midelt)",
-    "action_id": null
+    "name": "HPr Rich (Midelt)"
   },
   {
-    "id": null,
-    "name": "Sidi Hssain Bencer (Midelt)",
-    "action_id": null
+    "name": "Sidi Hssain Bencer (Midelt)"
   },
   {
-    "id": null,
-    "name": "Bougafer (Midelt)",
-    "action_id": null
+    "name": "Bougafer (Midelt)"
   },
   {
-    "id": null,
-    "name": "HPr Kalaat M'gouna (Tinghir)",
-    "action_id": null
+    "name": "HPr Kalaat M'gouna (Tinghir)"
   },
   {
-    "id": null,
-    "name": "Tinghir (Tinghir)",
-    "action_id": null
+    "name": "Tinghir (Tinghir)"
   },
   {
-    "id": null,
-    "name": "Ed-Derrak (Tinghir)",
-    "action_id": null
+    "name": "Ed-Derrak (Tinghir)"
   },
   {
-    "id": null,
-    "name": "Hassan II (Tinghir)",
-    "action_id": null
+    "name": "Hassan II (Tinghir)"
   },
   {
-    "id": null,
-    "name": "C. d'Oncologie d'Agadir (Agadir)",
-    "action_id": null
+    "name": "C. d'Oncologie d'Agadir (Agadir)"
   },
   {
-    "id": null,
-    "name": "Mokhtar Soussi (Agadir)",
-    "action_id": null
+    "name": "Mokhtar Soussi (Agadir)"
   },
   {
-    "id": null,
-    "name": "Inezgane (Inezgane)",
-    "action_id": null
+    "name": "Inezgane (Inezgane)"
   },
   {
-    "id": null,
-    "name": "Oulad Teima (Oulad Teima)",
-    "action_id": null
+    "name": "Oulad Teima (Oulad Teima)"
   },
   {
-    "id": null,
-    "name": "Mokhtar Es-Soussi (Tata)",
-    "action_id": null
+    "name": "Mokhtar Es-Soussi (Tata)"
   },
   {
-    "id": null,
-    "name": "Tata (Tata)",
-    "action_id": null
+    "name": "Tata (Tata)"
   },
   {
-    "id": null,
-    "name": "Hassan 1er (Tata)",
-    "action_id": null
+    "name": "Hassan 1er (Tata)"
   },
   {
-    "id": null,
-    "name": "Houmman El Fatouaki (Tata)",
-    "action_id": null
+    "name": "Houmman El Fatouaki (Tata)"
   },
   {
-    "id": null,
-    "name": "Assa (Assa)",
-    "action_id": null
+    "name": "Assa (Assa)"
   },
   {
-    "id": null,
-    "name": "Bouizakaren (Bouizakaren)",
-    "action_id": null
+    "name": "Bouizakaren (Bouizakaren)"
   },
   {
-    "id": null,
-    "name": "Guelmim (Guelmim)",
-    "action_id": null
+    "name": "Guelmim (Guelmim)"
   },
   {
-    "id": null,
-    "name": "Sidi Ifni (Sidi Ifni)",
-    "action_id": null
+    "name": "Sidi Ifni (Sidi Ifni)"
   },
   {
-    "id": null,
-    "name": "Hassan II (Sidi Ifni)",
-    "action_id": null
+    "name": "Hassan II (Sidi Ifni)"
   },
   {
-    "id": null,
-    "name": "Boujdour (Boujdour)",
-    "action_id": null
+    "name": "Boujdour (Boujdour)"
   },
   {
-    "id": null,
-    "name": "Es-Smara (Es-Smara)",
-    "action_id": null
+    "name": "Es-Smara (Es-Smara)"
   },
   {
-    "id": null,
-    "name": "My Hassan Ben El Mehdi (Es-Smara)",
-    "action_id": null
+    "name": "My Hassan Ben El Mehdi (Es-Smara)"
   },
   {
-    "id": null,
-    "name": "Hassan II (Laayoune)",
-    "action_id": null
+    "name": "Hassan II (Laayoune)"
   },
   {
-    "id": null,
-    "name": "Hassan II (Laayoune)",
-    "action_id": null
+    "name": "Hassan II (Laayoune)"
   }
 ]

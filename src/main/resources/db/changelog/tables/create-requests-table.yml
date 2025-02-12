@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_table_requests
+      author: hamzalamin
+      changes:
+        - sql:
+            sql: "CREATE TYPE urgency_level AS ENUM ('URGENCY_LOW', 'URGENCY_MEDIUM', 'URGENCY_HIGH');"
+        - sql:
+            sql: "CREATE TABLE requests (
+                blood_volume real,
+                urgency_level urgency_level 
+              ) INHERITS (actions);"

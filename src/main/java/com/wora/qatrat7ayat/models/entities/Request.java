@@ -11,11 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder(toBuilder = true)
-public class Request {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Request extends Action {
 
     @NotNull
     private Float bloodVolume;

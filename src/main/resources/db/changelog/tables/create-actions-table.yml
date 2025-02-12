@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_table_actions
+      author: hamzalamin
+      changes:
+        - createTable:
+            tableName: actions
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: message
+                  type: text
+              - column:
+                  name: created_at
+                  type: timestamp
+              - column:
+                  name: updated_at
+                  type: timestamp
+              - column:
+                  name: hospital_id
+                  type: bigint
+                  constraints:
+                    nullable: true

@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_table_donors
+      author: hamzalamin
+      changes:
+        - sql:
+            sql: "CREATE TABLE donors (
+                availability_period varchar(500)
+              ) INHERITS (actions);"

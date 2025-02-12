@@ -19,7 +19,7 @@ import java.util.List;
 public class Action {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
@@ -28,8 +28,9 @@ public class Action {
     @OneToMany(mappedBy = "action", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<User> users;
 
-    @OneToMany(mappedBy = "action", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Hospital> hospitals;
+    @ManyToOne()
+    @JoinColumn(name = "hospital_id")
+    private Hospital hospital;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

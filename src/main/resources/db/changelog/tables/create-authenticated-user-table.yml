@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_table_authenticated_user
+      author: hamzalamin
+      changes:
+        - sql:
+            sql: "CREATE TABLE authenticated_user (
+                email VARCHAR(50),
+                password VARCHAR(20),
+                role_id BIGINT,
+                PRIMARY KEY (id)
+              ) INHERITS (users);"

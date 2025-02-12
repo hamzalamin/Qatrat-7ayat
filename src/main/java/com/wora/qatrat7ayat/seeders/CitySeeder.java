@@ -22,18 +22,18 @@ public class CitySeeder implements CommandLineRunner {
     private void seedCities(){
         if (cityRepository.count() == 0) {
             List<City> cities = List.of(
-                    new City(null, "Tanger-Tétouan-Al Hoceima", null, null),
-                    new City(null, "Oriental", null, null),
-                    new City(null, "Fès-Meknès", null, null),
-                    new City(null, "Rabat-Salé-Kénitra", null, null),
-                    new City(null, "Béni Mellal-Khénifra", null, null),
-                    new City(null, "Casablanca-Settat", null, null),
-                    new City(null, "Marrakech-Safi", null, null),
-                    new City(null, "Drâa-Tafilalet", null, null),
-                    new City(null, "Souss-Massa", null, null),
-                    new City(null, "Guelmim-Oued Noun", null, null),
-                    new City(null, "Laâyoune-Sakia El Hamra", null, null),
-                    new City(null, "Dakhla-Oued Ed-Dahab", null, null)
+                    new City( "Tanger-Tétouan-Al Hoceima"),
+                    new City( "Oriental"),
+                    new City( "Fès-Meknès"),
+                    new City( "Rabat-Salé-Kénitra"),
+                    new City( "Béni Mellal-Khénifra"),
+                    new City( "Casablanca-Settat"),
+                    new City( "Marrakech-Safi"),
+                    new City( "Drâa-Tafilalet"),
+                    new City( "Souss-Massa"),
+                    new City( "Guelmim-Oued Noun"),
+                    new City( "Laâyoune-Sakia El Hamra"),
+                    new City( "Dakhla-Oued Ed-Dahab")
             );
 
             cityRepository.saveAll(cities);

@@ -35,9 +35,6 @@ public class AuthenticatedUser extends User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Article> articles;
 
-    public boolean canUpdateProfile() {
-        return !isProfileCompleted();
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -16,7 +16,7 @@ import java.util.List;
 @Builder
 public class City {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "city_name")
@@ -28,4 +28,8 @@ public class City {
 
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
     private List<User> users;
+
+    public City(String name){
+        this.cityName = name;
+    }
 }

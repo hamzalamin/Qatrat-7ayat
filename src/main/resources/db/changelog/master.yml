@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/tables/create-roles-table.yml
+  - include:
+      file: db/changelog/tables/create-users-table.yml
+  - include:
+      file: db/changelog/tables/create-authenticated-user-table.yml
+  - include:
+      file: db/changelog/tables/create-actions-table.yml
+  - include:
+      file: db/changelog/tables/create-articles-table.yml
+  - include:
+      file: db/changelog/tables/create-cities-table.yml
+  - include:
+      file: db/changelog/tables/create-donors-table.yml
+  - include:
+      file: db/changelog/tables/create-requests-table.yml
+  - include:
+      file: db/changelog/tables/create-hospitals-table.yml
+
+  - include:
+      file: db/changelog/foreign-keys/create-authUser-role-forkey.yml
+  - include:
+      file: db/changelog/foreign-keys/create-action-hospital-forkey.yml
+  - include:
+      file: db/changelog/foreign-keys/create-article-authUser-orkey.yml
+  - include:
+      file: db/changelog/foreign-keys/create-city-article-forkey.yml
+  - include:
+      file: db/changelog/foreign-keys/create-user-action-forkey.yml
+  - include:
+      file: db/changelog/foreign-keys/create-user-city-forkey.yml

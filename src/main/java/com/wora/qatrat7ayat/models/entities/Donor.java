@@ -10,12 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder(toBuilder = true)
-public class Donor {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+public class Donor extends Action {
     @NotBlank
     private String availabilityPeriod;
 

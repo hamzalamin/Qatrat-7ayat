@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
 @Builder(toBuilder = true)
 public class User{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "first_name")
@@ -49,7 +49,4 @@ public class User{
     @ManyToOne()
     @JoinColumn(name = "action_id")
     private Action action;
-
-    @Column(nullable = false)
-    private boolean isProfileCompleted = false;
 }

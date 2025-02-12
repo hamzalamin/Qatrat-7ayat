@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_table_articles
+      author: hamzalamin
+      changes:
+        - createTable:
+            tableName: articles
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: title
+                  type: varchar(30)
+              - column:
+                  name: content
+                  type: text
+              - column:
+                  name: published_at
+                  type: timestamp
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: true
+              - column:
+                  name: city_id
+                  type: bigint
+                  constraints:
+                    nullable: true
