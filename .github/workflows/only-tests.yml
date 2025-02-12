@@ -2,13 +2,13 @@ name: Only Tests
 
 on:
   push:
-    branches-ignore:
+    branches:
       - main
       - master
 
 jobs:
   run-all-tests:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4.0.0
