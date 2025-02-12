@@ -1,5 +1,6 @@
 package com.wora.qatrat7ayat.security.services.impl;
 
+import com.wora.qatrat7ayat.models.enumes.BloodType;
 import com.wora.qatrat7ayat.security.DTO.JwtResponse;
 import com.wora.qatrat7ayat.security.DTO.LoginRequest;
 import com.wora.qatrat7ayat.security.DTO.SignupRequest;
@@ -21,6 +22,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 import java.text.MessageFormat;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -56,13 +58,16 @@ public class AuthService {
         AuthenticatedUser authenticatedUser = new AuthenticatedUser();
         authenticatedUser.setEmail(request.getEmail());
         authenticatedUser.setPassword(passwordEncoder.encode(request.getPassword()));
-
-        authenticatedUser.setCreatedAt(LocalDateTime.now().toString());
-        authenticatedUser.setUpdatedAt(LocalDateTime.now().toString());
-        Role role =  roleService.findRoleByName("ROLE_USER");
+        authenticatedUser.setFirstName(request.getFirstName());
+        authenticatedUser.setLastName(request.getLastName());
+        Date currentTime = new Date();
+        authenticatedUser.setCreatedAt(currentTime);
+        authenticatedUser.setUpdatedAt(currentTime);
+        Role role = roleService.findRoleByName("ROLE_USER");
         authenticatedUser.setRole(role);
-
         userRepository.save(authenticatedUser);
+
         return ResponseEntity.ok(new MessageFormat("User registered successfully!"));
     }
+
 }

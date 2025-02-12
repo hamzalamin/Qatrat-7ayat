@@ -22,8 +22,8 @@ public class RoleSeeder implements CommandLineRunner {
     private void seedRole() {
         if (roleRepository.count() == 0) {
             List<Role> roles = List.of(
-                    new Role( ERole.ROLE_USER),
-                    new Role(ERole.ROLE_ADMIN)
+                    new Role( "ROLE_USER"),
+                    new Role("ROLE_ADMIN")
             );
             roleRepository.saveAll(roles);
             System.out.println("roles saved successfully");

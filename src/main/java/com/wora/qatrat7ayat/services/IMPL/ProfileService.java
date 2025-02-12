@@ -1,7 +1,6 @@
 package com.wora.qatrat7ayat.services.IMPL;
 
 import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
-import com.wora.qatrat7ayat.exceptions.ProfileAlreadyCompletedException;
 import com.wora.qatrat7ayat.mappers.ProfileMapper;
 import com.wora.qatrat7ayat.models.DTOs.user.CreateProfileDto;
 import com.wora.qatrat7ayat.models.DTOs.user.ProfileDto;
@@ -9,19 +8,16 @@ import com.wora.qatrat7ayat.models.DTOs.user.UpdateProfileDto;
 import com.wora.qatrat7ayat.models.entities.City;
 import com.wora.qatrat7ayat.models.entities.User;
 import com.wora.qatrat7ayat.models.enumes.BloodType;
-import com.wora.qatrat7ayat.repositories.ProfileRepository;
 import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
 import com.wora.qatrat7ayat.security.repositories.UserRepository;
 import com.wora.qatrat7ayat.services.INTER.ICityService;
 import com.wora.qatrat7ayat.services.INTER.IProfileService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.web.servlet.DelegatingFilterProxyRegistrationBean;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.security.web.server.authentication.AnonymousAuthenticationWebFilter;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -48,16 +44,18 @@ public class ProfileService implements IProfileService {
     public ProfileDto update(UpdateProfileDto updateProfileDto, Long id) {
         AuthenticatedUser profile = profileRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User", id));
-        City city = cityService.findCityEntity(updateProfileDto.city_id());
-
+        City city = cityService.findCityEntity(updateProfileDto.cityId());
+        System.out.println("fetched city : " + city);
+        Date currentTime = new Date();
 
         profile.setFirstName(updateProfileDto.firstName())
                 .setLastName(updateProfileDto.lastName())
                 .setPhone(updateProfileDto.phone())
-                .setBloodType(BloodType.valueOf(updateProfileDto.bloodType()))
+                .setBloodType(BloodType.valueOf(updateProfileDto.bloodType().toString()))
                 .setPsudoName(updateProfileDto.psudoName())
                 .setCity(city)
-                .setUpdatedAt(LocalDateTime.now().toString());
+                .setUpdatedAt(currentTime);
+        System.out.println("profile : " + profile);
 
         return profileMapper.toDto(profile);
     }

@@ -1,12 +1,32 @@
 databaseChangeLog:
   - changeSet:
-      id: create_table_authenticated_user
+      id: create_authenticated_user_table
       author: hamzalamin
       changes:
-        - sql:
-            sql: "CREATE TABLE authenticated_user (
-                email VARCHAR(50),
-                password VARCHAR(20),
-                role_id BIGINT,
-                PRIMARY KEY (id)
-              ) INHERITS (users);"
+        - createTable:
+            tableName: authenticated_user
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: email
+                  type: varchar(255)
+              - column:
+                  name: password
+                  type: varchar(255)
+              - column:
+                  name: role_id
+                  type: bigint
+              - addForeignKeyConstraint:
+                  baseTableName: authenticated_user
+                  baseColumnNames: id
+                  referencedTableName: users
+                  referencedColumnNames: id
+              - addForeignKeyConstraint:
+                  baseTableName: authenticated_user
+                  baseColumnNames: role_id
+                  referencedTableName: roles
+                  referencedColumnNames: id

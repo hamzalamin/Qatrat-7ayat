@@ -47,8 +47,7 @@ public class CityService implements ICityService {
 
     @Override
     public City findCityEntity(Long id) {
-//        return cityRepository.findById(id)
-//                .orElseThrow(() -> new EntityNotFoundException("City", id));
-        return null;
+        return cityRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("City", id));
     }
 }

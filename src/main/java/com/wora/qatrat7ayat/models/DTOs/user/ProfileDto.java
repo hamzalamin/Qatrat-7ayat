@@ -5,7 +5,7 @@ import com.wora.qatrat7ayat.models.enumes.BloodType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public record ProfileDto(
         @NotBlank String firstName,
@@ -13,9 +13,8 @@ public record ProfileDto(
         @NotBlank String psudoName,
         @NotBlank String phone,
         @NotBlank BloodType bloodType,
-        @NotBlank String availabilityMessage,
-        LocalDateTime createdAt,
-        LocalDateTime updatedAt,
+        Date createdAt,
+        Date updatedAt,
         @NotNull EmbeddedCityDto city
 ) {
 }

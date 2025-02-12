@@ -22,19 +22,18 @@ public class Role implements GrantedAuthority {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
     @Column(length = 20, columnDefinition = "e_role")
-    private ERole name;
+    private String name;
 
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
     private List<AuthenticatedUser> users;
 
     @Override
     public String getAuthority() {
-        return name.name();
+        return name;
     }
 
-    public Role(ERole name){
+    public Role(String name){
         this.name = name;
     }
 }

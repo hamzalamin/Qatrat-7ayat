@@ -10,8 +10,6 @@ public record CreateProfileDto(
         @NotBlank String psudoName,
         @NotBlank @Pattern(regexp = "^\\d{10}$", message = "Phone number must be exactly 10 digits") String phone,
         @NotBlank String bloodType,
-        @NotBlank String availabilityMessage,
-        @NotNull Long city_id,
-        @NotNull boolean isProfileCompleted
+        @NotNull Long city_id
 ) {
 }

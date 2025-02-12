@@ -16,7 +16,7 @@ databaseChangeLog:
                     primaryKey: true
               - column:
                   name: name
-                  type: e_role
+                  type: varchar(255)
         - sql:
             sql: |
               INSERT INTO roles (id , name) VALUES (1, 'ROLE_USER'::e_role);

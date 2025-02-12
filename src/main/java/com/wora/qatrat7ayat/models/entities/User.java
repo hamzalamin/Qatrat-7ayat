@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.Accessors;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -33,14 +35,15 @@ public class User{
     @Column(name = "phone", unique = true)
     private String phone;
 
-    @Column(name = "blood_type")
+    @Column(name = "blood_type", columnDefinition = "blood_type")
+    @Enumerated(EnumType.STRING)
     private BloodType bloodType;
 
     @Column(name = "created_at")
-    private String createdAt;
+    private Date createdAt;
 
     @Column(name = "updated_at")
-    private String updatedAt;
+    private Date updatedAt;
 
     @ManyToOne()
     @JoinColumn(name = "city_id")
