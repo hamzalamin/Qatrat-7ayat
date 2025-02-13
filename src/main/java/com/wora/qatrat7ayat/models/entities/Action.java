@@ -25,8 +25,9 @@ public class Action {
     @NotBlank
     private String message;
 
-    @OneToMany(mappedBy = "action", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<User> users;
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @ManyToOne()
     @JoinColumn(name = "hospital_id")

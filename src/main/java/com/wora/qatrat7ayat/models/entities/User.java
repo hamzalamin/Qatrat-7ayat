@@ -6,6 +6,7 @@ import lombok.*;
 import lombok.experimental.Accessors;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -49,7 +50,7 @@ public class User{
     @JoinColumn(name = "city_id")
     private City city;
 
-    @ManyToOne()
-    @JoinColumn(name = "action_id")
-    private Action action;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Action> actions;
+
 }

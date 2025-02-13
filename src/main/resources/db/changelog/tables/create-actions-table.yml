@@ -26,3 +26,8 @@ databaseChangeLog:
                   type: bigint
                   constraints:
                     nullable: true
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: true

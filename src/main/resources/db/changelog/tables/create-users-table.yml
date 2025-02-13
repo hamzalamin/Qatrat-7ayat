@@ -45,8 +45,3 @@ databaseChangeLog:
                   type: bigint
                   constraints:
                     nullable: true
-              - column:
-                  name: action_id
-                  type: bigint
-                  constraints:
-                    nullable: true

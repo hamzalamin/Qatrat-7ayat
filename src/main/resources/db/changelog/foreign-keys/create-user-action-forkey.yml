@@ -4,8 +4,8 @@ databaseChangeLog:
       author: hamzalamin
       changes:
         - addForeignKeyConstraint:
-            baseTableName: users
-            baseColumnNames: action_id
-            referencedTableName: actions
+            baseTableName: actions
+            baseColumnNames: user_id
+            referencedTableName: users
             referencedColumnNames: id
             constraintName: fk_user_action
