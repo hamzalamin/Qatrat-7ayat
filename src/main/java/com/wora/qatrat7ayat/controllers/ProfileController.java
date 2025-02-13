@@ -28,5 +28,4 @@ public class ProfileController {
         profileService.delete(id);
         return new ResponseEntity<>("Profile with id : " + id + " Deleted Successfully!", HttpStatus.OK);
     }
-
 }

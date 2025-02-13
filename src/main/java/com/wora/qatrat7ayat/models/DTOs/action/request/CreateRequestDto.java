@@ -1,17 +1,15 @@
 package com.wora.qatrat7ayat.models.DTOs.action.request;
 
-import com.wora.qatrat7ayat.models.enumes.BloodType;
-import com.wora.qatrat7ayat.models.enumes.UrgencyLevel;
+import com.wora.qatrat7ayat.models.DTOs.user.CreateProfileDto;
+import lombok.Getter;
 
-public record CreateRequestDto(
-        String firstName,
-        String lastName,
-        String psudoName,
-        String phone,
-        BloodType bloodType,
-        String city,
-        String message,
-        Float bloodVolume,
-        UrgencyLevel urgencyLevel
-) {
+@Getter
+public class CreateRequestDto {
+    private final CreateProfileDto profile;
+    private final EmbeddedRequestDto request;
+
+    public CreateRequestDto(CreateProfileDto profile, EmbeddedRequestDto request) {
+        this.profile = profile;
+        this.request = request;
+    }
 }

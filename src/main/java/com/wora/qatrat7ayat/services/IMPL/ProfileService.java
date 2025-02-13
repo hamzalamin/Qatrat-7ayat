@@ -9,7 +9,7 @@ import com.wora.qatrat7ayat.models.entities.City;
 import com.wora.qatrat7ayat.models.entities.User;
 import com.wora.qatrat7ayat.models.enumes.BloodType;
 import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
-import com.wora.qatrat7ayat.security.repositories.UserRepository;
+import com.wora.qatrat7ayat.security.repositories.ProfileRepository;
 import com.wora.qatrat7ayat.services.INTER.ICityService;
 import com.wora.qatrat7ayat.services.INTER.IProfileService;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +23,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ProfileService implements IProfileService {
-    private final UserRepository profileRepository;
+    private final ProfileRepository profileRepository;
     private final ProfileMapper profileMapper;
     private final ICityService cityService;
 

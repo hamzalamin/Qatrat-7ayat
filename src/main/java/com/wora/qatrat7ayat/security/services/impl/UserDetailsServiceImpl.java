@@ -1,7 +1,7 @@
 package com.wora.qatrat7ayat.security.services.impl;
 
 import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
-import com.wora.qatrat7ayat.security.repositories.UserRepository;
+import com.wora.qatrat7ayat.security.repositories.ProfileRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class UserDetailsServiceImpl implements org.springframework.security.core.userdetails.UserDetailsService {
 
-    private final UserRepository userRepository;
+    private final ProfileRepository userRepository;
 
     @Override
     @Transactional

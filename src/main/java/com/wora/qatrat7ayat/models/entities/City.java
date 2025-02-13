@@ -2,6 +2,7 @@ package com.wora.qatrat7ayat.models.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.List;
@@ -31,5 +32,9 @@ public class City {
 
     public City(String name){
         this.cityName = name;
+    }
+
+    public City(@NotNull Long id) {
+            this.id = id;
     }
 }

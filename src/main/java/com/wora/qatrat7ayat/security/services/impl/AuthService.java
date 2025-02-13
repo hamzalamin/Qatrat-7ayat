@@ -1,12 +1,11 @@
 package com.wora.qatrat7ayat.security.services.impl;
 
-import com.wora.qatrat7ayat.models.enumes.BloodType;
 import com.wora.qatrat7ayat.security.DTO.JwtResponse;
 import com.wora.qatrat7ayat.security.DTO.LoginRequest;
 import com.wora.qatrat7ayat.security.DTO.SignupRequest;
 import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
 import com.wora.qatrat7ayat.security.models.Role;
-import com.wora.qatrat7ayat.security.repositories.UserRepository;
+import com.wora.qatrat7ayat.security.repositories.ProfileRepository;
 import com.wora.qatrat7ayat.security.services.IRoleService;
 import com.wora.qatrat7ayat.security.utils.JwtUtils;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +20,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.text.MessageFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,7 +27,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class AuthService {
-    private final UserRepository userRepository;
+    private final ProfileRepository userRepository;
     private final IRoleService roleService;
     private final PasswordEncoder passwordEncoder;
     private final JwtUtils jwtUtils;
