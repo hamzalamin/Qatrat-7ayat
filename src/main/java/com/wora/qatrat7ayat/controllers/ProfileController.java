@@ -20,8 +20,13 @@ public class ProfileController {
             @Valid @RequestBody UpdateProfileDto updateProfileDto,
             @PathVariable Long id
     ){
-        System.out.println("got this id: " + id);
         return new ResponseEntity<>(profileService.update(updateProfileDto, id), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> delete(@PathVariable Long id){
+        profileService.delete(id);
+        return new ResponseEntity<>("Profile with id : " + id + " Deleted Successfully!", HttpStatus.OK);
     }
 
 }
