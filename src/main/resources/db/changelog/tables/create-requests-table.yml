@@ -6,7 +6,26 @@ databaseChangeLog:
         - sql:
             sql: "CREATE TYPE urgency_level AS ENUM ('URGENCY_LOW', 'URGENCY_MEDIUM', 'URGENCY_HIGH');"
         - sql:
-            sql: "CREATE TABLE requests (
-                blood_volume real,
-                urgency_level urgency_level 
-              ) INHERITS (actions);"
+            sql: "CREATE CAST (varchar AS urgency_level) WITH INOUT AS IMPLICIT;"
+        - createTable:
+            tableName: requests
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: blood_volume
+                  type: REAL
+              - column:
+                  name: urgency_level
+                  type: urgency_level
+        - addForeignKeyConstraint:
+            constraintName: fk_requests_action
+            baseTableName: requests
+            baseColumnNames: id
+            referencedTableName: actions
+            referencedColumnNames: id
+            onDelete: CASCADE

@@ -6,7 +6,6 @@ databaseChangeLog:
         - sql:
             sql: "CREATE TYPE blood_type AS ENUM ('O_PLUS', 'O_MOINS', 'A_PLUS', 'A_MOINS', 'B_PLUS', 'B_MOINS', 'AB_PLUS', 'AB_MOINS');"
         - sql:
-
             sql: "CREATE CAST (varchar AS blood_type) WITH INOUT AS IMPLICIT"
         - createTable:
             tableName: users
