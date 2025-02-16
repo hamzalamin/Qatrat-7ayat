@@ -17,7 +17,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -45,17 +44,13 @@ public class ProfileService implements IProfileService {
         AuthenticatedUser profile = profileRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User", id));
         City city = cityService.findCityEntity(updateProfileDto.cityId());
-        System.out.println("fetched city : " + city);
-        Date currentTime = new Date();
 
         profile.setFirstName(updateProfileDto.firstName())
                 .setLastName(updateProfileDto.lastName())
                 .setPhone(updateProfileDto.phone())
                 .setBloodType(BloodType.valueOf(updateProfileDto.bloodType().toString()))
                 .setPsudoName(updateProfileDto.psudoName())
-                .setCity(city)
-                .setUpdatedAt(currentTime);
-        System.out.println("profile : " + profile);
+                .setCity(city);
 
         return profileMapper.toDto(profile);
     }

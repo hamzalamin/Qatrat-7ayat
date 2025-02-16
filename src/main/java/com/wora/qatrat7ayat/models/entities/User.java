@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.Accessors;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -41,10 +42,10 @@ public class User{
     private BloodType bloodType;
 
     @Column(name = "created_at")
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     @Column(name = "updated_at")
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 
     @ManyToOne()
     @JoinColumn(name = "city_id")
@@ -52,5 +53,16 @@ public class User{
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Action> actions;
+
+    @PrePersist
+    protected void onCreate(){
+        createdAt = LocalDateTime.now();
+        updatedAt = createdAt;
+    }
+
+    @PreUpdate
+    protected void onUpdate(){
+        updatedAt = LocalDateTime.now();
+    }
 
 }

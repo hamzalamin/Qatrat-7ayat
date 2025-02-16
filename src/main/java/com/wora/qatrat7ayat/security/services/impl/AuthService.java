@@ -58,9 +58,6 @@ public class AuthService {
         authenticatedUser.setPassword(passwordEncoder.encode(request.getPassword()));
         authenticatedUser.setFirstName(request.getFirstName());
         authenticatedUser.setLastName(request.getLastName());
-        Date currentTime = new Date();
-        authenticatedUser.setCreatedAt(currentTime);
-        authenticatedUser.setUpdatedAt(currentTime);
         Role role = roleService.findRoleByName("ROLE_USER");
         authenticatedUser.setRole(role);
         userRepository.save(authenticatedUser);

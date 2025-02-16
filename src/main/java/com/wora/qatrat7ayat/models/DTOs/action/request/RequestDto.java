@@ -6,9 +6,9 @@ import lombok.Getter;
 @Getter
 public class RequestDto {
     private final ProfileDto profile;
-    private final EmbeddedRequestDto request;
+    private final EmbeddedRequestDetailsDto request;
 
-    public RequestDto(ProfileDto profile, EmbeddedRequestDto request) {
+    public RequestDto(ProfileDto profile, EmbeddedRequestDetailsDto request) {
         this.profile = profile;
         this.request = request;
     }
