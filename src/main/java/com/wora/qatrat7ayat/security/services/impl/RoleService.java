@@ -1,6 +1,7 @@
 package com.wora.qatrat7ayat.security.services.impl;
 
 import com.wora.qatrat7ayat.exceptions.DefaultEntityNotFound;
+import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
 import com.wora.qatrat7ayat.security.models.Role;
 import com.wora.qatrat7ayat.security.repositories.RoleRepository;
 import com.wora.qatrat7ayat.security.services.IRoleService;
@@ -15,6 +16,12 @@ public class RoleService implements IRoleService {
     @Override
     public Role findRoleByName(String name) {
         return roleRepository.findByName(name)
-                .orElseThrow(() -> new DefaultEntityNotFound("Default role ROLE_USER not found"));
+                .orElseThrow(() -> new DefaultEntityNotFound("Default role "+ name +" not found"));
+    }
+
+    @Override
+    public Role findRoleById(Long id) {
+        return roleRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Role", id));
     }
 }

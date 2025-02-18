@@ -9,4 +9,5 @@ import org.springframework.http.ResponseEntity;
 public interface IAuthService {
     ResponseEntity<JwtResponse> authenticateUser(LoginRequest loginRequest);
     SignupResponse registerUser(SignupRequest request);
+    boolean existsByEmail(String email);
 }

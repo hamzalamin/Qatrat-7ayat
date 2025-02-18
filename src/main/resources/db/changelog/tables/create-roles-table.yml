@@ -3,8 +3,6 @@ databaseChangeLog:
       id: create_table_roles
       author: hamzalamin
       changes:
-        - sql:
-            sql: "CREATE TYPE e_role AS ENUM ('ROLE_USER', 'ROLE_ADMIN');"
         - createTable:
             tableName: roles
             columns:
@@ -17,7 +15,3 @@ databaseChangeLog:
               - column:
                   name: name
                   type: varchar(255)
-        - sql:
-            sql: |
-              INSERT INTO roles (id , name) VALUES (1, 'ROLE_USER'::e_role);
-              INSERT INTO roles (id , name) VALUES (2, 'ROLE_ADMIN'::e_role);

@@ -69,4 +69,11 @@ public class AuthService implements IAuthService {
         return authMapper.toDto(authenticatedUser);
     }
 
+    public boolean existsByEmail(String email){
+        if (userRepository.existsByEmail(email)){
+            return true;
+        }
+        return false;
+    }
+
 }

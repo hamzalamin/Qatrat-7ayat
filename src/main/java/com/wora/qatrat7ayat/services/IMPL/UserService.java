@@ -2,16 +2,25 @@ package com.wora.qatrat7ayat.services.IMPL;
 
 import com.wora.qatrat7ayat.exceptions.DefaultEntityNotFound;
 import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
+import com.wora.qatrat7ayat.exceptions.UserAlreadyExist;
 import com.wora.qatrat7ayat.mappers.ProfileMapper;
 import com.wora.qatrat7ayat.models.DTOs.user.CreateProfileDto;
 import com.wora.qatrat7ayat.models.DTOs.user.ProfileDto;
 import com.wora.qatrat7ayat.models.DTOs.user.UpdateProfileDto;
 import com.wora.qatrat7ayat.models.entities.City;
 import com.wora.qatrat7ayat.models.entities.User;
+import com.wora.qatrat7ayat.security.DTO.SignupRequest;
+import com.wora.qatrat7ayat.security.DTO.SignupResponse;
+import com.wora.qatrat7ayat.security.mappers.AuthMapper;
+import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
+import com.wora.qatrat7ayat.security.models.Role;
 import com.wora.qatrat7ayat.security.repositories.UserRepository;
+import com.wora.qatrat7ayat.security.services.IAuthService;
+import com.wora.qatrat7ayat.security.services.IRoleService;
 import com.wora.qatrat7ayat.services.INTER.ICityService;
 import com.wora.qatrat7ayat.services.INTER.IUserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +31,9 @@ public class UserService implements IUserService {
     private final UserRepository userRepository;
     private final ProfileMapper userMapper;
     private final ICityService cityService;
+    private final AuthMapper authMapper;
+    private final IRoleService roleService;
+    private final IAuthService authService;
 
     @Override
     public User createUserEntity(CreateProfileDto createProfileDto) {
@@ -31,6 +43,20 @@ public class UserService implements IUserService {
         return userRepository.save(user);
     }
 
+    @Override
+    public SignupResponse CreateUserAccount(SignupRequest signupRequest){
+        if (authService.existsByEmail(signupRequest.getEmail())){
+            throw new UserAlreadyExist(signupRequest.getEmail());
+        }
+        Role role = roleService.findRoleById(signupRequest.getRoleId());
+        AuthenticatedUser user = authMapper.toEntity(signupRequest);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String hashedPassword = encoder.encode(signupRequest.getPassword());
+        user.setPassword(hashedPassword);
+        user.setRole(role);
+        AuthenticatedUser savedUser = userRepository.save(user);
+        return authMapper.toDto(savedUser);
+    }
 
     @Override
     public ProfileDto create(CreateProfileDto createProfileDto) {
@@ -38,12 +64,12 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public ProfileDto findById(Long aLong) {
+    public ProfileDto findById(Long id) {
         return null;
     }
 
     @Override
-    public ProfileDto update(UpdateProfileDto updateProfileDto, Long aLong) {
+    public ProfileDto update(UpdateProfileDto updateProfileDto, Long id) {
         return null;
     }
 
@@ -53,7 +79,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public void delete(Long aLong) {
+    public void delete(Long id) {
 
     }
 }

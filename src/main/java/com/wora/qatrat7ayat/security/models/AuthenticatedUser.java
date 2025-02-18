@@ -36,7 +36,7 @@ public class AuthenticatedUser extends User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Article> articles;
 
-    public AuthenticatedUser(String mail, String admin, Role role) {
+    public AuthenticatedUser(String email, String password, Role role) {
         this.email = email;
         this.password = password;
         this.role = role;
