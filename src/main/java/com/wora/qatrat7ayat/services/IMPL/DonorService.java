@@ -32,7 +32,6 @@ public class DonorService implements IDonorService {
     @Override
     public DonorDto create(CreateDonorDto createDonorDto) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println("diro chi 7el hhhhhhhhhhhhhh" + createDonorDto);
         User donor;
 
         if (authentication.isAuthenticated() && authentication.getPrincipal() instanceof UserDetails userDetails) {

@@ -5,10 +5,9 @@ import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "articles")
@@ -16,6 +15,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder(toBuilder = true)
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +31,8 @@ public class Article {
 
     @NotBlank
     @Column(name = "published_at")
-    private String publishedAt;
+    private LocalDateTime publishedAt;
+    private LocalDateTime updatedAt;
 
     @ManyToOne()
     @NotNull
@@ -42,4 +43,16 @@ public class Article {
     @NotNull
     @JoinColumn(name = "city_id")
     private City city;
+
+
+    @PrePersist
+    protected void onCreate(){
+        publishedAt = LocalDateTime.now();
+        updatedAt = publishedAt;
+    }
+
+    @PreUpdate
+    protected void onUpdate(){
+        updatedAt = LocalDateTime.now();
+    }
 }

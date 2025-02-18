@@ -6,7 +6,6 @@ import com.wora.qatrat7ayat.models.DTOs.user.EmbeddedProfileDto;
 public record EmbeddedArticleDto(
         String title,
         String content,
-        String publishedAt,
         EmbeddedProfileDto user,
         EmbeddedCityDto city
 ) {
