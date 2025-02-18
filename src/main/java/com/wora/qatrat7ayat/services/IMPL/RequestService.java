@@ -27,6 +27,7 @@ public class RequestService implements IRequestService {
 
     private final RequestRepository requestRepository;
     private final RequestMapper requestMapper;
+    private final IProfileService profileService;
     private final IUserService userService;
     private final IHospitalService hospitalService;
 
@@ -38,14 +39,14 @@ public class RequestService implements IRequestService {
 
         if (authentication.isAuthenticated() && authentication.getPrincipal() instanceof UserDetails userDetails) {
             String email = userDetails.getUsername();
-//            requestUser = userService.findByEmail(email);
+            requestUser = profileService.getUserByEmail(email);
         } else {
             requestUser = userService.createUserEntity(createRequestDto.getProfile());
         }
         Hospital hospital = hospitalService.findHospitalEntity(createRequestDto.getRequest().getHospitalId());
 
         Request request = requestMapper.toEntity(createRequestDto.getRequest());
-//        request.setUser(requestUser);
+        request.setUser(requestUser);
         request.setHospital(hospital);
         request.setMessage(createRequestDto.getRequest().getMessage());
 
