@@ -1,6 +1,5 @@
 package com.wora.qatrat7ayat.services.IMPL;
 
-import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
 import com.wora.qatrat7ayat.mappers.RequestMapper;
 import com.wora.qatrat7ayat.models.DTOs.action.request.CreateRequestDto;
 import com.wora.qatrat7ayat.models.DTOs.action.request.RequestDto;
@@ -9,10 +8,8 @@ import com.wora.qatrat7ayat.models.entities.Hospital;
 import com.wora.qatrat7ayat.models.entities.Request;
 import com.wora.qatrat7ayat.models.entities.User;
 import com.wora.qatrat7ayat.repositories.RequestRepository;
-import com.wora.qatrat7ayat.security.services.impl.UserDetailsImpl;
 import com.wora.qatrat7ayat.services.INTER.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;

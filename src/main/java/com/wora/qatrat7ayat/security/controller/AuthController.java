@@ -2,9 +2,12 @@ package com.wora.qatrat7ayat.security.controller;
 
 import com.wora.qatrat7ayat.security.DTO.LoginRequest;
 import com.wora.qatrat7ayat.security.DTO.SignupRequest;
+import com.wora.qatrat7ayat.security.DTO.SignupResponse;
+import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
 import com.wora.qatrat7ayat.security.services.impl.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,8 +27,7 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-        System.out.println("request wach feeha " + signUpRequest);
-        return authService.registerUser(signUpRequest);
+    public ResponseEntity<SignupResponse> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+        return new ResponseEntity<>(authService.registerUser(signUpRequest), HttpStatus.OK);
     }
 }

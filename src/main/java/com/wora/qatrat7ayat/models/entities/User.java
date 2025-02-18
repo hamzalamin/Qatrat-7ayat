@@ -4,9 +4,9 @@ import com.wora.qatrat7ayat.models.enumes.BloodType;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.Accessors;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -17,7 +17,7 @@ import java.util.List;
 @Getter
 @Setter
 @Accessors(chain = true)
-@Builder(toBuilder = true)
+@SuperBuilder(toBuilder = true)
 public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

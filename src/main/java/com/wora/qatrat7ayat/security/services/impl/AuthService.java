@@ -1,9 +1,10 @@
 package com.wora.qatrat7ayat.security.services.impl;
 
-import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
 import com.wora.qatrat7ayat.security.DTO.JwtResponse;
 import com.wora.qatrat7ayat.security.DTO.LoginRequest;
 import com.wora.qatrat7ayat.security.DTO.SignupRequest;
+import com.wora.qatrat7ayat.security.DTO.SignupResponse;
+import com.wora.qatrat7ayat.security.mappers.AuthMapper;
 import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
 import com.wora.qatrat7ayat.security.models.Role;
 import com.wora.qatrat7ayat.security.repositories.AuthUserRepository;
@@ -21,7 +22,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.security.core.GrantedAuthority;
 
-import java.text.MessageFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,6 +29,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AuthService implements IAuthService {
     private final AuthUserRepository userRepository;
+    private final AuthMapper authMapper;
     private final IRoleService roleService;
     private final PasswordEncoder passwordEncoder;
     private final JwtUtils jwtUtils;
@@ -54,8 +55,8 @@ public class AuthService implements IAuthService {
     }
 
     @Override
-    public ResponseEntity<?> registerUser(SignupRequest request) {
-        AuthenticatedUser authenticatedUser = new AuthenticatedUser();
+    public SignupResponse registerUser(SignupRequest request) {
+        AuthenticatedUser authenticatedUser = authMapper.toEntity(request);
         authenticatedUser.setEmail(request.getEmail());
         authenticatedUser.setPassword(passwordEncoder.encode(request.getPassword()));
         authenticatedUser.setFirstName(request.getFirstName());
@@ -65,8 +66,7 @@ public class AuthService implements IAuthService {
         Role role = roleService.findRoleByName("ROLE_USER");
         authenticatedUser.setRole(role);
         userRepository.save(authenticatedUser);
-
-        return ResponseEntity.ok(new MessageFormat("User registered successfully!"));
+        return authMapper.toDto(authenticatedUser);
     }
 
 }
