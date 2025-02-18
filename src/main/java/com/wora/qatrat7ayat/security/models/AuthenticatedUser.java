@@ -4,7 +4,6 @@ import com.wora.qatrat7ayat.models.entities.Article;
 import com.wora.qatrat7ayat.models.entities.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import lombok.experimental.Accessors;
 import org.springframework.security.core.GrantedAuthority;

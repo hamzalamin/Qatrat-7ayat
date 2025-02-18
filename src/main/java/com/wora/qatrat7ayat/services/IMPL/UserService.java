@@ -1,5 +1,7 @@
 package com.wora.qatrat7ayat.services.IMPL;
 
+import com.wora.qatrat7ayat.exceptions.DefaultEntityNotFound;
+import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
 import com.wora.qatrat7ayat.mappers.ProfileMapper;
 import com.wora.qatrat7ayat.models.DTOs.user.CreateProfileDto;
 import com.wora.qatrat7ayat.models.DTOs.user.ProfileDto;
@@ -29,11 +31,10 @@ public class UserService implements IUserService {
         return userRepository.save(user);
     }
 
+
     @Override
     public ProfileDto create(CreateProfileDto createProfileDto) {
-        User user = userMapper.toEntity(createProfileDto);
-        User savedUser = userRepository.save(user);
-        return userMapper.toDto(savedUser);
+        return null;
     }
 
     @Override

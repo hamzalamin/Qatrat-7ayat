@@ -1,5 +1,6 @@
 package com.wora.qatrat7ayat.security.DTO;
 
+import com.wora.qatrat7ayat.models.enumes.BloodType;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,4 +17,6 @@ public class SignupRequest {
     private String firstName;
     private String lastName;
     private Long roleId;
+    private BloodType bloodType;
+    private String phone;
 }

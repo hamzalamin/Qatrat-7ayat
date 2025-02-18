@@ -1,5 +1,6 @@
 package com.wora.qatrat7ayat.services.IMPL;
 
+import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
 import com.wora.qatrat7ayat.mappers.RequestMapper;
 import com.wora.qatrat7ayat.models.DTOs.action.request.CreateRequestDto;
 import com.wora.qatrat7ayat.models.DTOs.action.request.RequestDto;
@@ -8,8 +9,13 @@ import com.wora.qatrat7ayat.models.entities.Hospital;
 import com.wora.qatrat7ayat.models.entities.Request;
 import com.wora.qatrat7ayat.models.entities.User;
 import com.wora.qatrat7ayat.repositories.RequestRepository;
+import com.wora.qatrat7ayat.security.services.impl.UserDetailsImpl;
 import com.wora.qatrat7ayat.services.INTER.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,20 +33,26 @@ public class RequestService implements IRequestService {
     @Override
     @Transactional
     public RequestDto create(CreateRequestDto createRequestDto) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User requestUser;
+
+        if (authentication.isAuthenticated() && authentication.getPrincipal() instanceof UserDetails userDetails) {
+            String email = userDetails.getUsername();
+//            requestUser = userService.findByEmail(email);
+        } else {
+            requestUser = userService.createUserEntity(createRequestDto.getProfile());
+        }
         Hospital hospital = hospitalService.findHospitalEntity(createRequestDto.getRequest().getHospitalId());
 
-        User savedUser = userService.createUserEntity(createRequestDto.getProfile());
-
         Request request = requestMapper.toEntity(createRequestDto.getRequest());
-        request.setMessage(createRequestDto.getRequest().getMessage());
-        request.setUser(savedUser);
+//        request.setUser(requestUser);
         request.setHospital(hospital);
-        request.setUser(savedUser);
         request.setMessage(createRequestDto.getRequest().getMessage());
-        Request savedRequest = requestRepository.save(request);
 
+        Request savedRequest = requestRepository.save(request);
         return requestMapper.toDto(savedRequest);
     }
+
 
 
     @Override

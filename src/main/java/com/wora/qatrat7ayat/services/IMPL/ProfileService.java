@@ -9,7 +9,8 @@ import com.wora.qatrat7ayat.models.entities.City;
 import com.wora.qatrat7ayat.models.entities.User;
 import com.wora.qatrat7ayat.models.enumes.BloodType;
 import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
-import com.wora.qatrat7ayat.security.repositories.ProfileRepository;
+import com.wora.qatrat7ayat.security.repositories.AuthUserRepository;
+import com.wora.qatrat7ayat.security.repositories.UserRepository;
 import com.wora.qatrat7ayat.services.INTER.ICityService;
 import com.wora.qatrat7ayat.services.INTER.IProfileService;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ProfileService implements IProfileService {
-    private final ProfileRepository profileRepository;
+    private final AuthUserRepository profileRepository;
+    private final UserRepository userRepository;
     private final ProfileMapper profileMapper;
     private final ICityService cityService;
 
@@ -33,7 +35,7 @@ public class ProfileService implements IProfileService {
 
     @Override
     public ProfileDto findById(Long id) {
-        User profile = profileRepository.findById(id)
+        User profile = userRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User", id));
         return profileMapper.toDto(profile);
     }
@@ -41,7 +43,7 @@ public class ProfileService implements IProfileService {
     @Override
     @Transactional
     public ProfileDto update(UpdateProfileDto updateProfileDto, Long id) {
-        AuthenticatedUser profile = profileRepository.findById(id)
+        User profile = userRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User", id));
         City city = cityService.findCityEntity(updateProfileDto.cityId());
 
@@ -58,16 +60,16 @@ public class ProfileService implements IProfileService {
     @Override
     public List<ProfileDto> findAll(Integer pageNumber, Integer size) {
         PageRequest pageRequest = PageRequest.of(pageNumber, size);
-        return profileRepository.findAll(pageRequest).stream()
+        return userRepository.findAll(pageRequest).stream()
                 .map(profileMapper::toDto)
                 .toList();
     }
 
     @Override
     public void delete(Long id) {
-        AuthenticatedUser profile = profileRepository.findById(id)
+        User profile = userRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User", id));
-        profileRepository.delete(profile);
+        userRepository.delete(profile);
     }
 
     @Override
@@ -75,4 +77,11 @@ public class ProfileService implements IProfileService {
         return profileRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User", id));
     }
+
+    @Override
+    public AuthenticatedUser getUserByEmail(String email) {
+        return profileRepository.findByEmail(email)
+                .orElseThrow(() -> new EntityNotFoundException("User not found with email: ", email));
+    }
+
 }
