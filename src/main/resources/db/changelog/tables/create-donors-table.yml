@@ -3,7 +3,22 @@ databaseChangeLog:
       id: create_table_donors
       author: hamzalamin
       changes:
-        - sql:
-            sql: "CREATE TABLE donors (
-                availability_period varchar(500)
-              ) INHERITS (actions);"
+        - createTable:
+            tableName: donors
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: availability_period
+                  type: VARCHAR(500)
+        - addForeignKeyConstraint:
+            constraintName: fk_donors_action
+            baseTableName: donors
+            baseColumnNames: id
+            referencedTableName: actions
+            referencedColumnNames: id
+            onDelete: CASCADE
