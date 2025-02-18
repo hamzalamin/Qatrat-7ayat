@@ -9,6 +9,5 @@ public record UpdateArticleDto(
         String publishedAt,
         EmbeddedProfileDto user,
         EmbeddedCityDto city
-
 ) {
 }
