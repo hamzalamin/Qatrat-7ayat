@@ -1,6 +1,7 @@
 package com.wora.qatrat7ayat.services.IMPL;
 
 import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
+import com.wora.qatrat7ayat.exceptions.OldPasswordIncorrectException;
 import com.wora.qatrat7ayat.mappers.ProfileMapper;
 import com.wora.qatrat7ayat.models.DTOs.user.CreateProfileDto;
 import com.wora.qatrat7ayat.models.DTOs.user.ProfileDto;
@@ -11,10 +12,16 @@ import com.wora.qatrat7ayat.models.enumes.BloodType;
 import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
 import com.wora.qatrat7ayat.security.repositories.AuthUserRepository;
 import com.wora.qatrat7ayat.security.repositories.UserRepository;
+import com.wora.qatrat7ayat.security.services.IAuthService;
 import com.wora.qatrat7ayat.services.INTER.ICityService;
 import com.wora.qatrat7ayat.services.INTER.IProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,6 +34,9 @@ public class ProfileService implements IProfileService {
     private final UserRepository userRepository;
     private final ProfileMapper profileMapper;
     private final ICityService cityService;
+    private final AuthenticationManager authenticationManager;
+    private final IAuthService authService;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public ProfileDto create(CreateProfileDto createProfileDto) {
@@ -82,6 +92,22 @@ public class ProfileService implements IProfileService {
     public AuthenticatedUser getUserByEmail(String email) {
         return profileRepository.findByEmail(email)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with email: ", email));
+    }
+
+    @Override
+    public void changePassword(Long id, String oldPassword, String newPassword) {
+
+        AuthenticatedUser user = authService.getUserById(id);
+
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(user.getEmail(), oldPassword));
+
+        if (!authentication.isAuthenticated()) {
+            throw new OldPasswordIncorrectException("Old password is incorrect");
+        }
+
+        user.setPassword(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
     }
 
 }

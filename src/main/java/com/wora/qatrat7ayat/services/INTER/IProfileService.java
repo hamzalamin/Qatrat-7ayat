@@ -10,5 +10,5 @@ import com.wora.qatrat7ayat.services.GenericService;
 public interface IProfileService extends GenericService<CreateProfileDto, UpdateProfileDto, ProfileDto, Long> {
     User findUserEntity(Long id);
     AuthenticatedUser getUserByEmail(String email);
-
+    void changePassword(Long id, String oldPassword, String newPassword);
 }

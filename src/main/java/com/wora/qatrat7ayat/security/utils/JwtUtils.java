@@ -36,7 +36,7 @@ public class JwtUtils {
 
     private Claims extractAllClaims(String token) {
         return Jwts.parserBuilder()
-                .setSigningKey(SECRET_KEY) // Already Base64-encoded
+                .setSigningKey(SECRET_KEY)
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
@@ -74,7 +74,7 @@ public class JwtUtils {
     public Boolean validateJwtToken(String authToken) {
         try {
             Jwts.parserBuilder()
-                    .setSigningKey(SECRET_KEY) // Already Base64-encoded
+                    .setSigningKey(SECRET_KEY)
                     .build()
                     .parseClaimsJws(authToken);
             return true;

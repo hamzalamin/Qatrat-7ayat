@@ -1,5 +1,6 @@
 package com.wora.qatrat7ayat.security.services.impl;
 
+import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
 import com.wora.qatrat7ayat.exceptions.UserAlreadyExist;
 import com.wora.qatrat7ayat.models.entities.User;
 import com.wora.qatrat7ayat.security.DTO.JwtResponse;
@@ -86,6 +87,12 @@ public class AuthService implements IAuthService {
 
     public boolean existsByEmail(String email){
         return userRepository.existsByEmail(email);
+    }
+
+    @Override
+    public AuthenticatedUser getUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Authenticated user", id));
     }
 
 }
