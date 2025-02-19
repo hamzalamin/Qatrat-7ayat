@@ -1,7 +1,5 @@
 package com.wora.qatrat7ayat.services.IMPL;
 
-import com.wora.qatrat7ayat.exceptions.DefaultEntityNotFound;
-import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
 import com.wora.qatrat7ayat.exceptions.UserAlreadyExist;
 import com.wora.qatrat7ayat.mappers.ProfileMapper;
 import com.wora.qatrat7ayat.models.DTOs.user.CreateProfileDto;
@@ -38,7 +36,7 @@ public class UserService implements IUserService {
     @Override
     public User createUserEntity(CreateProfileDto createProfileDto) {
         User user = userMapper.toEntity(createProfileDto);
-        City city = cityService.findCityEntity(createProfileDto.city_id());
+        City city = cityService.findCityEntity(createProfileDto.cityId());
         user.setCity(city);
         return userRepository.save(user);
     }

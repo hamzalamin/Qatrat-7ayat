@@ -29,9 +29,9 @@ public class Article {
     @Column(name = "content")
     private String content;
 
-    @NotBlank
     @Column(name = "published_at")
     private LocalDateTime publishedAt;
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
     @ManyToOne()
