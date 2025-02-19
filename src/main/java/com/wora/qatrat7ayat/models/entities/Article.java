@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "articles")
@@ -44,6 +45,8 @@ public class Article {
     @JoinColumn(name = "city_id")
     private City city;
 
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+    private List<ArticleTag> articleTags;
 
     @PrePersist
     protected void onCreate(){

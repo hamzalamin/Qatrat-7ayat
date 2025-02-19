@@ -18,7 +18,6 @@ import com.wora.qatrat7ayat.services.INTER.IProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -96,9 +95,7 @@ public class ProfileService implements IProfileService {
 
     @Override
     public void changePassword(Long id, String oldPassword, String newPassword) {
-
         AuthenticatedUser user = authService.getUserById(id);
-
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(user.getEmail(), oldPassword));
 
