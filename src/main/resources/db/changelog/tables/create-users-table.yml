@@ -35,6 +35,10 @@ databaseChangeLog:
                   name: updated_at
                   type: timestamp
               - column:
+                  name: is_suspended
+                  type: boolean
+                  defaultValue: true
+              - column:
                   name: blood_type
                   type: blood_type
                   constraints:

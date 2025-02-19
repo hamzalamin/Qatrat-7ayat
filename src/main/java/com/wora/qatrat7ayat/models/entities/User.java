@@ -47,6 +47,9 @@ public class User{
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    @Column(name = "is_suspended")
+    private boolean isSuspended = true;
+
     @ManyToOne()
     @JoinColumn(name = "city_id")
     private City city;

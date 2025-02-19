@@ -7,10 +7,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/admin/")
@@ -20,6 +17,13 @@ public class AccountsController {
 
     @PostMapping("/create-account")
     public ResponseEntity<SignupResponse> create(@RequestBody @Valid SignupRequest signupRequest){
-        return new ResponseEntity<>(userService.CreateUserAccount(signupRequest), HttpStatus.CREATED);
+        return new ResponseEntity<>(userService.createUserAccount(signupRequest), HttpStatus.CREATED);
     }
-}
+
+    //patch katreplaci gha state f lentity makatupdatich ela gaa3 entity
+    @PatchMapping("/{id}/suspend-toggle")
+    public ResponseEntity<String> toggleUserSuspension(@PathVariable Long id) {
+        boolean isSuspended = userService.toggleSuspension(id);
+        String message = isSuspended ?  "User has been unsuspended." : "User has been suspended.";
+        return ResponseEntity.ok(message);
+    }}

@@ -1,5 +1,6 @@
 package com.wora.qatrat7ayat.services.IMPL;
 
+import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
 import com.wora.qatrat7ayat.exceptions.UserAlreadyExist;
 import com.wora.qatrat7ayat.mappers.ProfileMapper;
 import com.wora.qatrat7ayat.models.DTOs.user.CreateProfileDto;
@@ -26,6 +27,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class UserService implements IUserService {
+
     private final UserRepository userRepository;
     private final ProfileMapper userMapper;
     private final ICityService cityService;
@@ -42,8 +44,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public SignupResponse CreateUserAccount(SignupRequest signupRequest){
-        if (authService.existsByEmail(signupRequest.getEmail())){
+    public SignupResponse createUserAccount(SignupRequest signupRequest) {
+        if (authService.existsByEmail(signupRequest.getEmail())) {
             throw new UserAlreadyExist(signupRequest.getEmail());
         }
         Role role = roleService.findRoleById(signupRequest.getRoleId());
@@ -55,6 +57,18 @@ public class UserService implements IUserService {
         AuthenticatedUser savedUser = userRepository.save(user);
         return authMapper.toDto(savedUser);
     }
+
+    @Override
+    public boolean toggleSuspension(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("User", id));
+
+        user.setSuspended(!user.isSuspended());
+        userRepository.save(user);
+
+        return user.isSuspended();
+    }
+
 
     @Override
     public ProfileDto create(CreateProfileDto createProfileDto) {

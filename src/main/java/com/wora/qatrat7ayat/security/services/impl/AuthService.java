@@ -1,9 +1,12 @@
 package com.wora.qatrat7ayat.security.services.impl;
 
+import com.wora.qatrat7ayat.exceptions.UserAlreadyExist;
+import com.wora.qatrat7ayat.models.entities.User;
 import com.wora.qatrat7ayat.security.DTO.JwtResponse;
 import com.wora.qatrat7ayat.security.DTO.LoginRequest;
 import com.wora.qatrat7ayat.security.DTO.SignupRequest;
 import com.wora.qatrat7ayat.security.DTO.SignupResponse;
+import com.wora.qatrat7ayat.security.exception.UserSuspendedException;
 import com.wora.qatrat7ayat.security.mappers.AuthMapper;
 import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
 import com.wora.qatrat7ayat.security.models.Role;
@@ -11,6 +14,7 @@ import com.wora.qatrat7ayat.security.repositories.AuthUserRepository;
 import com.wora.qatrat7ayat.security.services.IAuthService;
 import com.wora.qatrat7ayat.security.services.IRoleService;
 import com.wora.qatrat7ayat.security.utils.JwtUtils;
+import com.wora.qatrat7ayat.services.INTER.IProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -34,11 +38,18 @@ public class AuthService implements IAuthService {
     private final PasswordEncoder passwordEncoder;
     private final JwtUtils jwtUtils;
     private final AuthenticationManager authenticationManager;
+    private final IProfileService profileService;
 
     @Override
     public ResponseEntity<JwtResponse> authenticateUser(LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
+
+        User user = profileService.getUserByEmail(loginRequest.getEmail());
+
+        if (!user.isSuspended()){
+            throw new UserSuspendedException(loginRequest.getEmail());
+        }
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateToken((UserDetails) authentication.getPrincipal());
@@ -56,6 +67,9 @@ public class AuthService implements IAuthService {
 
     @Override
     public SignupResponse registerUser(SignupRequest request) {
+        if(!existsByEmail(request.getEmail())){
+            throw new UserAlreadyExist(request.getEmail());
+        }
         AuthenticatedUser authenticatedUser = authMapper.toEntity(request);
         authenticatedUser.setEmail(request.getEmail());
         authenticatedUser.setPassword(passwordEncoder.encode(request.getPassword()));
@@ -63,6 +77,7 @@ public class AuthService implements IAuthService {
         authenticatedUser.setLastName(request.getLastName());
         authenticatedUser.setBloodType(request.getBloodType());
         authenticatedUser.setPhone(request.getPhone());
+        authenticatedUser.setSuspended(true);
         Role role = roleService.findRoleByName("ROLE_USER");
         authenticatedUser.setRole(role);
         userRepository.save(authenticatedUser);
@@ -70,10 +85,7 @@ public class AuthService implements IAuthService {
     }
 
     public boolean existsByEmail(String email){
-        if (userRepository.existsByEmail(email)){
-            return true;
-        }
-        return false;
+        return userRepository.existsByEmail(email);
     }
 
 }

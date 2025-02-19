@@ -10,5 +10,6 @@ import com.wora.qatrat7ayat.services.GenericService;
 
 public interface IUserService extends GenericService<CreateProfileDto, UpdateProfileDto, ProfileDto, Long> {
     User createUserEntity(CreateProfileDto createProfileDto);
-    SignupResponse CreateUserAccount(SignupRequest signupRequest);
+    SignupResponse createUserAccount(SignupRequest signupRequest);
+    boolean toggleSuspension(Long id);
 }
