@@ -8,6 +8,7 @@ import com.wora.qatrat7ayat.models.entities.Donor;
 import com.wora.qatrat7ayat.models.entities.Hospital;
 import com.wora.qatrat7ayat.models.entities.User;
 import com.wora.qatrat7ayat.repositories.DonorRepository;
+import com.wora.qatrat7ayat.security.services.IAuthService;
 import com.wora.qatrat7ayat.services.INTER.IDonorService;
 import com.wora.qatrat7ayat.services.INTER.IHospitalService;
 import com.wora.qatrat7ayat.services.INTER.IProfileService;
@@ -25,7 +26,7 @@ import java.util.List;
 public class DonorService implements IDonorService {
     private final DonorRepository donorRepository;
     private final DonorMapper donorMapper;
-    private final IProfileService profileService;
+    private final IAuthService profileService;
     private final IUserService userService;
     private final IHospitalService hospitalService;
 

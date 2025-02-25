@@ -2,6 +2,7 @@ package com.wora.qatrat7ayat.security.models;
 
 import com.wora.qatrat7ayat.models.entities.Article;
 import com.wora.qatrat7ayat.models.entities.User;
+import com.wora.qatrat7ayat.security.models.enume.Gender;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -32,6 +33,10 @@ public class AuthenticatedUser extends User implements UserDetails {
     @ManyToOne()
     @JoinColumn(name = "role_id")
     private Role role;
+
+    @Column(name = "gender", columnDefinition = "gender")
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Article> articles;

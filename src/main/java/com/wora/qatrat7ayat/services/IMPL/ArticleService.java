@@ -9,6 +9,7 @@ import com.wora.qatrat7ayat.models.entities.Article;
 import com.wora.qatrat7ayat.models.entities.City;
 import com.wora.qatrat7ayat.repositories.ArticleRepository;
 import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
+import com.wora.qatrat7ayat.security.services.IAuthService;
 import com.wora.qatrat7ayat.services.INTER.IArticleService;
 import com.wora.qatrat7ayat.services.INTER.ICityService;
 import com.wora.qatrat7ayat.services.INTER.IProfileService;
@@ -26,7 +27,7 @@ public class ArticleService implements IArticleService {
 
     private final ArticleRepository articleRepository;
     private final ArticleMapper articleMapper;
-    private final IProfileService profileService;
+    private final IAuthService profileService;
     private final ICityService cityService;
 
     @Override

@@ -8,6 +8,7 @@ import com.wora.qatrat7ayat.models.entities.Hospital;
 import com.wora.qatrat7ayat.models.entities.Request;
 import com.wora.qatrat7ayat.models.entities.User;
 import com.wora.qatrat7ayat.repositories.RequestRepository;
+import com.wora.qatrat7ayat.security.services.IAuthService;
 import com.wora.qatrat7ayat.services.INTER.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -24,7 +25,7 @@ public class RequestService implements IRequestService {
 
     private final RequestRepository requestRepository;
     private final RequestMapper requestMapper;
-    private final IProfileService profileService;
+    private final IAuthService profileService;
     private final IUserService userService;
     private final IHospitalService hospitalService;
 

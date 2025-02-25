@@ -1,8 +1,6 @@
 package com.wora.qatrat7ayat.security.models;
 
-import com.wora.qatrat7ayat.security.models.enume.ERole;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +20,7 @@ public class Role implements GrantedAuthority {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 20, columnDefinition = "e_role")
+    @Column(length = 20, columnDefinition = "role")
     private String name;
 
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)

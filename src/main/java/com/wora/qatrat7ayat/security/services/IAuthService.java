@@ -12,4 +12,5 @@ public interface IAuthService {
     SignupResponse registerUser(SignupRequest request);
     boolean existsByEmail(String email);
     AuthenticatedUser getUserById(Long id);
+    AuthenticatedUser getUserByEmail(String email);
 }

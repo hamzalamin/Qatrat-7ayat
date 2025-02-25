@@ -16,7 +16,7 @@ public class AccountsController {
     private final IUserService userService;
 
     @PostMapping("/create-account")
-    public ResponseEntity<SignupResponse> create(@RequestBody @Valid SignupRequest signupRequest){
+    public ResponseEntity<SignupResponse> create(@RequestBody @Valid SignupRequest signupRequest) {
         return new ResponseEntity<>(userService.createUserAccount(signupRequest), HttpStatus.CREATED);
     }
 
@@ -24,6 +24,7 @@ public class AccountsController {
     @PatchMapping("/{id}/suspend-toggle")
     public ResponseEntity<String> toggleUserSuspension(@PathVariable Long id) {
         boolean isSuspended = userService.toggleSuspension(id);
-        String message = isSuspended ?  "User has been unsuspended." : "User has been suspended.";
+        String message = isSuspended ? "User has been unsuspended." : "User has been suspended.";
         return ResponseEntity.ok(message);
-    }}
+    }
+}

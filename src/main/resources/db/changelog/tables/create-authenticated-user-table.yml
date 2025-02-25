@@ -3,6 +3,10 @@ databaseChangeLog:
       id: create_authenticated_user_table
       author: hamzalamin
       changes:
+        - sql:
+            sql: "CREATE TYPE gender AS ENUM ('MALE', 'FEMALE');"
+        - sql:
+            sql: "CREATE CAST (varchar AS gender) WITH INOUT AS IMPLICIT;"
         - createTable:
             tableName: authenticated_user
             columns:
@@ -20,6 +24,9 @@ databaseChangeLog:
               - column:
                   name: role_id
                   type: bigint
+              - column:
+                  name: gender
+                  type: gender
               - addForeignKeyConstraint:
                   baseTableName: authenticated_user
                   baseColumnNames: id

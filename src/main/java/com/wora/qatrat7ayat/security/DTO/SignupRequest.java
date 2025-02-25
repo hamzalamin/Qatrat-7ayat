@@ -1,6 +1,7 @@
 package com.wora.qatrat7ayat.security.DTO;
 
 import com.wora.qatrat7ayat.models.enumes.BloodType;
+import com.wora.qatrat7ayat.security.models.enume.Gender;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,4 +18,6 @@ public class SignupRequest {
     private Long roleId;
     private BloodType bloodType;
     private String phone;
+    private Long cityId;
+    private Gender gender;
 }

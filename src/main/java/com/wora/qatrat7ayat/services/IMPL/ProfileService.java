@@ -88,12 +88,6 @@ public class ProfileService implements IProfileService {
     }
 
     @Override
-    public AuthenticatedUser getUserByEmail(String email) {
-        return profileRepository.findByEmail(email)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with email: ", email));
-    }
-
-    @Override
     public void changePassword(Long id, String oldPassword, String newPassword) {
         AuthenticatedUser user = authService.getUserById(id);
         Authentication authentication = authenticationManager.authenticate(
