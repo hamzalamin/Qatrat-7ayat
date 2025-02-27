@@ -1,5 +1,6 @@
 package com.wora.qatrat7ayat.security.mappers;
 
+import com.wora.qatrat7ayat.models.DTOs.user.CreateUserAccountDto;
 import com.wora.qatrat7ayat.security.DTO.SignupRequest;
 import com.wora.qatrat7ayat.security.DTO.SignupResponse;
 import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
@@ -10,6 +11,8 @@ import org.mapstruct.Mapping;
 public interface AuthMapper {
     AuthenticatedUser toEntity(SignupResponse signupResponse);
     AuthenticatedUser toEntity(SignupRequest signupRequest);
+    AuthenticatedUser toEntity(CreateUserAccountDto signupRequest);
+
 
     @Mapping(target = "phone", source = "phone")
     @Mapping(target = "email", source = "email")

@@ -11,6 +11,7 @@ import com.wora.qatrat7ayat.repositories.RequestRepository;
 import com.wora.qatrat7ayat.security.services.IAuthService;
 import com.wora.qatrat7ayat.services.INTER.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -53,7 +54,6 @@ public class RequestService implements IRequestService {
     }
 
 
-
     @Override
     public RequestDto findById(Long id) {
         return null;
@@ -66,7 +66,10 @@ public class RequestService implements IRequestService {
 
     @Override
     public List<RequestDto> findAll(Integer pageNumber, Integer size) {
-        return List.of();
+        PageRequest pageRequest = PageRequest.of(pageNumber, size);
+        return requestRepository.findAll(pageRequest).stream()
+                .map(requestMapper::toDto)
+                .toList();
     }
 
     @Override

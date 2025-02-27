@@ -14,6 +14,7 @@ import com.wora.qatrat7ayat.services.INTER.IHospitalService;
 import com.wora.qatrat7ayat.services.INTER.IProfileService;
 import com.wora.qatrat7ayat.services.INTER.IUserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -63,7 +64,10 @@ public class DonorService implements IDonorService {
 
     @Override
     public List<DonorDto> findAll(Integer pageNumber, Integer size) {
-        return List.of();
+        PageRequest pageRequest = PageRequest.of(pageNumber, size);
+        return donorRepository.findAll(pageRequest).stream()
+                .map(donorMapper::toDto)
+                .toList();
     }
 
     @Override

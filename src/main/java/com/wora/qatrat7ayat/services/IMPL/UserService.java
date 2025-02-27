@@ -4,6 +4,7 @@ import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
 import com.wora.qatrat7ayat.exceptions.UserAlreadyExist;
 import com.wora.qatrat7ayat.mappers.ProfileMapper;
 import com.wora.qatrat7ayat.models.DTOs.user.CreateProfileDto;
+import com.wora.qatrat7ayat.models.DTOs.user.CreateUserAccountDto;
 import com.wora.qatrat7ayat.models.DTOs.user.ProfileDto;
 import com.wora.qatrat7ayat.models.DTOs.user.UpdateProfileDto;
 import com.wora.qatrat7ayat.models.entities.City;
@@ -44,7 +45,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public SignupResponse createUserAccount(SignupRequest signupRequest) {
+    public SignupResponse createUserAccount(CreateUserAccountDto signupRequest) {
         if (authService.existsByEmail(signupRequest.getEmail())) {
             throw new UserAlreadyExist(signupRequest.getEmail());
         }

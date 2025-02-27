@@ -70,7 +70,7 @@ public class AuthService implements IAuthService {
 
     @Override
     public SignupResponse registerUser(SignupRequest request) {
-        if(!existsByEmail(request.getEmail())){
+        if(existsByEmail(request.getEmail())){
             throw new UserAlreadyExist(request.getEmail());
         }
         City city = cityService.findCityEntity(request.getCityId());
