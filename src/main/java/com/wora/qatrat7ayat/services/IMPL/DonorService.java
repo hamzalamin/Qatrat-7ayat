@@ -11,9 +11,9 @@ import com.wora.qatrat7ayat.repositories.DonorRepository;
 import com.wora.qatrat7ayat.security.services.IAuthService;
 import com.wora.qatrat7ayat.services.INTER.IDonorService;
 import com.wora.qatrat7ayat.services.INTER.IHospitalService;
-import com.wora.qatrat7ayat.services.INTER.IProfileService;
 import com.wora.qatrat7ayat.services.INTER.IUserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -43,7 +43,6 @@ public class DonorService implements IDonorService {
             donor = userService.createUserEntity(createDonorDto.getProfile());
         }
         Hospital hospital = hospitalService.findHospitalEntity(createDonorDto.getDonor().getHospitalId());
-
         Donor savedDonor = donorMapper.toEntity(createDonorDto.getDonor());
         savedDonor.setHospital(hospital);
         savedDonor.setMessage(createDonorDto.getDonor().getMessage());
@@ -69,6 +68,13 @@ public class DonorService implements IDonorService {
                 .map(donorMapper::toDto)
                 .toList();
     }
+
+    @Override
+    public Page<DonorDto> findAllPage(Integer pageNumber, Integer size) {
+        PageRequest pageRequest = PageRequest.of(pageNumber, size);
+        return donorRepository.findAll(pageRequest).map(donorMapper::toDto);
+    }
+
 
     @Override
     public void delete(Long id) {

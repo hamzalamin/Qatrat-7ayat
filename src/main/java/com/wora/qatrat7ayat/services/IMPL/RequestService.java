@@ -1,6 +1,7 @@
 package com.wora.qatrat7ayat.services.IMPL;
 
 import com.wora.qatrat7ayat.mappers.RequestMapper;
+import com.wora.qatrat7ayat.models.DTOs.action.donor.DonorDto;
 import com.wora.qatrat7ayat.models.DTOs.action.request.CreateRequestDto;
 import com.wora.qatrat7ayat.models.DTOs.action.request.RequestDto;
 import com.wora.qatrat7ayat.models.DTOs.action.request.UpdateRequestDto;
@@ -11,6 +12,7 @@ import com.wora.qatrat7ayat.repositories.RequestRepository;
 import com.wora.qatrat7ayat.security.services.IAuthService;
 import com.wora.qatrat7ayat.services.INTER.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -70,6 +72,13 @@ public class RequestService implements IRequestService {
         return requestRepository.findAll(pageRequest).stream()
                 .map(requestMapper::toDto)
                 .toList();
+    }
+
+
+    @Override
+    public Page<RequestDto> findAllPage(Integer pageNumber, Integer size) {
+        PageRequest pageRequest = PageRequest.of(pageNumber, size);
+        return requestRepository.findAll(pageRequest).map(requestMapper::toDto);
     }
 
     @Override

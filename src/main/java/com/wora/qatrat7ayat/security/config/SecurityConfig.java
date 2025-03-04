@@ -26,11 +26,23 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests(auth -> auth
+        http.csrf(AbstractHttpConfigurer::disable)
+                .cors(cors -> cors.configurationSource(request -> {
+                    var corsConfig = new org.springframework.web.cors.CorsConfiguration();
+                    corsConfig.setAllowCredentials(true);
+                    corsConfig.addAllowedOrigin("http://localhost:5173");
+                    corsConfig.addAllowedHeader("*");
+                    corsConfig.addAllowedMethod("*");
+                    return corsConfig;
+                }))
+                .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/blood-requests").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/cities").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/v1/donor").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/donors").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/donors").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/blood-requests").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/hospitals").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .exceptionHandling(exception -> exception.accessDeniedHandler(customAccessDeniedHandler()));

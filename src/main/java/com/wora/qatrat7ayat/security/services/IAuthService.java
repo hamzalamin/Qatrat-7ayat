@@ -1,5 +1,6 @@
 package com.wora.qatrat7ayat.security.services;
 
+import com.wora.qatrat7ayat.models.DTOs.user.ProfileDto;
 import com.wora.qatrat7ayat.security.DTO.JwtResponse;
 import com.wora.qatrat7ayat.security.DTO.LoginRequest;
 import com.wora.qatrat7ayat.security.DTO.SignupRequest;
@@ -13,4 +14,5 @@ public interface IAuthService {
     boolean existsByEmail(String email);
     AuthenticatedUser getUserById(Long id);
     AuthenticatedUser getUserByEmail(String email);
+    ProfileDto getAuthenticatedUserProfile();
 }

@@ -2,12 +2,14 @@ package com.wora.qatrat7ayat.security.services.impl;
 
 import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
 import com.wora.qatrat7ayat.exceptions.UserAlreadyExist;
+import com.wora.qatrat7ayat.models.DTOs.user.ProfileDto;
 import com.wora.qatrat7ayat.models.entities.City;
 import com.wora.qatrat7ayat.models.entities.User;
 import com.wora.qatrat7ayat.security.DTO.JwtResponse;
 import com.wora.qatrat7ayat.security.DTO.LoginRequest;
 import com.wora.qatrat7ayat.security.DTO.SignupRequest;
 import com.wora.qatrat7ayat.security.DTO.SignupResponse;
+import com.wora.qatrat7ayat.security.exception.UserProfileNotFound;
 import com.wora.qatrat7ayat.security.exception.UserSuspendedException;
 import com.wora.qatrat7ayat.security.mappers.AuthMapper;
 import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
@@ -17,7 +19,6 @@ import com.wora.qatrat7ayat.security.services.IAuthService;
 import com.wora.qatrat7ayat.security.services.IRoleService;
 import com.wora.qatrat7ayat.security.utils.JwtUtils;
 import com.wora.qatrat7ayat.services.INTER.ICityService;
-import com.wora.qatrat7ayat.services.INTER.IProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -66,6 +67,26 @@ public class AuthService implements IAuthService {
                 userDetails.getId(),
                 userDetails.getUsername(),
                 roles));
+    }
+
+
+    @Override
+    public ProfileDto getAuthenticatedUserProfile() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.isAuthenticated()) {
+            Object principal = authentication.getPrincipal();
+
+            if (principal instanceof UserDetailsImpl) {
+                UserDetailsImpl userDetails = (UserDetailsImpl) principal;
+                AuthenticatedUser authenticatedUser = getUserByEmail(userDetails.getUsername());
+                return authMapper.toProfileDto(authenticatedUser);
+            } else {
+                throw new UserProfileNotFound("Authenticated user not found or not recognized.");
+            }
+        } else {
+            throw new UserProfileNotFound("No authenticated user found.");
+        }
     }
 
     @Override
