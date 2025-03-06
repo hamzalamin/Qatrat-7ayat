@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Pattern;
 public record CreateProfileDto(
         @NotBlank String firstName,
         @NotBlank String lastName,
-        @NotBlank String psudoName,
+        String psudoName,
         @NotBlank @Pattern(regexp = "^\\d{10}$", message = "Phone number must be exactly 10 digits") String phone,
         @NotBlank String bloodType,
         @NotNull Long cityId

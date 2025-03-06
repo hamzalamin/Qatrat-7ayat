@@ -10,7 +10,7 @@ import java.util.Date;
 public record ProfileDto(
         @NotBlank String firstName,
         @NotBlank String lastName,
-        @NotBlank String psudoName,
+        String psudoName,
         @NotBlank String phone,
         @NotBlank BloodType bloodType,
         Date createdAt,

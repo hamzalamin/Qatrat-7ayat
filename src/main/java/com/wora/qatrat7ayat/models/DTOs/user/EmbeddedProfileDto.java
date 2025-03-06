@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 public record EmbeddedProfileDto(
         @NotBlank String firstName,
         @NotBlank String lastName,
-        @NotBlank String psudoName,
+        String psudoName,
         @NotBlank String phone,
         @NotBlank BloodType bloodType,
         @NotBlank String availabilityMessage,

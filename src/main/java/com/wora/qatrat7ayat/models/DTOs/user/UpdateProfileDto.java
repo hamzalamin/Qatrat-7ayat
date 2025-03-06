@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotNull;
 public record UpdateProfileDto(
         @NotBlank String firstName,
         @NotBlank String lastName,
-        @NotBlank String psudoName,
+        String psudoName,
         @NotBlank String phone,
         @NotNull BloodType bloodType,
         @NotNull Long cityId

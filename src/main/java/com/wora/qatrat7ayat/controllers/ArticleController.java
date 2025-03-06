@@ -6,6 +6,7 @@ import com.wora.qatrat7ayat.models.DTOs.article.UpdateArticleDto;
 import com.wora.qatrat7ayat.services.INTER.IArticleService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,8 +30,8 @@ public class ArticleController {
     }
 
     @GetMapping("/articles")
-    public ResponseEntity<List<ArticleDto>> findAll(@RequestParam int pageNumber, int size){
-        List<ArticleDto> articles = articleService.findAll(pageNumber, size);
+    public ResponseEntity<Page<ArticleDto>> findAll(@RequestParam int pageNumber, int size){
+        Page<ArticleDto> articles = articleService.findAllPage(pageNumber, size);
         return new ResponseEntity<>(articles, HttpStatus.OK);
     }
 

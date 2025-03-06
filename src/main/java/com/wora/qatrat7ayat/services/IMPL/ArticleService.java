@@ -14,6 +14,7 @@ import com.wora.qatrat7ayat.services.INTER.IArticleService;
 import com.wora.qatrat7ayat.services.INTER.ICityService;
 import com.wora.qatrat7ayat.services.INTER.IProfileService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -81,6 +82,13 @@ public class ArticleService implements IArticleService {
                 .map(articleMapper::toDto)
                 .toList();
     }
+
+    @Override
+    public Page<ArticleDto> findAllPage(Integer pageNumber, Integer size) {
+        PageRequest pageable = PageRequest.of(pageNumber, size);
+        return articleRepository.findAll(pageable).map(articleMapper::toDto);
+    }
+
 
     @Override
     public void delete(Long id) {
