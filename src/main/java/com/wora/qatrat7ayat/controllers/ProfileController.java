@@ -1,5 +1,6 @@
 package com.wora.qatrat7ayat.controllers;
 
+import com.wora.qatrat7ayat.models.DTOs.user.ChangePasswordDto;
 import com.wora.qatrat7ayat.models.DTOs.user.ProfileDto;
 import com.wora.qatrat7ayat.models.DTOs.user.UpdateProfileDto;
 import com.wora.qatrat7ayat.security.services.IAuthService;
@@ -34,6 +35,15 @@ public class ProfileController {
     @GetMapping()
     public ResponseEntity<ProfileDto> getProfile(){
         return new ResponseEntity<>(authService.getAuthenticatedUserProfile(), HttpStatus.OK);
+    }
+
+    @PutMapping("/change-password/{id}")
+    public ResponseEntity<Void> changePassword(
+            @PathVariable Long id,
+            @RequestBody @Valid ChangePasswordDto changePasswordDto
+    ){
+        profileService.changePassword(id, changePasswordDto.oldPassword(), changePasswordDto.newPassword());
+        return ResponseEntity.noContent().build();
     }
 
 
