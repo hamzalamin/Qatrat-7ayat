@@ -11,31 +11,30 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/coordinator")
+@RequestMapping("/api/v1/articles")
 @RequiredArgsConstructor
 public class ArticleController {
     private final IArticleService articleService;
 
-    @PostMapping("/article")
+    @PostMapping
     public ResponseEntity<ArticleDto> create(@RequestBody @Valid CreateArticleDto createArticleDto){
         return new ResponseEntity<>(articleService.create(createArticleDto), HttpStatus.CREATED);
     }
 
-    @GetMapping("/article/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<ArticleDto> findById(@PathVariable Long id){
         return new ResponseEntity<>(articleService.findById(id), HttpStatus.OK);
     }
 
-    @GetMapping("/articles")
+    @GetMapping
     public ResponseEntity<Page<ArticleDto>> findAll(@RequestParam int pageNumber, int size){
         Page<ArticleDto> articles = articleService.findAllPage(pageNumber, size);
         return new ResponseEntity<>(articles, HttpStatus.OK);
     }
 
-    @PutMapping("/article/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<ArticleDto> update(
             @RequestBody UpdateArticleDto updateArticleDto,
             @PathVariable Long id
@@ -43,7 +42,7 @@ public class ArticleController {
         return new ResponseEntity<>(articleService.update(updateArticleDto ,id), HttpStatus.OK);
     }
 
-    @DeleteMapping("/article/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> update(
             @PathVariable Long id
     ){

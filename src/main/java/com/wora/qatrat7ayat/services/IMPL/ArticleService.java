@@ -39,7 +39,9 @@ public class ArticleService implements IArticleService {
             throw new RuntimeException("User not authenticated");
         }
         String email = authentication.getName();
+        System.out.println("EMAILO : "  +email);
         AuthenticatedUser user = profileService.getUserByEmail(email);
+        System.out.println("SMEYTO : "  +user.getFirstName());
         Article article = articleMapper.toEntity(createArticleDto);
         article.setUser(user);
         article.setCity(city);

@@ -43,6 +43,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/v1/donors").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/blood-requests").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/hospitals").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/articles").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/articles").hasRole("COORDINATOR")
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .exceptionHandling(exception -> exception.accessDeniedHandler(customAccessDeniedHandler()));

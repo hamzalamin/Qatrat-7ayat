@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotNull;
 import java.util.Date;
 
 public record ProfileDto(
+        Long id,
         @NotBlank String firstName,
         @NotBlank String lastName,
         String psudoName,

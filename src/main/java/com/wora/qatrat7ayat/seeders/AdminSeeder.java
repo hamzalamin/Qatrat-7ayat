@@ -26,12 +26,16 @@ public class AdminSeeder implements CommandLineRunner {
 
     private void seedAdmin() {
         Role admin = roleService.findRoleByName("ROLE_ADMIN");
+        Role coordinator = roleService.findRoleByName("ROLE_COORDINATOR");
+
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String rawPassword = "admin";
         String hashedPassword = encoder.encode(rawPassword);
         if (authUserRepository.count() == 0) {
             List<AuthenticatedUser> auths = List.of(
-                    new AuthenticatedUser("admin.qatrat@gmail.com", hashedPassword, admin)
+                    new AuthenticatedUser("admin.qatrat@gmail.com", hashedPassword, admin),
+                    new AuthenticatedUser("cordinator.qatrat@gmail.com", hashedPassword, coordinator)
+
             );
             authUserRepository.saveAll(auths);
             System.out.println("Admin saved successfully");
