@@ -9,6 +9,7 @@ public record ArticleDto(
         Long id,
         String title,
         String content,
+        String imageUrl,
         LocalDateTime publishedAt,
         LocalDateTime updatedAt,
         EmbeddedProfileDto user,

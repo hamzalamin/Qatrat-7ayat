@@ -19,6 +19,9 @@ databaseChangeLog:
                   name: content
                   type: text
               - column:
+                  name: image_url
+                  type: varchar(255)
+              - column:
                   name: published_at
                   type: timestamp
               - column:

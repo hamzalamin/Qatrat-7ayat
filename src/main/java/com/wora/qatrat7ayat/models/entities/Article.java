@@ -45,6 +45,8 @@ public class Article {
     @JoinColumn(name = "city_id")
     private City city;
 
+    private String imageUrl;
+
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     private List<ArticleTag> articleTags;
 
