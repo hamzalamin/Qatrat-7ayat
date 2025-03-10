@@ -7,9 +7,11 @@ import com.wora.qatrat7ayat.models.DTOs.article.CreateArticleDto;
 import com.wora.qatrat7ayat.models.DTOs.article.UpdateArticleDto;
 import com.wora.qatrat7ayat.models.entities.Article;
 import com.wora.qatrat7ayat.models.entities.City;
+import com.wora.qatrat7ayat.models.entities.User;
 import com.wora.qatrat7ayat.repositories.ArticleRepository;
 import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
 import com.wora.qatrat7ayat.security.services.IAuthService;
+import com.wora.qatrat7ayat.security.services.impl.UserDetailsImpl;
 import com.wora.qatrat7ayat.services.INTER.IArticleService;
 import com.wora.qatrat7ayat.services.INTER.ICityService;
 import com.wora.qatrat7ayat.services.INTER.IProfileService;
@@ -29,17 +31,22 @@ public class ArticleService implements IArticleService {
     private final ArticleRepository articleRepository;
     private final ArticleMapper articleMapper;
     private final IAuthService profileService;
+    private final IProfileService iprofileService;
     private final ICityService cityService;
 
     @Override
     public ArticleDto create(CreateArticleDto createArticleDto) {
         City city = cityService.findCityEntity(createArticleDto.cityId());
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication == null || authentication.getPrincipal() == "anonymousUser") {
+        if (authentication == null || "anonymousUser".equals(authentication.getPrincipal())) {
             throw new RuntimeException("User not authenticated");
         }
-        String email = authentication.getName();
-        AuthenticatedUser user = profileService.getUserByEmail(email);
+
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        Long authenticatedUser = userDetails.getId();
+
+        User user = iprofileService.findUserEntity(authenticatedUser);
         Article article = articleMapper.toEntity(createArticleDto);
         article.setUser(user);
         article.setCity(city);

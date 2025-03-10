@@ -1,11 +1,12 @@
 package com.wora.qatrat7ayat.models.entities;
 
 
-import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
+import com.wora.qatrat7ayat.models.enumes.Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -38,7 +39,7 @@ public class Article {
     @ManyToOne()
     @NotNull
     @JoinColumn(name = "user_id")
-    private AuthenticatedUser user;
+    private User user;
 
     @ManyToOne()
     @NotNull
@@ -49,6 +50,10 @@ public class Article {
 
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     private List<ArticleTag> articleTags;
+
+    @Column(name = "status", columnDefinition = "status")
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.PENDING;
 
     @PrePersist
     protected void onCreate(){
