@@ -42,5 +42,6 @@ databaseChangeLog:
               - column:
                   name: status
                   type: status
+                  defaultValue: "PENDING"
                   constraints:
                     nullable: true

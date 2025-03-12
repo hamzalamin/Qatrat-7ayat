@@ -93,12 +93,24 @@ public class ProfileService implements IProfileService {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(user.getEmail(), oldPassword));
 
+        String passwordUser = user.getPassword();
+        boolean passwordCheck = isSamePassword(passwordUser, oldPassword);
+        if (!passwordCheck){
+            throw new OldPasswordIncorrectException("Old password is incorrect");
+        }
         if (!authentication.isAuthenticated()) {
             throw new OldPasswordIncorrectException("Old password is incorrect");
         }
 
         user.setPassword(passwordEncoder.encode(newPassword));
         userRepository.save(user);
+    }
+
+    private boolean isSamePassword(String passwordUser, String oldPassword){
+        if (!passwordUser.equals(oldPassword)){
+            return false;
+        }
+        return true;
     }
 
 }
