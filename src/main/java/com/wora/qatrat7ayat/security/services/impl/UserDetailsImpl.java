@@ -18,6 +18,10 @@ public class UserDetailsImpl implements UserDetails {
         return new UserDetailsImpl(user);
     }
 
+    public AuthenticatedUser getAuthenticatedUser() {
+        return user;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return user.getAuthorities();
