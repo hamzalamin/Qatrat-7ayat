@@ -87,30 +87,17 @@ public class ProfileService implements IProfileService {
                 .orElseThrow(() -> new EntityNotFoundException("User", id));
     }
 
+
     @Override
     public void changePassword(Long id, String oldPassword, String newPassword) {
         AuthenticatedUser user = authService.getUserById(id);
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(user.getEmail(), oldPassword));
 
-        String passwordUser = user.getPassword();
-        boolean passwordCheck = isSamePassword(passwordUser, oldPassword);
-        if (!passwordCheck){
-            throw new OldPasswordIncorrectException("Old password is incorrect");
-        }
-        if (!authentication.isAuthenticated()) {
+        if (!passwordEncoder.matches(oldPassword, user.getPassword())) {
             throw new OldPasswordIncorrectException("Old password is incorrect");
         }
 
         user.setPassword(passwordEncoder.encode(newPassword));
         userRepository.save(user);
-    }
-
-    private boolean isSamePassword(String passwordUser, String oldPassword){
-        if (!passwordUser.equals(oldPassword)){
-            return false;
-        }
-        return true;
     }
 
 }
