@@ -6,19 +6,20 @@ import com.wora.qatrat7ayat.security.DTO.Role.UpdateRoleDto;
 import com.wora.qatrat7ayat.security.services.IRoleService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
-@RestController("/roles")
+@RestController
+@RequestMapping("/api/v1/roles")
 @RequiredArgsConstructor
 public class RoleController {
     private final IRoleService roleService;
 
     @PostMapping
-    public ResponseEntity<RoleDto> create(@Valid CreateRoleDto createRoleDto) {
+    public ResponseEntity<RoleDto> create(@Valid @RequestBody CreateRoleDto createRoleDto) {
         return new ResponseEntity<>(roleService.create(createRoleDto), HttpStatus.CREATED);
     }
 
@@ -28,13 +29,13 @@ public class RoleController {
     }
 
     @GetMapping
-    public ResponseEntity<List<RoleDto>> findAll(int pageNumber, int Size) {
-        return new ResponseEntity<>(roleService.findAll(pageNumber, Size), HttpStatus.OK);
+    public ResponseEntity<Page<RoleDto>> findAll(int pageNumber, int size) {
+        return new ResponseEntity<>(roleService.findAllPage(pageNumber, size), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<RoleDto> update(
-            @Valid UpdateRoleDto updateRoleDto,
+            @Valid @RequestBody UpdateRoleDto updateRoleDto,
             @PathVariable Long id
     ) {
         return new ResponseEntity<>(roleService.update(updateRoleDto, id), HttpStatus.OK);

@@ -10,6 +10,7 @@ import com.wora.qatrat7ayat.security.models.Role;
 import com.wora.qatrat7ayat.security.repositories.RoleRepository;
 import com.wora.qatrat7ayat.security.services.IRoleService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +35,14 @@ public class RoleService implements IRoleService {
     }
 
     @Override
+    public Page<RoleDto> findAllPage(Integer pageNumber, Integer size) {
+        PageRequest pageable = PageRequest.of(pageNumber, size);
+        return roleRepository.findAll(pageable).map(roleMapper::toDto);
+    }
+
+    @Override
     public RoleDto create(CreateRoleDto createRoleDto) {
+        System.out.println(createRoleDto);
         Role role = roleMapper.toEntity(createRoleDto);
         Role createdRole = roleRepository.save(role);
         return roleMapper.toDto(createdRole);
@@ -59,7 +67,7 @@ public class RoleService implements IRoleService {
     @Override
     public List<RoleDto> findAll(Integer pageNumber, Integer size) {
         PageRequest pageRequest = PageRequest.of(pageNumber, size);
-        return roleRepository.findAll().stream()
+        return roleRepository.findAll(pageRequest).stream()
                 .map(roleMapper::toDto)
                 .toList();
     }
