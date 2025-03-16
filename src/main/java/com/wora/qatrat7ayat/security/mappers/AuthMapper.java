@@ -1,6 +1,7 @@
 package com.wora.qatrat7ayat.security.mappers;
 
-import com.wora.qatrat7ayat.models.DTOs.user.CreateUserAccountDto;
+import com.wora.qatrat7ayat.models.DTOs.account.CreateUserAccountDto;
+import com.wora.qatrat7ayat.models.DTOs.account.UpdateUserAccountDto;
 import com.wora.qatrat7ayat.models.DTOs.user.ProfileDto;
 import com.wora.qatrat7ayat.security.DTO.SignupRequest;
 import com.wora.qatrat7ayat.security.DTO.SignupResponse;
@@ -13,7 +14,7 @@ public interface AuthMapper {
     AuthenticatedUser toEntity(SignupResponse signupResponse);
     AuthenticatedUser toEntity(SignupRequest signupRequest);
     AuthenticatedUser toEntity(CreateUserAccountDto signupRequest);
-
+    AuthenticatedUser toEntity(UpdateUserAccountDto signupRequest);
 
     @Mapping(target = "phone", source = "phone")
     @Mapping(target = "email", source = "email")
@@ -21,6 +22,5 @@ public interface AuthMapper {
     @Mapping(target = "lastName", source = "lastName")
     @Mapping(target = "bloodType", source = "bloodType")
     SignupResponse toDto(AuthenticatedUser authenticatedUser);
-
     ProfileDto toProfileDto(AuthenticatedUser authenticatedUser);
 }

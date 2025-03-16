@@ -1,4 +1,4 @@
-package com.wora.qatrat7ayat.models.DTOs.user;
+package com.wora.qatrat7ayat.models.DTOs.account;
 
 import com.wora.qatrat7ayat.models.enumes.BloodType;
 import com.wora.qatrat7ayat.security.models.enume.Gender;
@@ -8,11 +8,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CreateUserAccountDto {
+public class UpdateUserAccountDto {
     @NotBlank
     private String email;
     @NotBlank
-    private String password;
     private String firstName;
     private String lastName;
     private Long roleId;

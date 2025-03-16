@@ -1,10 +1,13 @@
 package com.wora.qatrat7ayat.controllers;
 
-import com.wora.qatrat7ayat.models.DTOs.user.CreateUserAccountDto;
+import com.wora.qatrat7ayat.models.DTOs.account.CreateUserAccountDto;
+import com.wora.qatrat7ayat.models.DTOs.account.UpdateUserAccountDto;
+import com.wora.qatrat7ayat.models.DTOs.article.ArticleDto;
 import com.wora.qatrat7ayat.security.DTO.SignupResponse;
-import com.wora.qatrat7ayat.services.INTER.IUserService;
+import com.wora.qatrat7ayat.services.INTER.IAccountService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,18 +16,46 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/admin/")
 @RequiredArgsConstructor
 public class AccountsController {
-    private final IUserService userService;
+    private final IAccountService accountService;
 
     @PostMapping("/create-account")
     public ResponseEntity<SignupResponse> create(@RequestBody @Valid CreateUserAccountDto signupRequest) {
-        return new ResponseEntity<>(userService.createUserAccount(signupRequest), HttpStatus.CREATED);
+        return new ResponseEntity<>(accountService.create(signupRequest), HttpStatus.CREATED);
     }
 
-    //patch katreplaci gha state f lentity makatupdatich ela gaa3 entity
     @PatchMapping("/{id}/suspend-toggle")
     public ResponseEntity<String> toggleUserSuspension(@PathVariable Long id) {
-        boolean isSuspended = userService.toggleSuspension(id);
+        boolean isSuspended = accountService.toggleSuspension(id);
         String message = isSuspended ? "User has been unsuspended." : "User has been suspended.";
         return ResponseEntity.ok(message);
+    }
+
+    @PutMapping("/update-account/{id}")
+    public ResponseEntity<SignupResponse> update(
+            @RequestBody @Valid UpdateUserAccountDto updateUserAccountDto,
+            @PathVariable Long id
+    ) {
+        return new ResponseEntity<>(accountService.update(updateUserAccountDto, id), HttpStatus.OK);
+    }
+
+    @GetMapping("/user-accounts")
+    public ResponseEntity<Page<SignupResponse>> findAll(@RequestParam int pageNumber, int size){
+        Page<SignupResponse> articles = accountService.findAllPage(pageNumber, size);
+        return new ResponseEntity<>(articles, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/user-accounts/{id}")
+    public ResponseEntity<String> delete(
+            @PathVariable Long id
+    ){
+        accountService.delete(id);
+        return new ResponseEntity<>("ARTICLE with id: " + id + " deleted successfully !!", HttpStatus.OK);
+    }
+
+    @GetMapping("/user-accounts/{id}")
+    public ResponseEntity<SignupResponse> findById(
+            @PathVariable Long id
+    ){
+        return new ResponseEntity<>(accountService.findById(id), HttpStatus.OK);
     }
 }

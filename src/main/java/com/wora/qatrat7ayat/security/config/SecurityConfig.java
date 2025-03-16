@@ -46,7 +46,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/v1/articles").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/articles/{id}").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/articles").hasRole("COORDINATOR")
-                        .requestMatchers("/api/v1/roles/**").hasRole("ADMIN")
+                        .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
+
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .exceptionHandling(exception -> exception.accessDeniedHandler(customAccessDeniedHandler()));
