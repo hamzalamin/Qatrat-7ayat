@@ -17,11 +17,13 @@ import com.wora.qatrat7ayat.services.INTER.IAccountService;
 import com.wora.qatrat7ayat.services.INTER.ICityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -118,10 +120,18 @@ public class AccountService implements IAccountService {
     }
 
     @Override
-    public Page<SignupResponse> findAllPage(Integer pageNumber, Integer size){
+    public Page<SignupResponse> findAllPage(Integer pageNumber, Integer size) {
         PageRequest pageable = PageRequest.of(pageNumber, size);
-        return userRepository.findAll(pageable)
-                .map(user -> authMapper.toDto((AuthenticatedUser) user));
+
+        Page<User> userPage = userRepository.findAll(pageable);
+        int offset = 1;
+        List<SignupResponse> signupResponses = userPage.getContent()
+                .stream()
+                .skip(offset)
+                .map(user -> authMapper.toDto((AuthenticatedUser) user))
+                .collect(Collectors.toList());
+
+        return new PageImpl<>(signupResponses, pageable, userPage.getTotalElements());
     }
 
     @Override
