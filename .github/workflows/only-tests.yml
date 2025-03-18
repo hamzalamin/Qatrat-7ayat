@@ -18,6 +18,6 @@
 #        with:
 #          java-version: 21
 #          distribution: 'adopt'
-
+#
 #      - name: All the Tests and Coverage checks
 #        run: mvn clean install

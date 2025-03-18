@@ -2,6 +2,7 @@ package com.wora.qatrat7ayat.security.services.impl;
 
 import com.wora.qatrat7ayat.exceptions.DefaultEntityNotFound;
 import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
+import com.wora.qatrat7ayat.exceptions.RoleLinkedToUsersException;
 import com.wora.qatrat7ayat.mappers.RoleMapper;
 import com.wora.qatrat7ayat.security.DTO.Role.CreateRoleDto;
 import com.wora.qatrat7ayat.security.DTO.Role.RoleDto;
@@ -59,6 +60,9 @@ public class RoleService implements IRoleService {
     public RoleDto update(UpdateRoleDto updateRoleDto, Long id) {
         Role role = roleRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Role", id));
+        if (role.getUsers() != null && !role.getUsers().isEmpty()) {
+            throw new RoleLinkedToUsersException(role.getId());
+        }
         role.setName(updateRoleDto.name());
         Role updatedRole = roleRepository.save(role);
         return roleMapper.toDto(updatedRole);
@@ -76,6 +80,9 @@ public class RoleService implements IRoleService {
     public void delete(Long id) {
         Role role = roleRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Role", id));
+        if (role.getUsers() != null && !role.getUsers().isEmpty()) {
+            throw new RoleLinkedToUsersException(role.getId());
+        }
         roleRepository.delete(role);
     }
 }

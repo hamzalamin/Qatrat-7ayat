@@ -50,12 +50,14 @@ public class AccountService implements IAccountService {
         if (authService.existsByEmail(createUserAccountDto.getEmail())) {
             throw new UserAlreadyExist(createUserAccountDto.getEmail());
         }
+        City city = cityService.findCityEntity(createUserAccountDto.getCityId());
         Role role = roleService.findRoleById(createUserAccountDto.getRoleId());
         AuthenticatedUser user = authMapper.toEntity(createUserAccountDto);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String hashedPassword = encoder.encode(createUserAccountDto.getPassword());
         user.setPassword(hashedPassword);
         user.setRole(role);
+        user.setCity(city);
         AuthenticatedUser savedUser = userRepository.save(user);
         return authMapper.toDto(savedUser);
     }

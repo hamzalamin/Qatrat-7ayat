@@ -16,11 +16,14 @@ public interface AuthMapper {
     AuthenticatedUser toEntity(CreateUserAccountDto signupRequest);
     AuthenticatedUser toEntity(UpdateUserAccountDto signupRequest);
 
+    @Mapping(target = "id", source = "id")
     @Mapping(target = "phone", source = "phone")
     @Mapping(target = "email", source = "email")
     @Mapping(target = "firstName", source = "firstName")
     @Mapping(target = "lastName", source = "lastName")
     @Mapping(target = "bloodType", source = "bloodType")
+    @Mapping(target = "city", source = "city")
+    @Mapping(target = "role", source = "role")
     SignupResponse toDto(AuthenticatedUser authenticatedUser);
     ProfileDto toProfileDto(AuthenticatedUser authenticatedUser);
 }
