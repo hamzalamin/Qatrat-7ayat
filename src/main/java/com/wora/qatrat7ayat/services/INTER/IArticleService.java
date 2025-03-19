@@ -8,4 +8,5 @@ import org.springframework.data.domain.Page;
 
 public interface IArticleService extends GenericService<CreateArticleDto, UpdateArticleDto, ArticleDto, Long> {
     Page<ArticleDto> findAllPage(Integer pageNumber, Integer size);
+    void updateStatus(Long id);
 }

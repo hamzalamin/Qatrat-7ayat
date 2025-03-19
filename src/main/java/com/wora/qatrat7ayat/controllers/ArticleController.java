@@ -42,10 +42,14 @@ public class ArticleController {
         return new ResponseEntity<>(articleService.update(updateArticleDto ,id), HttpStatus.OK);
     }
 
+    @PutMapping("/status/{id}")
+    public ResponseEntity<String> updateStatus(@PathVariable Long id){
+        articleService.updateStatus(id);
+        return new ResponseEntity<>("Status changed successfully", HttpStatus.OK);
+    }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> update(
-            @PathVariable Long id
-    ){
+    public ResponseEntity<String> delete(@PathVariable Long id){
         articleService.delete(id);
         return new ResponseEntity<>("ARTICLE with id: " + id + " deleted successfully !!", HttpStatus.OK);
     }

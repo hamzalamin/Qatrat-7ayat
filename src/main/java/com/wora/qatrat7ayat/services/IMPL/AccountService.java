@@ -58,6 +58,7 @@ public class AccountService implements IAccountService {
         user.setPassword(hashedPassword);
         user.setRole(role);
         user.setCity(city);
+        user.setSuspended(true);
         AuthenticatedUser savedUser = userRepository.save(user);
         return authMapper.toDto(savedUser);
     }

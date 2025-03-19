@@ -1,9 +1,6 @@
 package com.wora.qatrat7ayat.exceptions.global;
 
-import com.wora.qatrat7ayat.exceptions.AccessDeniedException;
-import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
-import com.wora.qatrat7ayat.exceptions.OldPasswordIncorrectException;
-import com.wora.qatrat7ayat.exceptions.RoleLinkedToUsersException;
+import com.wora.qatrat7ayat.exceptions.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -27,8 +24,13 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(RoleLinkedToUsersException.class)
-    public ResponseEntity<String> roleLinkedToUsersException(AccessDeniedException ex) {
+    public ResponseEntity<String> handleRoleLinkedToUsersException(AccessDeniedException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNPROCESSABLE_ENTITY);
+    }
+
+    @ExceptionHandler(UnknownStatusException.class)
+    public ResponseEntity<String> handleUnknownStatusException(UnknownStatusException ex){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
 }

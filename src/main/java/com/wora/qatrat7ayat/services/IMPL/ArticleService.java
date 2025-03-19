@@ -8,6 +8,7 @@ import com.wora.qatrat7ayat.models.DTOs.article.UpdateArticleDto;
 import com.wora.qatrat7ayat.models.entities.Article;
 import com.wora.qatrat7ayat.models.entities.City;
 import com.wora.qatrat7ayat.models.entities.User;
+import com.wora.qatrat7ayat.models.enumes.Status;
 import com.wora.qatrat7ayat.repositories.ArticleRepository;
 import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
 import com.wora.qatrat7ayat.security.services.IAuthService;
@@ -58,6 +59,7 @@ public class ArticleService implements IArticleService {
     public ArticleDto findById(Long id) {
         Article article = articleRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Article", id));
+        article.setStatus(Status.PENDING);
         return articleMapper.toDto(article);
     }
 
@@ -86,7 +88,7 @@ public class ArticleService implements IArticleService {
     @Override
     public List<ArticleDto> findAll(Integer pageNumber, Integer size) {
         PageRequest pageable = PageRequest.of(pageNumber, size);
-        return  articleRepository.findAll(pageable).stream()
+        return articleRepository.findAll(pageable).stream()
                 .map(articleMapper::toDto)
                 .toList();
     }
@@ -97,11 +99,22 @@ public class ArticleService implements IArticleService {
         return articleRepository.findAll(pageable).map(articleMapper::toDto);
     }
 
-
     @Override
     public void delete(Long id) {
         Article article = articleRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Article", id));
         articleRepository.delete(article);
+    }
+
+    @Override
+    public void updateStatus(Long id) {
+        Article article = articleRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Article", id));
+        if (article.getStatus() == null) {
+            article.setStatus(Status.PENDING);
+        } else {
+            article.setStatus(article.getStatus().next());
+        }
+        articleRepository.save(article);
     }
 }
