@@ -117,4 +117,18 @@ public class ArticleService implements IArticleService {
         }
         articleRepository.save(article);
     }
+
+    @Override
+    public Page<ArticleDto> findArticlesByAuthenticatedUser(Integer pageNumber, Integer size) {
+        PageRequest pageable = PageRequest.of(pageNumber, size);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication == null || "anonymousUser".equals(authentication.getPrincipal())) {
+            throw new RuntimeException("User not authenticated");
+        }
+
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        return articleRepository.findByUserId(userDetails.getId(), pageable)
+                .map(articleMapper::toDto);
+    }
 }
