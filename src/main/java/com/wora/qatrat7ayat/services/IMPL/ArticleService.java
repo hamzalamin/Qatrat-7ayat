@@ -67,7 +67,7 @@ public class ArticleService implements IArticleService {
     public ArticleDto update(UpdateArticleDto updateArticleDto, Long id) {
         Article article = articleRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Article", id));
-
+        City city = cityService.findCityEntity(updateArticleDto.cityId());
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || authentication.getPrincipal() == "anonymousUser") {
             throw new RuntimeException("User not authenticated");
@@ -79,10 +79,11 @@ public class ArticleService implements IArticleService {
                 .title(updateArticleDto.title())
                 .content(updateArticleDto.content())
                 .user(user)
+                .city(city)
                 .imageUrl(updateArticleDto.imageUrl())
                 .build();
-
-        return articleMapper.toDto(updateArticle);
+        Article savedArticle = articleRepository.save(updateArticle);
+        return articleMapper.toDto(savedArticle);
     }
 
     @Override

@@ -9,7 +9,6 @@ import com.wora.qatrat7ayat.models.entities.City;
 import com.wora.qatrat7ayat.repositories.CityRepository;
 import com.wora.qatrat7ayat.services.INTER.ICityService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
