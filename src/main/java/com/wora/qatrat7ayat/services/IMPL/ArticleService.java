@@ -19,6 +19,7 @@ import com.wora.qatrat7ayat.services.INTER.IProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -97,7 +98,8 @@ public class ArticleService implements IArticleService {
     @Override
     public Page<ArticleDto> findAllPage(Integer pageNumber, Integer size) {
         PageRequest pageable = PageRequest.of(pageNumber, size);
-        return articleRepository.findAll(pageable).map(articleMapper::toDto);
+        return articleRepository.findAll(pageable)
+                .map(articleMapper::toDto);
     }
 
     @Override
@@ -131,5 +133,21 @@ public class ArticleService implements IArticleService {
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         return articleRepository.findByUserId(userDetails.getId(), pageable)
                 .map(articleMapper::toDto);
+    }
+
+    @Override
+    public Page<ArticleDto> findAllApprovedArticles(Integer pageNumber, Integer size) {
+        PageRequest pageable = PageRequest.of(pageNumber, size);
+        return articleRepository.findByStatus(Status.APPROVED.name(), pageable)
+                .map(articleMapper::toDto);
+    }
+
+    @Override
+    public List<ArticleDto> findLatestApprovedArticles(Integer limit) {
+        PageRequest pageable = PageRequest.of(0, limit);
+        List<Article> articles = articleRepository.findByStatusOrderByPublishedAtDesc(Status.APPROVED.name(), pageable);
+        return articles.stream()
+                .map(articleMapper::toDto)
+                .toList();
     }
 }
