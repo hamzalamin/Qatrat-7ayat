@@ -111,6 +111,7 @@ public class AuthService implements IAuthService {
         return authMapper.toDto(authenticatedUser);
     }
 
+    @Override
     public boolean existsByEmail(String email){
         return userRepository.existsByEmail(email);
     }
