@@ -1,6 +1,5 @@
 package com.wora.qatrat7ayat.services.IMPL;
 
-import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
 import com.wora.qatrat7ayat.mappers.DonorMapper;
 import com.wora.qatrat7ayat.models.DTOs.action.donor.CreateDonorDto;
 import com.wora.qatrat7ayat.models.DTOs.action.donor.DonorDto;
@@ -16,11 +15,9 @@ import com.wora.qatrat7ayat.models.entities.User;
 import com.wora.qatrat7ayat.models.enumes.BloodType;
 import com.wora.qatrat7ayat.repositories.DonorRepository;
 import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
-import com.wora.qatrat7ayat.security.repositories.AuthUserRepository;
 import com.wora.qatrat7ayat.security.services.IAuthService;
 import com.wora.qatrat7ayat.services.INTER.IHospitalService;
 import com.wora.qatrat7ayat.services.INTER.IUserService;
-import jakarta.validation.constraints.Null;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,7 +29,6 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
