@@ -1,5 +1,6 @@
 package com.wora.qatrat7ayat.services.IMPL;
 
+import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
 import com.wora.qatrat7ayat.mappers.DonorMapper;
 import com.wora.qatrat7ayat.models.DTOs.action.donor.CreateDonorDto;
 import com.wora.qatrat7ayat.models.DTOs.action.donor.DonorDto;
@@ -32,8 +33,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
@@ -140,6 +140,30 @@ class DonorServiceTest {
         assertNotNull(result);
         assertSame(expectedDonorDto, result);
         verify(donorRepository).save(any(Donor.class));
+    }
+
+    @Test
+    @DisplayName("Should throw an exception when hospital is not found")
+    void createWithHospitalNotFound() {
+        EmbeddedCityDto city = new EmbeddedCityDto(1L, "AGADIR");
+        ProfileDto profileDto = new ProfileDto(1L, "Hamza", "Lamin", null, "0666627661", BloodType.A_MOINS, null, null, city);
+        EmbeddedDonorDto donorDto = new EmbeddedDonorDto("Hi yo wsuup Gs", 1L, 999L, "Period ajemy");
+        CreateProfileDto createProfileDto = new CreateProfileDto("Hamza", "Lamin", null, "0666627661", BloodType.A_MOINS.toString(), city.id());
+
+        CreateDonorDto createDonorDto = new CreateDonorDto(
+                createProfileDto,
+                donorDto
+        );
+
+        SecurityContextHolder.setContext(securityContext);
+        given(securityContext.getAuthentication()).willReturn(authentication);
+        given(authentication.isAuthenticated()).willReturn(false);
+        given(hospitalService.findHospitalEntity(999L)).willReturn(null);
+
+        assertThrows(NullPointerException.class, () -> {
+            sut.create(createDonorDto);
+        });
+        verify(hospitalService).findHospitalEntity(999L);
     }
 
 }
