@@ -20,6 +20,7 @@ import com.wora.qatrat7ayat.security.repositories.AuthUserRepository;
 import com.wora.qatrat7ayat.security.services.IAuthService;
 import com.wora.qatrat7ayat.services.INTER.IHospitalService;
 import com.wora.qatrat7ayat.services.INTER.IUserService;
+import jakarta.validation.constraints.Null;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -37,6 +38,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -166,4 +168,28 @@ class DonorServiceTest {
         verify(hospitalService).findHospitalEntity(999L);
     }
 
+
+    @Test
+    @DisplayName("Should throw an exception when blood type is invalid")
+    void createWithInvalidBloodType() {
+        EmbeddedCityDto city = new EmbeddedCityDto(1L, "AGADIR");
+        ProfileDto profileDto = new ProfileDto(1L, "Hamza", "Lamin", null, "0666627661", null, null, null, city);
+        EmbeddedDonorDto donorDto = new EmbeddedDonorDto("Hi yo wsuup Gs", 1L, 999L, "Period ajemy");
+        CreateProfileDto createProfileDto = new CreateProfileDto("Hamza", "Lamin", null, "0666627661", BloodType.A_MOINS.toString(), city.id());
+
+        CreateDonorDto createDonorDto = new CreateDonorDto(
+                createProfileDto,
+                donorDto
+        );
+
+        SecurityContextHolder.setContext(securityContext);
+        given(securityContext.getAuthentication()).willReturn(authentication);
+        given(authentication.isAuthenticated()).willReturn(false);
+
+        assertThrows(NullPointerException.class, () -> {
+            sut.create(createDonorDto);
+        });
+
+        verifyNoInteractions(donorRepository);
+    }
 }
