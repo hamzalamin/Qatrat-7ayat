@@ -11,6 +11,7 @@ import com.wora.qatrat7ayat.models.DTOs.user.CreateProfileDto;
 import com.wora.qatrat7ayat.models.DTOs.user.ProfileDto;
 import com.wora.qatrat7ayat.models.entities.Donor;
 import com.wora.qatrat7ayat.models.entities.Hospital;
+import com.wora.qatrat7ayat.models.entities.User;
 import com.wora.qatrat7ayat.models.enumes.BloodType;
 import com.wora.qatrat7ayat.repositories.DonorRepository;
 import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
@@ -55,6 +56,8 @@ class DonorServiceTest {
     private SecurityContext securityContext;
     @Mock
     private Authentication authentication;
+    @Mock
+    private IUserService userService;
 
 
     @Test
@@ -97,4 +100,46 @@ class DonorServiceTest {
         assertSame(expectedDonorDto, result);
         verify(donorRepository).save(any(Donor.class));
     }
+
+
+    @Test
+    @DisplayName("Should create blood donation successfully with unauthenticated User")
+    void createWithUnAuthenticatedUser() {
+        EmbeddedCityDto city = new EmbeddedCityDto(1L, "AGADIR");
+        Hospital hospital = new Hospital(1L, "Mhamed 5", List.of());
+        EmbeddedHospitalDto embeddedHospitalDto = new EmbeddedHospitalDto(1L, "Mohamed5");
+        ProfileDto profileDto = new ProfileDto(1L, "Hamza", "Lamin", null, "0666627661", BloodType.A_MOINS, null, null, city);
+        EmbeddedDonorDto donorDto = new EmbeddedDonorDto("Hi yo wsuup Gs", 1L, 1L, "Period ajemy");
+        EmbeddedDonorDetailsDto donorDetailsDto = new EmbeddedDonorDetailsDto(1L, "message", embeddedHospitalDto, "Avvv");
+        CreateProfileDto createProfileDto = new CreateProfileDto( "Hamza", "Lamin", null, "0666627661", BloodType.A_MOINS.toString(), city.id());
+
+        CreateDonorDto createDonorDto = new CreateDonorDto(
+                createProfileDto,
+                donorDto
+        );
+
+        User unAuthenticatedUser = new User();
+        unAuthenticatedUser.setId(1L);
+
+        Donor donor = new Donor();
+        donor.setId(1L);
+
+        DonorDto expectedDonorDto = new DonorDto(profileDto, donorDetailsDto);
+
+        SecurityContextHolder.setContext(securityContext);
+        given(securityContext.getAuthentication()).willReturn(authentication);
+        given(authentication.isAuthenticated()).willReturn(false);
+
+        given(userService.createUserEntity(createProfileDto)).willReturn(unAuthenticatedUser);
+        given(hospitalService.findHospitalEntity(1L)).willReturn(hospital);
+        given(donorMapper.toEntity(donorDto)).willReturn(donor);
+        given(donorRepository.save(any(Donor.class))).willReturn(donor);
+        given(donorMapper.toDto(donor)).willReturn(expectedDonorDto);
+
+        DonorDto result = sut.create(createDonorDto);
+        assertNotNull(result);
+        assertSame(expectedDonorDto, result);
+        verify(donorRepository).save(any(Donor.class));
+    }
+
 }
