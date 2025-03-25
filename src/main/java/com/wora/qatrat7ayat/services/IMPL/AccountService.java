@@ -2,6 +2,9 @@ package com.wora.qatrat7ayat.services.IMPL;
 
 import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
 import com.wora.qatrat7ayat.exceptions.UserAlreadyExist;
+import com.wora.qatrat7ayat.mappers.AccountMapper;
+import com.wora.qatrat7ayat.mappers.ProfileMapper;
+import com.wora.qatrat7ayat.models.DTOs.account.AccountDto;
 import com.wora.qatrat7ayat.models.DTOs.account.CreateUserAccountDto;
 import com.wora.qatrat7ayat.models.DTOs.account.UpdateUserAccountDto;
 import com.wora.qatrat7ayat.models.entities.City;
@@ -33,6 +36,7 @@ public class AccountService implements IAccountService {
     private final IRoleService roleService;
     private final ICityService cityService;
     private final AuthMapper authMapper;
+    private final AccountMapper accountMapper;
 
     @Override
     public boolean toggleSuspension(Long id) {
@@ -123,18 +127,21 @@ public class AccountService implements IAccountService {
     }
 
     @Override
-    public Page<SignupResponse> findAllPage(Integer pageNumber, Integer size) {
+    public Page<AccountDto> findAllPage(Integer pageNumber, Integer size) {
         PageRequest pageable = PageRequest.of(pageNumber, size);
 
         Page<User> userPage = userRepository.findAll(pageable);
         int offset = 1;
-        List<SignupResponse> signupResponses = userPage.getContent()
+        List<AccountDto> signupResponses = userPage.getContent()
                 .stream()
                 .skip(offset)
-                .map(user -> authMapper.toDto((AuthenticatedUser) user))
+                .map(accountMapper::userToAccountDto)
                 .collect(Collectors.toList());
 
         return new PageImpl<>(signupResponses, pageable, userPage.getTotalElements());
+
+//        return userRepository.findAll(pageable).map(accountMapper::userToAccountDto);
+
     }
 
     @Override

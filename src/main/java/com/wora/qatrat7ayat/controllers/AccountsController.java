@@ -1,5 +1,6 @@
 package com.wora.qatrat7ayat.controllers;
 
+import com.wora.qatrat7ayat.models.DTOs.account.AccountDto;
 import com.wora.qatrat7ayat.models.DTOs.account.CreateUserAccountDto;
 import com.wora.qatrat7ayat.models.DTOs.account.UpdateUserAccountDto;
 import com.wora.qatrat7ayat.security.DTO.SignupResponse;
@@ -38,8 +39,8 @@ public class AccountsController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<SignupResponse>> findAll(@RequestParam int pageNumber, int size){
-        Page<SignupResponse> articles = accountService.findAllPage(pageNumber, size);
+    public ResponseEntity<Page<AccountDto>> findAll(@RequestParam int pageNumber, int size){
+        Page<AccountDto> articles = accountService.findAllPage(pageNumber, size);
         return new ResponseEntity<>(articles, HttpStatus.OK);
     }
 

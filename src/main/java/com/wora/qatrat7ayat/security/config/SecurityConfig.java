@@ -52,6 +52,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/articles/**").hasRole("COORDINATOR")
                         .requestMatchers(HttpMethod.GET, "/api/v1/my-articles").hasRole("COORDINATOR")
                         .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/v1/admin/accounts").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .exceptionHandling(exception -> exception
