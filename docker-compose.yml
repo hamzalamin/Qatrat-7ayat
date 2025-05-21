@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
     container_name: qatrat7ayatApk
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:1414/prod_db
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5433/prod_db
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=123
     depends_on:
@@ -16,8 +16,8 @@ services:
   db:
     image: postgres:alpine
     ports:
-      - "1414:1414"
-    command: [ "postgres", "-p", "1414" ]
+      - "5433:5433"
+    command: [ "postgres", "-p", "5433" ]
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123

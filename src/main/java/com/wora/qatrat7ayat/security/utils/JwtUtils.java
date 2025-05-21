@@ -6,6 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
 import java.util.Base64;
@@ -20,7 +21,16 @@ public class JwtUtils {
     private static final String RAW_SECRET_KEY = "68*aq4nif0-xm4a8=!qlk2flmy&ca-q9x&n*ii4kf6%ijcwe9%";
     private static final String SECRET_KEY = Base64.getEncoder().encodeToString(RAW_SECRET_KEY.getBytes());
     private static final long EXPIRATION_TIME = 864_000_000L;
+    private final UserDetailsService userDetailsService;
 
+    public JwtUtils(UserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
+
+    public UserDetails getUserDetails(String token) {
+        String username = extractUsername(token);
+        return userDetailsService.loadUserByUsername(username);
+    }
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }

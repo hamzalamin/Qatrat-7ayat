@@ -17,6 +17,8 @@ databaseChangeLog:
       file: db/changelog/tables/create-requests-table.yml
   - include:
       file: db/changelog/tables/create-hospitals-table.yml
+  - include:
+      file: db/changelog/tables/create-messages-table.yml
 
   - include:
       file: db/changelog/foreign-keys/create-authUser-role-forkey.yml
@@ -30,3 +32,7 @@ databaseChangeLog:
       file: db/changelog/foreign-keys/create-user-action-forkey.yml
   - include:
       file: db/changelog/foreign-keys/create-user-city-forkey.yml
+  - include:
+      file: db/changelog/foreign-keys/create-message-authUser-orkey.yml
+  - include:
+      file: db/changelog/foreign-keys/create-message-authUser-reciver-orkey.yml

@@ -3,7 +3,7 @@ spring:
     name: Qatrat7ayat
 
   datasource:
-    url: jdbc:postgresql://localhost:1414/prod_db
+    url: jdbc:postgresql://localhost:5433/prod_db
     username: postgres
     password: 123
     driver-class-name: org.postgresql.Driver

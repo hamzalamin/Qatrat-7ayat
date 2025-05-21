@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_table_actions
+      author: hamzalamin
+      changes:
+        - createTable:
+            tableName: messages
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: sender_id
+                  type: bigint
+              - column:
+                  name: receiver_id
+                  type: bigint
+              - column:
+                  name: content
+                  type: text
+              - column:
+                  name: timestamp
+                  type: timestamp

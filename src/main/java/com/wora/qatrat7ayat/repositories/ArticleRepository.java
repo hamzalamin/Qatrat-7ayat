@@ -1,7 +1,6 @@
 package com.wora.qatrat7ayat.repositories;
 
 import com.wora.qatrat7ayat.models.entities.Article;
-import com.wora.qatrat7ayat.models.enumes.Status;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
