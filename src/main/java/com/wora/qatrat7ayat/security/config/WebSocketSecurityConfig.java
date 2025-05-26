@@ -1,7 +1,7 @@
 package com.wora.qatrat7ayat.security.config;
 
 import com.wora.qatrat7ayat.security.utils.JwtUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
@@ -12,17 +12,19 @@ import org.springframework.messaging.support.ChannelInterceptor;
 import org.springframework.messaging.support.MessageHeaderAccessor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
 
 @Configuration
+@RequiredArgsConstructor
 @EnableWebSocketMessageBroker
 public class WebSocketSecurityConfig implements WebSocketMessageBrokerConfigurer {
 
-    @Autowired
-    private JwtUtils jwtUtil;
+
+    private final JwtUtils jwtUtil;
 
     @Override
     public void configureClientInboundChannel(ChannelRegistration registration) {
@@ -34,17 +36,16 @@ public class WebSocketSecurityConfig implements WebSocketMessageBrokerConfigurer
                     String token = accessor.getFirstNativeHeader("Authorization");
                     if (token != null && token.startsWith("Bearer ")) {
                         token = token.substring(7);
-                        String email = jwtUtil.extractUsername(token);
-                        UserDetails userDetails = jwtUtil.getUserDetails(email);
-                        Authentication auth = new UsernamePasswordAuthenticationToken(
-                                userDetails, null, userDetails.getAuthorities()
-                        );
+                        UserDetails userDetails = jwtUtil.getUserDetails(token);
+                        Authentication auth = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                         accessor.setUser(auth);
+                        SecurityContextHolder.getContext().setAuthentication(auth);
                     }
                 }
                 return message;
             }
         });
     }
+
 }
 

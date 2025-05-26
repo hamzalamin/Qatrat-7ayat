@@ -8,6 +8,8 @@ import com.wora.qatrat7ayat.security.DTO.SignupResponse;
 import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
 import org.springframework.http.ResponseEntity;
 
+import java.util.List;
+
 public interface IAuthService {
     ResponseEntity<JwtResponse> authenticateUser(LoginRequest loginRequest);
     SignupResponse registerUser(SignupRequest request);
@@ -15,4 +17,5 @@ public interface IAuthService {
     AuthenticatedUser getUserById(Long id);
     AuthenticatedUser getUserByEmail(String email);
     ProfileDto getAuthenticatedUserProfile();
+    List<SignupResponse> getAllUsers();
 }

@@ -128,4 +128,10 @@ public class AuthService implements IAuthService {
                 .orElseThrow(() -> new EntityNotFoundException("User not found with email: ", email));
     }
 
+    public List<SignupResponse> getAllUsers(){
+        return userRepository.findAll().stream()
+                .map(authMapper::toDto)
+                .toList();
+    }
+
 }

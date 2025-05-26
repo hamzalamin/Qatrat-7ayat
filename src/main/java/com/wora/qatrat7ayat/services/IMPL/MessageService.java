@@ -14,6 +14,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
+
 
 @Service
 @RequiredArgsConstructor
@@ -21,26 +23,18 @@ public class MessageService implements IMessageService {
     private final MessageRepository messageRepository;
     private final AuthUserRepository userRepository;
 
-    @Override
-    public Message saveMessage(MessageDTO dto) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        if (!(authentication.getPrincipal() instanceof UserDetails userDetails)) {
-            throw new IllegalStateException("Authentication principal is not an instance of UserDetails");
-        }
-
-        String email = userDetails.getUsername();
-
+    public Message saveMessage(MessageDTO dto, Principal principal) {
+        String email = principal.getName();
         AuthenticatedUser sender = userRepository.findByEmail(email)
-                .orElseThrow(() -> new com.wora.qatrat7ayat.exceptions.EntityNotFoundException("Sender", email));
+                .orElseThrow(() -> new EntityNotFoundException("Sender", email));
 
-        AuthenticatedUser receiver = userRepository.findById(dto.getReceiverId())
-                .orElseThrow(() -> new com.wora.qatrat7ayat.exceptions.EntityNotFoundException("Receiver", dto.getReceiverId().toString()));
+        AuthenticatedUser receiver = userRepository.findById(dto.receiverId())
+                .orElseThrow(() -> new com.wora.qatrat7ayat.exceptions.EntityNotFoundException("Receiver", dto.receiverId().toString()));
 
         Message message = new Message();
         message.setSender(sender);
         message.setReceiver(receiver);
-        message.setContent(dto.getContent());
+        message.setContent(dto.content());
 
         return messageRepository.save(message);
     }

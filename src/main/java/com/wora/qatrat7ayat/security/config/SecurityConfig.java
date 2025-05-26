@@ -23,6 +23,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig {
     private final JwtRequestFilter jwtRequestFilter;
+    private static final String ADMIN =  "ADMIN";
+    private static final String COORDINATOR =  "COORDINATOR";
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -33,6 +35,7 @@ public class SecurityConfig {
                     corsConfig.addAllowedOrigin("http://localhost:5173");
                     corsConfig.addAllowedHeader("*");
                     corsConfig.addAllowedMethod("*");
+                    corsConfig.addExposedHeader("*");
                     return corsConfig;
                 }))
                 .authorizeHttpRequests(auth -> auth
@@ -46,15 +49,18 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/public/articles").permitAll()
                         .requestMatchers("/api/v1/public/articles/latest").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/articles/{id}").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/v1/articles").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.PUT, "/api/v1/articles/status/{id}").hasRole("ADMIN")
-                        .requestMatchers("/api/v1/articles").hasRole("COORDINATOR")
-                        .requestMatchers("/api/v1/articles/**").hasRole("COORDINATOR")
-                        .requestMatchers(HttpMethod.GET, "/api/v1/my-articles").hasRole("COORDINATOR")
-                        .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/api/v1/admin/accounts").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/v1/articles").hasRole(ADMIN)
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/articles/status/{id}").hasRole(ADMIN)
+                        .requestMatchers("/api/v1/articles").hasRole(COORDINATOR)
+                        .requestMatchers("/api/v1/articles/**").hasRole(COORDINATOR)
+                        .requestMatchers(HttpMethod.GET, "/api/v1/my-articles").hasRole(COORDINATOR)
+                        .requestMatchers("/api/v1/admin/**").hasRole(ADMIN)
+                        .requestMatchers(HttpMethod.GET, "/api/v1/admin/accounts").hasRole(ADMIN)
+                        .requestMatchers(HttpMethod.GET, "/api/v1/admin/accounts").hasRole(ADMIN)
                         .requestMatchers(HttpMethod.POST, "/api/v1/chat").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/users").permitAll()
                         .requestMatchers("/ws/**").permitAll()
+                        .requestMatchers("/api/**").authenticated()
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .exceptionHandling(exception -> exception
