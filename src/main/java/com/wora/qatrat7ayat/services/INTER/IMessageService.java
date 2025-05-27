@@ -1,10 +1,12 @@
 package com.wora.qatrat7ayat.services.INTER;
 
-import com.wora.qatrat7ayat.models.DTOs.chat.MessageDTO;
-import com.wora.qatrat7ayat.models.entities.Message;
+import com.wora.qatrat7ayat.models.DTOs.chat.MessageRequestDTO;
+import com.wora.qatrat7ayat.models.DTOs.chat.MessageResponseDTO;
 
 import java.security.Principal;
+import java.util.List;
 
 public interface IMessageService {
-    Message saveMessage(MessageDTO dto, Principal principal);
+    MessageResponseDTO saveMessage(MessageRequestDTO dto, Principal principal);
+    List<MessageResponseDTO> getMessagesBetweenUsers(String senderEmail, Long receiverId);
 }
