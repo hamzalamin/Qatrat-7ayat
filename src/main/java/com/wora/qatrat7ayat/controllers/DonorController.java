@@ -2,7 +2,7 @@ package com.wora.qatrat7ayat.controllers;
 
 import com.wora.qatrat7ayat.models.DTOs.action.donor.CreateDonorDto;
 import com.wora.qatrat7ayat.models.DTOs.action.donor.DonorDto;
-import com.wora.qatrat7ayat.services.INTER.IDonorService;
+import com.wora.qatrat7ayat.services.inter.IDonorService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

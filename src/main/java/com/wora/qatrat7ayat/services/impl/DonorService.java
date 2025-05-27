@@ -1,4 +1,4 @@
-package com.wora.qatrat7ayat.services.IMPL;
+package com.wora.qatrat7ayat.services.impl;
 
 import com.wora.qatrat7ayat.mappers.DonorMapper;
 import com.wora.qatrat7ayat.models.DTOs.action.donor.CreateDonorDto;
@@ -9,9 +9,9 @@ import com.wora.qatrat7ayat.models.entities.Hospital;
 import com.wora.qatrat7ayat.models.entities.User;
 import com.wora.qatrat7ayat.repositories.DonorRepository;
 import com.wora.qatrat7ayat.security.services.IAuthService;
-import com.wora.qatrat7ayat.services.INTER.IDonorService;
-import com.wora.qatrat7ayat.services.INTER.IHospitalService;
-import com.wora.qatrat7ayat.services.INTER.IUserService;
+import com.wora.qatrat7ayat.services.inter.IDonorService;
+import com.wora.qatrat7ayat.services.inter.IHospitalService;
+import com.wora.qatrat7ayat.services.inter.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

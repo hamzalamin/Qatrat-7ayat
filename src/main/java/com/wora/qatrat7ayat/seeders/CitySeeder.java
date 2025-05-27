@@ -3,6 +3,7 @@ package com.wora.qatrat7ayat.seeders;
 import com.wora.qatrat7ayat.models.entities.City;
 import com.wora.qatrat7ayat.repositories.CityRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class CitySeeder implements CommandLineRunner {
     private final CityRepository cityRepository;
 
@@ -37,9 +39,9 @@ public class CitySeeder implements CommandLineRunner {
             );
 
             cityRepository.saveAll(cities);
-            System.out.println("Cities (regions) seeded successfully.");
+            log.info("Cities (regions) seeded successfully.");
         } else {
-            System.out.println("Cities already exist, skipping seeding.");
+            log.info("Cities already exist, skipping seeding.");
         }
     }
 }

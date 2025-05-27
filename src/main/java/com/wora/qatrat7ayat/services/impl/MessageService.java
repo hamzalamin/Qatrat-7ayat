@@ -1,4 +1,4 @@
-package com.wora.qatrat7ayat.services.IMPL;
+package com.wora.qatrat7ayat.services.impl;
 
 import com.wora.qatrat7ayat.models.DTOs.chat.MessageRequestDTO;
 import com.wora.qatrat7ayat.models.DTOs.chat.MessageResponseDTO;
@@ -7,7 +7,7 @@ import com.wora.qatrat7ayat.models.entities.Message;
 import com.wora.qatrat7ayat.repositories.MessageRepository;
 import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
 import com.wora.qatrat7ayat.security.services.IAuthService;
-import com.wora.qatrat7ayat.services.INTER.IMessageService;
+import com.wora.qatrat7ayat.services.inter.IMessageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

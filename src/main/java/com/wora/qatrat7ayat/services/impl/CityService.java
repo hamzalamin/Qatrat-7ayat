@@ -1,4 +1,4 @@
-package com.wora.qatrat7ayat.services.IMPL;
+package com.wora.qatrat7ayat.services.impl;
 
 import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
 import com.wora.qatrat7ayat.mappers.CityMapper;
@@ -7,7 +7,7 @@ import com.wora.qatrat7ayat.models.DTOs.city.CreateCityDto;
 import com.wora.qatrat7ayat.models.DTOs.city.UpdateCityDto;
 import com.wora.qatrat7ayat.models.entities.City;
 import com.wora.qatrat7ayat.repositories.CityRepository;
-import com.wora.qatrat7ayat.services.INTER.ICityService;
+import com.wora.qatrat7ayat.services.inter.ICityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;

@@ -5,6 +5,7 @@ import com.wora.qatrat7ayat.security.models.Role;
 import com.wora.qatrat7ayat.security.repositories.AuthUserRepository;
 import com.wora.qatrat7ayat.security.services.IRoleService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,6 +16,7 @@ import java.util.List;
 @Order(2)
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class AdminSeeder implements CommandLineRunner {
     private final AuthUserRepository authUserRepository;
     private final IRoleService roleService;
@@ -38,9 +40,9 @@ public class AdminSeeder implements CommandLineRunner {
 
             );
             authUserRepository.saveAll(auths);
-            System.out.println("Admin saved successfully");
+            log.info("Admin saved successfully");
         } else {
-            System.out.println("Admin already exist, skipping seeding.");
+            log.info("Admin already exist, skipping seeding.");
         }
     }
 }

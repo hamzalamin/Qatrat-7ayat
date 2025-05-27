@@ -4,7 +4,7 @@ import com.wora.qatrat7ayat.models.DTOs.user.ChangePasswordDto;
 import com.wora.qatrat7ayat.models.DTOs.user.ProfileDto;
 import com.wora.qatrat7ayat.models.DTOs.user.UpdateProfileDto;
 import com.wora.qatrat7ayat.security.services.IAuthService;
-import com.wora.qatrat7ayat.services.INTER.IProfileService;
+import com.wora.qatrat7ayat.services.inter.IProfileService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

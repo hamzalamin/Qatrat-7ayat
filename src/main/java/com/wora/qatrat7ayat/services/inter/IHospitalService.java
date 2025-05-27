@@ -1,4 +1,4 @@
-package com.wora.qatrat7ayat.services.INTER;
+package com.wora.qatrat7ayat.services.inter;
 
 import com.wora.qatrat7ayat.models.DTOs.hospital.CreateHospitalDto;
 import com.wora.qatrat7ayat.models.DTOs.hospital.HospitalDto;

@@ -1,4 +1,4 @@
-package com.wora.qatrat7ayat.services.IMPL;
+package com.wora.qatrat7ayat.services.impl;
 
 import com.wora.qatrat7ayat.exceptions.AccessDeniedException;
 import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
@@ -15,12 +15,10 @@ import com.wora.qatrat7ayat.security.repositories.AuthUserRepository;
 import com.wora.qatrat7ayat.security.repositories.UserRepository;
 import com.wora.qatrat7ayat.security.services.IAuthService;
 import com.wora.qatrat7ayat.security.services.impl.UserDetailsImpl;
-import com.wora.qatrat7ayat.services.INTER.ICityService;
-import com.wora.qatrat7ayat.services.INTER.IProfileService;
+import com.wora.qatrat7ayat.services.inter.ICityService;
+import com.wora.qatrat7ayat.services.inter.IProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;

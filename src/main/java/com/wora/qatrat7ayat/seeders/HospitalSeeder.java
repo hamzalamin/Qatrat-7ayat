@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wora.qatrat7ayat.models.entities.Hospital;
 import com.wora.qatrat7ayat.repositories.HospitalRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +16,7 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class HospitalSeeder implements CommandLineRunner {
     private final HospitalRepository hospitalRepository;
     private final ObjectMapper objectMapper;
@@ -29,9 +31,10 @@ public class HospitalSeeder implements CommandLineRunner {
             File file = new File("src/main/resources/JSON/hospitals.json");
             List<Hospital> hospitals = objectMapper.readValue(file, objectMapper.getTypeFactory().constructCollectionType(List.class, Hospital.class));
             hospitalRepository.saveAll(hospitals);
-            System.out.println("Hospitals seeded successfully.");
+            log.info("Hospitals seeded successfully.");
+
         } else {
-            System.out.println("Hospitals already exist, skipping seeding.");
+            log.info("Hospitals already exist, skipping seeding.");
         }
     }
 }

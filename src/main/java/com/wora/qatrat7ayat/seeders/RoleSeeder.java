@@ -3,6 +3,7 @@ package com.wora.qatrat7ayat.seeders;
 import com.wora.qatrat7ayat.security.models.Role;
 import com.wora.qatrat7ayat.security.repositories.RoleRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,7 @@ import java.util.List;
 @Order(1)
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class RoleSeeder implements CommandLineRunner {
     private final RoleRepository roleRepository;
 
@@ -28,9 +30,9 @@ public class RoleSeeder implements CommandLineRunner {
                     new Role("ROLE_COORDINATOR")
             );
             roleRepository.saveAll(roles);
-            System.out.println("roles saved successfully");
+            log.info("Roles seeded with success");
         } else {
-            System.out.println("Roles already exist, skipping seeding.");
+            log.info("Roles already exist, skipping seeding.");
         }
     }
 }

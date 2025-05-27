@@ -3,7 +3,7 @@ package com.wora.qatrat7ayat.controllers;
 import com.wora.qatrat7ayat.models.DTOs.article.ArticleDto;
 import com.wora.qatrat7ayat.models.DTOs.article.CreateArticleDto;
 import com.wora.qatrat7ayat.models.DTOs.article.UpdateArticleDto;
-import com.wora.qatrat7ayat.services.INTER.IArticleService;
+import com.wora.qatrat7ayat.services.inter.IArticleService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

@@ -4,7 +4,7 @@ import com.wora.qatrat7ayat.models.DTOs.account.AccountDto;
 import com.wora.qatrat7ayat.models.DTOs.account.CreateUserAccountDto;
 import com.wora.qatrat7ayat.models.DTOs.account.UpdateUserAccountDto;
 import com.wora.qatrat7ayat.security.DTO.SignupResponse;
-import com.wora.qatrat7ayat.services.INTER.IAccountService;
+import com.wora.qatrat7ayat.services.inter.IAccountService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

@@ -2,7 +2,7 @@ package com.wora.qatrat7ayat.controllers;
 
 
 import com.wora.qatrat7ayat.models.DTOs.city.CityDto;
-import com.wora.qatrat7ayat.services.INTER.ICityService;
+import com.wora.qatrat7ayat.services.inter.ICityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.wora.qatrat7ayat.services.IMPL;
+package com.wora.qatrat7ayat.services.impl;
 
 import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
 import com.wora.qatrat7ayat.mappers.ArticleMapper;
@@ -13,9 +13,9 @@ import com.wora.qatrat7ayat.repositories.ArticleRepository;
 import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
 import com.wora.qatrat7ayat.security.services.IAuthService;
 import com.wora.qatrat7ayat.security.services.impl.UserDetailsImpl;
-import com.wora.qatrat7ayat.services.INTER.IArticleService;
-import com.wora.qatrat7ayat.services.INTER.ICityService;
-import com.wora.qatrat7ayat.services.INTER.IProfileService;
+import com.wora.qatrat7ayat.services.inter.IArticleService;
+import com.wora.qatrat7ayat.services.inter.ICityService;
+import com.wora.qatrat7ayat.services.inter.IProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

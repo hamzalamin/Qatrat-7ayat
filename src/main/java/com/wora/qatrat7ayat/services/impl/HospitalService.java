@@ -1,4 +1,4 @@
-package com.wora.qatrat7ayat.services.IMPL;
+package com.wora.qatrat7ayat.services.impl;
 
 import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
 import com.wora.qatrat7ayat.mappers.HospitalMapper;
@@ -7,7 +7,7 @@ import com.wora.qatrat7ayat.models.DTOs.hospital.HospitalDto;
 import com.wora.qatrat7ayat.models.DTOs.hospital.UpdateHospitalDto;
 import com.wora.qatrat7ayat.models.entities.Hospital;
 import com.wora.qatrat7ayat.repositories.HospitalRepository;
-import com.wora.qatrat7ayat.services.INTER.IHospitalService;
+import com.wora.qatrat7ayat.services.inter.IHospitalService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;

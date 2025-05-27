@@ -1,9 +1,8 @@
-package com.wora.qatrat7ayat.services.IMPL;
+package com.wora.qatrat7ayat.services.impl;
 
 import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
 import com.wora.qatrat7ayat.exceptions.UserAlreadyExist;
 import com.wora.qatrat7ayat.mappers.AccountMapper;
-import com.wora.qatrat7ayat.mappers.ProfileMapper;
 import com.wora.qatrat7ayat.models.DTOs.account.AccountDto;
 import com.wora.qatrat7ayat.models.DTOs.account.CreateUserAccountDto;
 import com.wora.qatrat7ayat.models.DTOs.account.UpdateUserAccountDto;
@@ -16,8 +15,8 @@ import com.wora.qatrat7ayat.security.models.Role;
 import com.wora.qatrat7ayat.security.repositories.UserRepository;
 import com.wora.qatrat7ayat.security.services.IAuthService;
 import com.wora.qatrat7ayat.security.services.IRoleService;
-import com.wora.qatrat7ayat.services.INTER.IAccountService;
-import com.wora.qatrat7ayat.services.INTER.ICityService;
+import com.wora.qatrat7ayat.services.inter.IAccountService;
+import com.wora.qatrat7ayat.services.inter.ICityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;

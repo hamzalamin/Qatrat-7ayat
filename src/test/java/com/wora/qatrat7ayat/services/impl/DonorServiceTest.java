@@ -1,4 +1,4 @@
-package com.wora.qatrat7ayat.services.IMPL;
+package com.wora.qatrat7ayat.services.impl;
 
 import com.wora.qatrat7ayat.mappers.DonorMapper;
 import com.wora.qatrat7ayat.models.DTOs.action.donor.CreateDonorDto;
@@ -16,8 +16,8 @@ import com.wora.qatrat7ayat.models.enumes.BloodType;
 import com.wora.qatrat7ayat.repositories.DonorRepository;
 import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
 import com.wora.qatrat7ayat.security.services.IAuthService;
-import com.wora.qatrat7ayat.services.INTER.IHospitalService;
-import com.wora.qatrat7ayat.services.INTER.IUserService;
+import com.wora.qatrat7ayat.services.inter.IHospitalService;
+import com.wora.qatrat7ayat.services.inter.IUserService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

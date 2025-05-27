@@ -18,7 +18,7 @@ import com.wora.qatrat7ayat.security.repositories.AuthUserRepository;
 import com.wora.qatrat7ayat.security.services.IAuthService;
 import com.wora.qatrat7ayat.security.services.IRoleService;
 import com.wora.qatrat7ayat.security.utils.JwtUtils;
-import com.wora.qatrat7ayat.services.INTER.ICityService;
+import com.wora.qatrat7ayat.services.inter.ICityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -61,7 +61,7 @@ public class AuthService implements IAuthService {
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.toList());
+                .toList();
 
         return ResponseEntity.ok(new JwtResponse(jwt,
                 userDetails.getId(),

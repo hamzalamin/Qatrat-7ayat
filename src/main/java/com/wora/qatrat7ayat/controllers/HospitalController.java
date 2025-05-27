@@ -2,7 +2,7 @@ package com.wora.qatrat7ayat.controllers;
 
 
 import com.wora.qatrat7ayat.models.DTOs.hospital.HospitalDto;
-import com.wora.qatrat7ayat.services.INTER.IHospitalService;
+import com.wora.qatrat7ayat.services.inter.IHospitalService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

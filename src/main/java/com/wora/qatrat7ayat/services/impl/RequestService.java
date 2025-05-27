@@ -1,4 +1,4 @@
-package com.wora.qatrat7ayat.services.IMPL;
+package com.wora.qatrat7ayat.services.impl;
 
 import com.wora.qatrat7ayat.mappers.RequestMapper;
 import com.wora.qatrat7ayat.models.DTOs.action.request.CreateRequestDto;
@@ -9,7 +9,7 @@ import com.wora.qatrat7ayat.models.entities.Request;
 import com.wora.qatrat7ayat.models.entities.User;
 import com.wora.qatrat7ayat.repositories.RequestRepository;
 import com.wora.qatrat7ayat.security.services.IAuthService;
-import com.wora.qatrat7ayat.services.INTER.*;
+import com.wora.qatrat7ayat.services.inter.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

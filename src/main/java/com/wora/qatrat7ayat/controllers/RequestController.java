@@ -2,7 +2,7 @@ package com.wora.qatrat7ayat.controllers;
 
 import com.wora.qatrat7ayat.models.DTOs.action.request.CreateRequestDto;
 import com.wora.qatrat7ayat.models.DTOs.action.request.RequestDto;
-import com.wora.qatrat7ayat.services.INTER.IRequestService;
+import com.wora.qatrat7ayat.services.inter.IRequestService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

@@ -2,10 +2,10 @@ package com.wora.qatrat7ayat.services;
 
 import java.util.List;
 
-public interface GenericService<CREATE_DTO, UPDATE_DTO, DTO, ID>{
-    DTO create(CREATE_DTO dto);
-    DTO findById(ID id);
-    DTO update(UPDATE_DTO dto, ID id);
-    List<DTO> findAll(Integer pageNumber, Integer size);
-    void delete(ID id);
+public interface GenericService<C, U, D, I>{
+    D create(C dto);
+    D findById(I id);
+    D update(U dto, I id);
+    List<D> findAll(Integer pageNumber, Integer size);
+    void delete(I id);
 }

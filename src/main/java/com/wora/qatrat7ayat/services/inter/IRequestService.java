@@ -1,4 +1,4 @@
-package com.wora.qatrat7ayat.services.INTER;
+package com.wora.qatrat7ayat.services.inter;
 
 import com.wora.qatrat7ayat.models.DTOs.action.request.CreateRequestDto;
 import com.wora.qatrat7ayat.models.DTOs.action.request.RequestDto;
