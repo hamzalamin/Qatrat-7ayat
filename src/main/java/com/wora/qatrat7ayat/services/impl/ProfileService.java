@@ -4,6 +4,7 @@ import com.wora.qatrat7ayat.exceptions.AccessDeniedException;
 import com.wora.qatrat7ayat.exceptions.EntityNotFoundException;
 import com.wora.qatrat7ayat.exceptions.OldPasswordIncorrectException;
 import com.wora.qatrat7ayat.mappers.ProfileMapper;
+import com.wora.qatrat7ayat.models.DTOs.action.donor.DonorDto;
 import com.wora.qatrat7ayat.models.DTOs.user.CreateProfileDto;
 import com.wora.qatrat7ayat.models.DTOs.user.ProfileDto;
 import com.wora.qatrat7ayat.models.DTOs.user.UpdateProfileDto;
@@ -64,6 +65,17 @@ public class ProfileService implements IProfileService {
     public ProfileDto create(CreateProfileDto createProfileDto) {
         return null;
     }
+
+//    public Long donationsNumber() {
+//        // Get the currently authenticated user
+//        User currentUser = getCurrentAuthenticatedUser();
+//
+//        // Count donor actions for the current user
+//        Long donationCount = donorRepository.countByUserId(currentUser.getId());
+//
+//        return donationCount;
+//    }
+
 
     @Override
     public ProfileDto findById(Long id) {
