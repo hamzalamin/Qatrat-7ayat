@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        jdk :'jdk-22'
-    }
-
-
     environment {
         DOCKER_IMAGE = 'hamzalamin/qatrat7ayat'
         DOCKER_TAG = 'latest'
