@@ -15,7 +15,7 @@ pipline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main' url: 'https://github.com/hamzalamin/Qatrat-7ayat.git'
+                git branch: 'main', url: 'https://github.com/hamzalamin/Qatrat-7ayat.git'
             }
         }
         stage('build and test') {
