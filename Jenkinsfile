@@ -50,18 +50,18 @@ pipeline {
                             docker stop postgres-test || true
                             docker rm postgres-test || true
 
-                            # Start PostgreSQL container for testing
+                            # Start PostgreSQL container for testing - using port 5433 to match your config
                             docker run -d \
                                 --name postgres-test \
-                                -e POSTGRES_DB=${POSTGRES_DB} \
+                                -e POSTGRES_DB=prod_db \
                                 -e POSTGRES_USER=${POSTGRES_USER} \
                                 -e POSTGRES_PASSWORD=${POSTGRES_PASSWORD} \
-                                -p 5432:5432 \
+                                -p 5433:5432 \
                                 postgres:15-alpine
 
                             # Wait for PostgreSQL to be ready
                             echo "Waiting for PostgreSQL to start..."
-                            sleep 20
+                            sleep 30
 
                             # Test connection
                             docker exec postgres-test pg_isready -U ${POSTGRES_USER}
@@ -83,16 +83,18 @@ pipeline {
 
                     if (dockerAvailable) {
                         buildProps = '''
-                            -Dspring.datasource.url=jdbc:postgresql://localhost:5432/test_db \
+                            -Dspring.datasource.url=jdbc:postgresql://localhost:5433/prod_db \
                             -Dspring.datasource.username=postgres \
                             -Dspring.datasource.password=123 \
                             -Dspring.liquibase.enabled=true \
-                            -Dspring.profiles.active=test
+                            -Dspring.profiles.active=dev
                         '''
                     } else {
                         buildProps = '''
                             -Dspring.liquibase.enabled=false \
-                            -Dspring.profiles.active=test
+                            -Dspring.profiles.active=test \
+                            -Dspring.datasource.url=jdbc:h2:mem:testdb \
+                            -Dspring.datasource.driver-class-name=org.h2.Driver
                         '''
                     }
 
@@ -119,10 +121,10 @@ pipeline {
                     if (dockerAvailable) {
                         sh '''
                             ./mvnw test --batch-mode \
-                                -Dspring.datasource.url=jdbc:postgresql://localhost:5432/test_db \
+                                -Dspring.datasource.url=jdbc:postgresql://localhost:5433/prod_db \
                                 -Dspring.datasource.username=postgres \
                                 -Dspring.datasource.password=123 \
-                                -Dspring.profiles.active=test
+                                -Dspring.profiles.active=dev
                         '''
                     } else {
                         echo "Skipping tests - no database available"
