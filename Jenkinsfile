@@ -7,9 +7,7 @@ pipeline {
         POSTGRES_DB = 'test_db'
         POSTGRES_USER = 'postgres'
         POSTGRES_PASSWORD = '123'
-        // Skip Liquibase during build
         SPRING_LIQUIBASE_ENABLED = 'false'
-        SPRING_PROFILES_ACTIVE = 'test'
     }
 
     stages {
@@ -87,14 +85,13 @@ pipeline {
                             -Dspring.datasource.username=postgres \
                             -Dspring.datasource.password=123 \
                             -Dspring.liquibase.enabled=true \
-                            -Dspring.profiles.active=dev
                         '''
                     } else {
                         buildProps = '''
-                            -Dspring.liquibase.enabled=false \
-                            -Dspring.profiles.active=test \
-                            -Dspring.datasource.url=jdbc:h2:mem:testdb \
-                            -Dspring.datasource.driver-class-name=org.h2.Driver
+                            -Dspring.datasource.url=jdbc:postgresql://localhost:5433/prod_db \
+                                                       -Dspring.datasource.username=postgres \
+                                                       -Dspring.datasource.password=123 \
+                                                       -Dspring.liquibase.enabled=true \
                         '''
                     }
 
@@ -124,7 +121,6 @@ pipeline {
                                 -Dspring.datasource.url=jdbc:postgresql://localhost:5433/prod_db \
                                 -Dspring.datasource.username=postgres \
                                 -Dspring.datasource.password=123 \
-                                -Dspring.profiles.active=dev
                         '''
                     } else {
                         echo "Skipping tests - no database available"
