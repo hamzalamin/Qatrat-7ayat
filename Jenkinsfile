@@ -37,7 +37,17 @@ pipeline {
         stage('Build and Test') {
             steps {
                 sh 'chmod +x ./mvnw || true'
-                sh './mvnw clean package -DskipTests'
+                script {
+                    // First, try to download dependencies separately
+                    retry(3) {
+                        sh './mvnw dependency:go-offline -U --batch-mode'
+                    }
+
+                    // Then build the project
+                    retry(2) {
+                        sh './mvnw clean package -DskipTests --batch-mode'
+                    }
+                }
             }
         }
 
