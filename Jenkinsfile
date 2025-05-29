@@ -4,6 +4,9 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'hamzalamin/qatrat7ayat'
         DOCKER_TAG = 'latest'
+        POSTGRES_DB = 'prod_db'
+        POSTGRES_USER = 'postgres'
+        POSTGRES_PASSWORD = 123
     }
 
     stages {
@@ -34,6 +37,35 @@ pipeline {
             }
         }
 
+        stage('Setup Database') {
+            steps {
+                script {
+                    // Start PostgreSQL container for testing
+                    sh '''
+                        docker run -d --name postgres-test \
+                            -e POSTGRES_DB=${POSTGRES_DB} \
+                            -e POSTGRES_USER=${POSTGRES_USER} \
+                            -e POSTGRES_PASSWORD=${POSTGRES_PASSWORD} \
+                            -p 5433:5432 \
+                            postgres:15-alpine
+                    '''
+
+                    // Wait for PostgreSQL to be ready
+                    sh '''
+                        echo "Waiting for PostgreSQL to start..."
+                        for i in {1..30}; do
+                            if docker exec postgres-test pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}; then
+                                echo "PostgreSQL is ready!"
+                                break
+                            fi
+                            echo "Waiting... ($i/30)"
+                            sleep 2
+                        done
+                    '''
+                }
+            }
+        }
+
         stage('Build and Test') {
             steps {
                 sh 'chmod +x ./mvnw || true'
@@ -43,7 +75,7 @@ pipeline {
                         sh './mvnw dependency:go-offline -U --batch-mode'
                     }
 
-                    // Then build the project
+                    // Then build the project with database available
                     retry(2) {
                         sh './mvnw clean package -DskipTests --batch-mode'
                     }
@@ -75,6 +107,11 @@ pipeline {
     post {
         always {
             echo 'Cleaning up ...'
+            // Stop and remove PostgreSQL container
+            sh '''
+                docker stop postgres-test || true
+                docker rm postgres-test || true
+            '''
             // Clean up git config changes
             sh '''
                 git config --global --unset http.version || true
