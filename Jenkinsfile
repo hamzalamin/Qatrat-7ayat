@@ -17,6 +17,17 @@ pipeline {
             }
         }
 
+        stage('Check JDK') {
+            steps {
+                sh '''
+                 ssh jenkins-agent
+                 java -version
+                 which javac
+                 echo $JAVA_HOME
+                '''
+            }
+        }
+
         stage('Build and Test') {
             steps {
                 sh 'chmod +x ./mvnw || true'
