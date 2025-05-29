@@ -9,7 +9,28 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/hamzalamin/Qatrat-7ayat.git'
+                script {
+                    // Configure git to use HTTP/1.1 and increase buffer size
+                    sh '''
+                        git config --global http.version HTTP/1.1
+                        git config --global http.postBuffer 1048576000
+                        git config --global http.lowSpeedLimit 0
+                        git config --global http.lowSpeedTime 999999
+                    '''
+
+                    // Retry the checkout operation
+                    retry(3) {
+                        checkout([
+                            $class: 'GitSCM',
+                            branches: [[name: '*/main']],
+                            userRemoteConfigs: [[url: 'https://github.com/hamzalamin/Qatrat-7ayat.git']],
+                            extensions: [
+                                [$class: 'CloneOption', depth: 1, noTags: false, reference: '', shallow: true],
+                                [$class: 'CheckoutOption', timeout: 20]
+                            ]
+                        ])
+                    }
+                }
             }
         }
 
@@ -44,6 +65,13 @@ pipeline {
     post {
         always {
             echo 'Cleaning up ...'
+            // Clean up git config changes
+            sh '''
+                git config --global --unset http.version || true
+                git config --global --unset http.postBuffer || true
+                git config --global --unset http.lowSpeedLimit || true
+                git config --global --unset http.lowSpeedTime || true
+            '''
         }
         success {
             echo 'Pipeline succeeded!'
