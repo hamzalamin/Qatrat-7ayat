@@ -16,7 +16,7 @@ pipeline {
         stage('Build and Test') {
             steps {
                 sh 'chmod +x ./mvnw || true'
-                sh './mvnw clean package -DskipTests'
+                sh './mvnw clean package -DskipTests -P!with-liquibase'
             }
         }
 
