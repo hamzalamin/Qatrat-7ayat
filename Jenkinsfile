@@ -1,11 +1,7 @@
 // tkteb script dyal jenkins hna
 
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.9.9-eclipse-temurin-21-alpine'
-        }
-    }
+    agent any
 
     environment {
         DOCKER_IMAGE = 'hamzalamin/qatrat7ayat';
