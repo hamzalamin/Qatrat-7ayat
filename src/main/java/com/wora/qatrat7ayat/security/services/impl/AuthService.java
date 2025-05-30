@@ -5,15 +5,15 @@ import com.wora.qatrat7ayat.exceptions.UserAlreadyExist;
 import com.wora.qatrat7ayat.models.DTOs.user.ProfileDto;
 import com.wora.qatrat7ayat.models.entities.City;
 import com.wora.qatrat7ayat.models.entities.User;
-import com.wora.qatrat7ayat.security.DTO.JwtResponse;
-import com.wora.qatrat7ayat.security.DTO.LoginRequest;
-import com.wora.qatrat7ayat.security.DTO.SignupRequest;
-import com.wora.qatrat7ayat.security.DTO.SignupResponse;
+import com.wora.qatrat7ayat.security.models.dtos.JwtResponse;
+import com.wora.qatrat7ayat.security.models.dtos.LoginRequest;
+import com.wora.qatrat7ayat.security.models.dtos.SignupRequest;
+import com.wora.qatrat7ayat.security.models.dtos.SignupResponse;
 import com.wora.qatrat7ayat.security.exception.UserProfileNotFound;
 import com.wora.qatrat7ayat.security.exception.UserSuspendedException;
 import com.wora.qatrat7ayat.security.mappers.AuthMapper;
-import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
-import com.wora.qatrat7ayat.security.models.Role;
+import com.wora.qatrat7ayat.security.models.entities.AuthenticatedUser;
+import com.wora.qatrat7ayat.security.models.entities.Role;
 import com.wora.qatrat7ayat.security.repositories.AuthUserRepository;
 import com.wora.qatrat7ayat.security.services.IAuthService;
 import com.wora.qatrat7ayat.security.services.IRoleService;
@@ -31,7 +31,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

@@ -10,7 +10,7 @@ import com.wora.qatrat7ayat.models.entities.City;
 import com.wora.qatrat7ayat.models.entities.User;
 import com.wora.qatrat7ayat.models.enumes.Status;
 import com.wora.qatrat7ayat.repositories.ArticleRepository;
-import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
+import com.wora.qatrat7ayat.security.models.entities.AuthenticatedUser;
 import com.wora.qatrat7ayat.security.services.IAuthService;
 import com.wora.qatrat7ayat.security.services.impl.UserDetailsImpl;
 import com.wora.qatrat7ayat.services.inter.IArticleService;

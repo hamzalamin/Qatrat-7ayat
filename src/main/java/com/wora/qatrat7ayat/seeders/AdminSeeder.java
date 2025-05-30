@@ -1,7 +1,7 @@
 package com.wora.qatrat7ayat.seeders;
 
-import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
-import com.wora.qatrat7ayat.security.models.Role;
+import com.wora.qatrat7ayat.security.models.entities.AuthenticatedUser;
+import com.wora.qatrat7ayat.security.models.entities.Role;
 import com.wora.qatrat7ayat.security.repositories.AuthUserRepository;
 import com.wora.qatrat7ayat.security.services.IRoleService;
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,7 @@
 package com.wora.qatrat7ayat.models.DTOs.account;
 
 import com.wora.qatrat7ayat.models.enumes.BloodType;
-import com.wora.qatrat7ayat.security.models.enume.Gender;
+import com.wora.qatrat7ayat.security.models.enumes.Gender;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;

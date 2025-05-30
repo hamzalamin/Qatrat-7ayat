@@ -1,6 +1,6 @@
 package com.wora.qatrat7ayat.seeders;
 
-import com.wora.qatrat7ayat.security.models.Role;
+import com.wora.qatrat7ayat.security.models.entities.Role;
 import com.wora.qatrat7ayat.security.repositories.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

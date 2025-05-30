@@ -17,6 +17,6 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
                          AuthenticationException authException) throws IOException {
         response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         response.setContentType("application/json");
-        response.getWriter().write("{\"message\":\"You must be authenticated to access this resource.\"}");
+        response.getWriter().write("{\"message\":\"You'r login information is not correct, You must be authenticated to access this resource.\"}");
     }
 }

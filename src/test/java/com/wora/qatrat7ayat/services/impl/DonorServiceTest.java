@@ -14,7 +14,7 @@ import com.wora.qatrat7ayat.models.entities.Hospital;
 import com.wora.qatrat7ayat.models.entities.User;
 import com.wora.qatrat7ayat.models.enumes.BloodType;
 import com.wora.qatrat7ayat.repositories.DonorRepository;
-import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
+import com.wora.qatrat7ayat.security.models.entities.AuthenticatedUser;
 import com.wora.qatrat7ayat.security.services.IAuthService;
 import com.wora.qatrat7ayat.services.inter.IHospitalService;
 import com.wora.qatrat7ayat.services.inter.IUserService;

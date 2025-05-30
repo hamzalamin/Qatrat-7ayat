@@ -5,7 +5,7 @@ import com.wora.qatrat7ayat.models.DTOs.chat.MessageResponseDTO;
 import com.wora.qatrat7ayat.models.DTOs.user.EmbeddedUserDto;
 import com.wora.qatrat7ayat.models.entities.Message;
 import com.wora.qatrat7ayat.repositories.MessageRepository;
-import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
+import com.wora.qatrat7ayat.security.models.entities.AuthenticatedUser;
 import com.wora.qatrat7ayat.security.services.IAuthService;
 import com.wora.qatrat7ayat.services.inter.IMessageService;
 import lombok.RequiredArgsConstructor;

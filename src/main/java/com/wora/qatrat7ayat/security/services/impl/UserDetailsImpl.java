@@ -1,6 +1,7 @@
 package com.wora.qatrat7ayat.security.services.impl;
 
-import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
+
+import com.wora.qatrat7ayat.security.models.entities.AuthenticatedUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

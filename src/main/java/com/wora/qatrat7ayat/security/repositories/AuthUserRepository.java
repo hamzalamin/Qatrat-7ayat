@@ -1,6 +1,6 @@
 package com.wora.qatrat7ayat.security.repositories;
 
-import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
+import com.wora.qatrat7ayat.security.models.entities.AuthenticatedUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

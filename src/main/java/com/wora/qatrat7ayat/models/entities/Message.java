@@ -1,6 +1,6 @@
 package com.wora.qatrat7ayat.models.entities;
 
-import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
+import com.wora.qatrat7ayat.security.models.entities.AuthenticatedUser;
 import jakarta.persistence.*;
 import lombok.*;
 

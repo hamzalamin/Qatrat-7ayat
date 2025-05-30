@@ -2,8 +2,8 @@ package com.wora.qatrat7ayat.models.DTOs.account;
 
 import com.wora.qatrat7ayat.models.DTOs.city.EmbeddedCityDto;
 import com.wora.qatrat7ayat.models.enumes.BloodType;
-import com.wora.qatrat7ayat.security.DTO.Role.EmbeddedRoleDto;
-import com.wora.qatrat7ayat.security.models.enume.Gender;
+import com.wora.qatrat7ayat.security.models.dtos.Role.EmbeddedRoleDto;
+import com.wora.qatrat7ayat.security.models.enumes.Gender;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
 import lombok.Getter;

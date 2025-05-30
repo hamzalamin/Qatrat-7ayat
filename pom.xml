@@ -172,26 +172,6 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.liquibase</groupId>-->
-<!--                <artifactId>liquibase-maven-plugin</artifactId>-->
-<!--                <version>4.25.1</version>-->
-<!--                <configuration>-->
-<!--                    <driver>org.postgresql.Driver</driver>-->
-<!--                    <url>jdbc:postgresql://localhost:5433/prod_db</url>-->
-<!--                    <username>postgres</username>-->
-<!--                    <password>123</password>-->
-<!--                    <changeLogFile>src/main/resources/db/changelog/master.yml</changeLogFile>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <phase>process-resources</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>update</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

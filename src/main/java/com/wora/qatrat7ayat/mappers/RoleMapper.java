@@ -1,10 +1,10 @@
 package com.wora.qatrat7ayat.mappers;
 
 import com.wora.qatrat7ayat.mappers.api.GenericMapper;
-import com.wora.qatrat7ayat.security.DTO.Role.CreateRoleDto;
-import com.wora.qatrat7ayat.security.DTO.Role.RoleDto;
-import com.wora.qatrat7ayat.security.DTO.Role.UpdateRoleDto;
-import com.wora.qatrat7ayat.security.models.Role;
+import com.wora.qatrat7ayat.security.models.dtos.Role.CreateRoleDto;
+import com.wora.qatrat7ayat.security.models.dtos.Role.RoleDto;
+import com.wora.qatrat7ayat.security.models.dtos.Role.UpdateRoleDto;
+import com.wora.qatrat7ayat.security.models.entities.Role;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

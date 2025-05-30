@@ -1,6 +1,6 @@
 package com.wora.qatrat7ayat.security.controller;
 
-import com.wora.qatrat7ayat.security.DTO.SignupResponse;
+import com.wora.qatrat7ayat.security.models.dtos.SignupResponse;
 import com.wora.qatrat7ayat.security.services.IAuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

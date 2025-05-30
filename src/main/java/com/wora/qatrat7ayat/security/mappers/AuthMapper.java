@@ -3,9 +3,9 @@ package com.wora.qatrat7ayat.security.mappers;
 import com.wora.qatrat7ayat.models.DTOs.account.CreateUserAccountDto;
 import com.wora.qatrat7ayat.models.DTOs.account.UpdateUserAccountDto;
 import com.wora.qatrat7ayat.models.DTOs.user.ProfileDto;
-import com.wora.qatrat7ayat.security.DTO.SignupRequest;
-import com.wora.qatrat7ayat.security.DTO.SignupResponse;
-import com.wora.qatrat7ayat.security.models.AuthenticatedUser;
+import com.wora.qatrat7ayat.security.models.dtos.SignupRequest;
+import com.wora.qatrat7ayat.security.models.dtos.SignupResponse;
+import com.wora.qatrat7ayat.security.models.entities.AuthenticatedUser;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
